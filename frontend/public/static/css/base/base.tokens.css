@@ -1,0 +1,196 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/base/base.tokens.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/base/base.tokens.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Hoja de estilos para la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Base.Tokens
+   Estilos visuales asociados a este módulo.
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* ============================================================
+   base.tokens.css — YELIA
+   ------------------------------------------------------------
+   PROPÓSITO GENERAL
+   ------------------------------------------------------------
+   Este archivo define el **sistema de tokens (Design Tokens)**
+   de YELIA mediante variables CSS.
+
+   Responsabilidades:
+   - Importar la tipografía principal (Inter)
+   - Definir la paleta de colores (modo claro por defecto)
+   - Definir el set equivalente para modo oscuro (sobrescritura)
+   - Exponer variables reutilizables para:
+       • fondos y superficies
+       • colores de marca (primary/accent)
+       • tipografía (colores de texto)
+       • bordes y estados
+       • escalas de radio, sombras y espaciados
+
+   PRINCIPIOS DE DISEÑO
+   ------------------------------------------------------------
+   1) Variables primero:
+      Todos los módulos CSS deben consumir estos tokens para
+      mantener consistencia visual y escalabilidad.
+
+   2) Modo oscuro por sobrescritura:
+      El modo oscuro se activa agregando la clase .dark-mode
+      al <body> (controlado por JavaScript). No se duplican reglas,
+      se reutilizan los mismos tokens.
+
+   3) Separación de responsabilidades:
+      Este archivo NO define layout ni componentes.
+      Solo define variables globales y recursos base.
+
+   NOTA ARQUITECTÓNICA
+   ------------------------------------------------------------
+   - Mantener los tokens centralizados permite:
+     • cambios de branding sin tocar múltiples archivos
+     • coherencia entre chat, sidebar y avatar
+     • defensa académica del “Design System”
+   ============================================================ */
+
+
+/* ============================================================
+   ALTURA GLOBAL DEL DOCUMENTO
+   ============================================================
+   Asegura que html y body ocupen el alto completo para:
+   - permitir layouts que dependen de height: 100%
+   - hacer que el grid interno gestione el scroll correctamente
+*/
+/* --- Base / Reset --------------------------------------------------------- */
+html,
+/* --- Base / Reset --------------------------------------------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
+/* ============================================================
+   PALETA DE COLORES (TOKENS) — MODO CLARO (DEFAULT)
+   ============================================================
+   Variables CSS reutilizadas por todos los módulos.
+
+   - :root representa el “tema base”
+   - Los módulos (layout, chat, avatar, etc.) consumen estas
+     variables mediante var(--yelia-*)
+*/
+/* --- Variables / Tokens (CSS variables) --------------------------------------------------------- */
+:root {
+  /* Fondos y superficies */
+  --yelia-bg: #f3f4f6;
+  --yelia-panel-bg: #ffffff;
+  --yelia-panel-surface: #f9fafb;
+
+  /* Marca (primary / accent) */
+  --yelia-primary: #10a37f;
+  --yelia-accent: var(--yelia-primary);
+  --yelia-primary-soft: rgba(16, 163, 127, 0.12);
+
+  /* Tipografía */
+  --yelia-text-main: #111827;
+  --yelia-text-soft: #6b7280;
+
+  /* Texto secundario/placeholder */
+  --yelia-text-muted: #9ca3af;
+
+  /* Alias de superficie usada por modales/labels */
+  --yelia-panel: var(--yelia-panel-bg);
+
+  /* Bordes */
+  --yelia-border-soft: rgba(148, 163, 184, 0.6);
+
+  /* Inputs */
+  --yelia-input-bg: #ffffff;
+
+  /* === Design tokens (pulido) ===
+     Escalas reutilizables para consistencia */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 10px 30px rgba(2, 6, 23, .10);
+  --shadow-lg: 0 18px 50px rgba(2, 6, 23, .16);
+
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 14px;
+  --space-4: 18px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* Estados (semánticos) */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger:  #ef4444;
+  --info:    #38bdf8;
+
+  /* Accesibilidad (focus):
+     - Ring unificado para inputs, selects, botones y dropdowns.
+     - Se basa en el color de marca (accent) para mantener consistencia.
+  */
+  --focus-border: var(--yelia-accent);
+  --focus-shadow: 0 0 0 3px rgba(16, 163, 127, 0.22);
+  --focus-ring: rgba(16, 163, 127, 0.55);
+  /* Altura reservada para chrome (header + footer aprox.) */
+  --yelia-chrome-h: 80px;
+
+}
+
+
+/* ============================================================
+   MODO OSCURO — SOBRESCRITURA DE TOKENS
+   ============================================================
+   Se activan sobrescribiendo los mismos tokens cuando <body>
+   incluye la clase .dark-mode (controlado por JS).
+
+   Ventaja:
+   - Los componentes NO necesitan duplicar reglas.
+   - Cambia el tema completo únicamente cambiando tokens.
+*/
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode {
+  /* Fondos y superficies */
+  --yelia-bg: #202123;
+  --yelia-panel-bg: #202123;
+  --yelia-panel-surface: #343541;
+
+  /* Marca (primary / accent) */
+  --yelia-primary: #10a37f;
+  --yelia-accent: var(--yelia-primary);
+  --yelia-primary-soft: rgba(16, 163, 127, 0.16);
+
+  /* Tipografía */
+  --yelia-text-main: #e5e7eb;
+  --yelia-text-soft: #9ca3af;
+
+
+  /* Texto secundario/placeholder */
+  --yelia-text-muted: #8b93a1;
+
+  /* Alias de superficie usada por modales/labels */
+  --yelia-panel: var(--yelia-panel-bg);
+  /* Bordes */
+  --yelia-border-soft: rgba(148, 163, 184, 0.6);
+
+  /* Inputs */
+  --yelia-input-bg: #343541;
+}

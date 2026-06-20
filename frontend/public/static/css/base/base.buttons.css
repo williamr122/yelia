@@ -1,0 +1,175 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/base/base.buttons.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/base/base.buttons.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Hoja de estilos para la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Base.Buttons
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-dark-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: none;
+
+  background: var(--yelia-panel-surface);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Color del ícono (luna/sol) */
+  color: #fbbf24;
+
+  cursor: pointer;
+
+  /* Transiciones suaves para UX */
+  transition:
+    background 0.18s ease,
+    transform 0.12s ease,
+    box-shadow 0.18s ease;
+
+  /* Borde visual ligero */
+  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.7);
+}
+
+/* Hover del toggle:
+   - Elevación ligera
+   - Refuerzo de sombra */
+.yelia-dark-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px var(--yelia-primary-soft),
+    0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ============================================================
+   BOTONES CIRCULARES DE ACCIÓN (ICON BUTTONS)
+   ============================================================
+   Usados para:
+   - Micrófono
+   - Nuevo chat
+   - Adjuntar archivo
+   - Controles rápidos del UI
+*/
+
+/* Botón circular base */
+.yelia-icon-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: var(--yelia-panel-surface);
+  color: var(--yelia-text-main);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+/* Hover:
+   - Cambio de fondo suave
+   - Feedback inmediato */
+.yelia-icon-button:hover {
+  background: var(--yelia-primary-soft);
+}
+
+
+/* ============================================================
+   BOTÓN PRINCIPAL (PRIMARY ACTION)
+   ============================================================
+   Usado para acciones destacadas:
+   - Guardar perfil
+   - Confirmar configuraciones
+   - Acciones clave del sistema
+*/
+
+/* Botón primario */
+.yelia-btn-primary {
+  background: var(--yelia-primary);
+  border: none;
+  color: #f9fafb;
+
+  padding: 7px 18px;
+  border-radius: 999px;
+
+  font-size: 0.9rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  cursor: pointer;
+}
+
+/* Hover del botón primario:
+   - Refuerzo visual
+   - Mantiene jerarquía */
+.yelia-btn-primary:hover {
+  background: #12b087;
+}
+
+
+/* ============================================================
+   BOTÓN SECUNDARIO / FANTASMA (GHOST)
+   ============================================================
+   Usado para acciones no destructivas o secundarias:
+   - Cerrar modal
+   - Cancelar
+   - Opciones menos prioritarias
+*/
+
+/* Botón ghost */
+.yelia-btn-ghost {
+  background: transparent;
+  border-radius: 999px;
+
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  color: var(--yelia-text-main);
+
+  padding: 7px 18px;
+  font-size: 0.9rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  cursor: pointer;
+}
+
+/* Hover del botón ghost:
+   - Fondo sutil
+   - Mantiene ligereza visual */
+.yelia-btn-ghost:hover {
+  background: rgba(148, 163, 184, 0.12);
+}
+
+
+/* Base (shared) — botón enviar (chat)
+   El layout/hover siguen en chat.input.css; aquí solo lo común. */
+.yelia-send-button-modern{
+  background: var(--yelia-primary);
+  border: none;
+  color: #fff;
+}

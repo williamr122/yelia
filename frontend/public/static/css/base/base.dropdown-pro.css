@@ -1,0 +1,607 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/base/base.dropdown-pro.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/base/base.dropdown-pro.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Hoja de estilos para la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Base.Dropdown Pro
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-modal .mb-3:has(> label.form-label + select.form-select){
+  position: relative;
+}
+
+/* Label flotante */
+/* [Doc] Label flotante:
+   - Arranca dentro del campo (top:11px).
+   - Sube y reduce escala cuando hay valor real seleccionado.
+   - background y border-radius evitan "cortar" el texto con el borde del select. */
+.yelia-modal .mb-3:has(> label.form-label + select.form-select) > label.form-label{
+  position: absolute;
+  left: 14px;
+  top: 11px;
+  margin: 0;
+  padding: 0 8px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--yelia-text-muted);
+  background: var(--yelia-panel);
+  border-radius: 10px;
+  transition: transform .18s ease, top .18s ease, color .18s ease, opacity .18s ease;
+  pointer-events: none; /* no estorba al click */
+  z-index: 2;
+  opacity: .95;
+}
+
+/* Select premium base (sin romper Bootstrap) */
+/* [Doc] Estilizado del select manteniendo compatibilidad con Bootstrap:
+   - appearance:none para flecha custom consistente
+   - padding superior extra para espacio del label flotante */
+.yelia-modal select.form-select{
+  border-radius: 16px;
+  padding: 18px 44px 12px 14px; /* arriba extra para label */
+  border: 1px solid var(--yelia-border-soft);
+  background-color: var(--yelia-input-bg);
+  color: var(--yelia-text-main);
+  transition: box-shadow .18s ease, border-color .18s ease, transform .10s ease;
+  appearance: none; /* permite flecha custom */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Flecha custom (SVG inline) */
+  background-image:
+    linear-gradient(to bottom, transparent, transparent),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%239aa4b2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px 18px;
+}
+
+/* Hover elegante */
+/* [Doc] Hover: leve cambio de borde para indicar interactividad. */
+.yelia-modal select.form-select:hover{
+  border-color: rgba(13,110,253,.35);
+}
+
+/* Focus (pro) */
+/* [Doc] Focus: ring suave alineado a estética Bootstrap (azul). */
+.yelia-modal select.form-select:focus{
+  border-color: var(--focus-border);
+  box-shadow: var(--focus-shadow);
+  outline: none;
+}
+
+/* Mientras el select está en placeholder (value="") → texto tenue */
+/* [Doc] Placeholder visual cuando la opción vacía está seleccionada. */
+.yelia-modal select.form-select:has(option[value=""]:checked){
+  color: var(--yelia-text-muted);
+}
+
+/* Cuando ya hay selección real → label sube */
+/* [Doc] Estado "con valor": label sube (top:-7px) y se reduce un poco. */
+.yelia-modal .mb-3:has(> label.form-label + select.form-select:not(:has(option[value=""]:checked))) > label.form-label{
+  top: -7px;
+  transform: scale(.92);
+  color: var(--yelia-text-soft);
+  opacity: 1;
+}
+
+/* Cuando está en placeholder → label se queda dentro */
+/* [Doc] Estado "placeholder": label queda dentro del campo, tenue. */
+.yelia-modal .mb-3:has(> label.form-label + select.form-select:has(option[value=""]:checked)) > label.form-label{
+  top: 11px;
+  transform: none;
+  color: var(--yelia-text-muted);
+  opacity: .92;
+}
+
+/* Flecha más clara en dark mode */
+/* [Doc] Cambia el color del stroke del SVG de la flecha para dark-mode. */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal select.form-select{
+  background-image:
+    linear-gradient(to bottom, transparent, transparent),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23b8c0cc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+/* Selección (cuando el navegador lo permite) */
+/* [Doc] Refuerzo visual de opción seleccionada (soporte parcial). */
+.yelia-modal select.form-select option:checked{
+  background-color: var(--yelia-accent);
+  color: #ffffff;
+}
+
+/* ============================================================
+   PATCH: DROPDOWN CUSTOM (labels arriba, placeholder adentro)
+   ------------------------------------------------------------
+   Problema:
+   - Con el nuevo HTML, el <select> quedó hidden (d-none) y
+     usamos un dropdown Bootstrap visible.
+   - El patch de "floating label" detecta label + select y
+     vuelve el label absoluto (se enciman los textos).
+   Solución:
+   - Desactivar floating-label SOLO para los selects hidden del modal
+   - Estilizar el dropdown pro (botón + menú) en claro/oscuro
+   - Mantener el placeholder dentro del botón (no dentro del label)
+   ============================================================ */
+
+/* 1) Desactiva floating-label cuando el select está oculto (d-none) */
+/* [Doc] Si el select está hidden (d-none), NO queremos label flotante absoluto.
+   Se restablece el flujo normal para evitar textos encimados. */
+.yelia-modal .mb-3:has(> label.form-label + select.form-select.d-none){
+  position: static !important;
+}
+
+.yelia-modal .mb-3:has(> label.form-label + select.form-select.d-none) > label.form-label{
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+  margin: 0 0 8px 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: var(--yelia-text-soft) !important;
+}
+
+/* 2) Estilo PRO del dropdown */
+/* [Doc] Botón del dropdown con look de input pro:
+   - borde suave, fondo de input, transiciones y focus ring. */
+.yelia-pro-dropdown .yelia-pro-dropdown-btn{
+  border-radius: 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--yelia-border-soft);
+  background: var(--yelia-input-bg);
+  color: var(--yelia-text-main);
+  box-shadow: none;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .10s ease;
+}
+
+.yelia-pro-dropdown .yelia-pro-dropdown-btn:hover{
+  border-color: rgba(13,110,253,.35);
+}
+
+.yelia-pro-dropdown .yelia-pro-dropdown-btn:focus{
+  border-color: var(--focus-border);
+  box-shadow: var(--focus-shadow);
+}
+
+/* [Doc] Estado visual placeholder en el botón (texto muted). */
+.yelia-pro-dropdown .yelia-pro-dropdown-btn.is-placeholder{
+  color: var(--yelia-text-muted);
+}
+
+/* 3) Menú (scroll + contraste) */
+/* [Doc] Menú como panel:
+   - max-height + overflow para listas largas
+   - padding y sombras para separación visual. */
+.yelia-pro-dropdown .yelia-pro-dropdown-menu{
+  border-radius: 14px;
+  border: 1px solid var(--yelia-border-soft);
+  background: var(--yelia-panel);
+  padding: 6px;
+  max-height: 260px;
+  overflow: auto;
+  box-shadow: var(--yelia-shadow);
+}
+
+.yelia-pro-dropdown .dropdown-item{
+  border-radius: 10px;
+  padding: 10px 10px;
+  color: var(--yelia-text-main);
+  transition: background .12s ease, transform .06s ease;
+}
+
+.yelia-pro-dropdown .dropdown-item:hover{
+  background: rgba(13,110,253,.10);
+}
+
+.yelia-pro-dropdown .dropdown-item:active{
+  transform: scale(.99);
+}
+
+/* 4) Dark mode */
+/* [Doc] Mantiene consistencia del panel en dark-mode. */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-pro-dropdown .yelia-pro-dropdown-menu{
+  background: var(--yelia-panel);
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-pro-dropdown .dropdown-item:hover{
+  background: rgba(13,110,253,.16);
+}
+
+/* 5) Divider mejor */
+/* [Doc] Divider alineado a tokens de borde. */
+.yelia-pro-dropdown .dropdown-divider{
+  border-top-color: var(--yelia-border-soft);
+  margin: 6px 0;
+}
+
+/* ================================
+   MODAL PERFIL ACADÉMICO (scroll seguro)
+   - Evita que el modal “crezca” y se salga de la pantalla.
+   - El scroll queda dentro del modal (body), no en toda la página.
+   ================================ */
+/* [Doc] Ajustes específicos para #perfil-modal:
+   - max-height del contenido y scroll interno controlado.
+   - overscroll-behavior evita "rebote" propagado al body. */
+#perfil-modal .modal-dialog{
+  margin: 1.25rem auto;
+}
+
+#perfil-modal .modal-content{
+  max-height: calc(100vh - 2.5rem);
+  overflow: hidden; /* el scroll va en .modal-body */
+}
+
+#perfil-modal .modal-body{
+  max-height: calc(100vh - 220px); /* header + footer + márgenes */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: 18px;
+}
+
+/* Asegura que el menú del dropdown no empuje el layout */
+/* [Doc] El menú del dropdown dentro del modal se limita para no desbordar. */
+#perfil-modal .yelia-pro-dropdown .dropdown-menu{
+  max-height: min(260px, calc(100vh - 280px));
+  overflow-y: auto;
+}
+
+/* ============================================================
+   PATCH: DROPDOWN MENU OVERLAY (no se recorta en modal)
+   ------------------------------------------------------------
+   Síntoma:
+   - El menú del dropdown se "mete" dentro del scroll del modal
+     y se recorta (porque .modal-body tiene overflow:auto).
+   Solución (sin tocar HTML/JS):
+   - Forzar el dropdown-menu a renderizar como overlay (fixed)
+   - Subir z-index para que quede por encima del modal
+   ============================================================ */
+
+/* =====================================================
+   YELIA – Dropdown sobre Modal
+   -----------------------------------------------------
+   Ajusta el z-index del menú desplegable para que se
+   muestre por encima del modal Bootstrap (1055).
+   Se mantiene position:absolute para evitar que el
+   dropdown se desplace fuera del modal.
+   ===================================================== */
+
+.yelia-modal .yelia-pro-dropdown .dropdown-menu {
+  /* Bootstrap usa position:absolute mediante Popper.
+     No se cambia a fixed porque en modales provoca
+     desalineación del menú. */
+  position: absolute !important;
+  z-index: 1060 !important; /* Encima del modal */
+}
+
+
+/* Asegura stacking context correcto */
+/* [Doc] Crea contexto de apilamiento local para dropdown dentro del modal. */
+.yelia-modal .yelia-pro-dropdown{
+  position: relative;
+  z-index: 1000;
+}
+
+/* Evita que el menú se vea "mini" en algunos layouts */
+/* [Doc] Cuando el menú es w-100, se fuerza un ancho mínimo razonable en desktop. */
+.yelia-modal .yelia-pro-dropdown .dropdown-menu.w-100{
+  min-width: 320px;
+  max-width: calc(100vw - 40px);
+}
+
+/* Responsive: en pantallas pequeñas, ocupa casi todo el ancho */
+/* [Doc] En móvil, el menú se adapta al ancho disponible. */
+@media (max-width: 520px){
+  .yelia-modal .yelia-pro-dropdown .dropdown-menu.w-100{
+    min-width: auto;
+    width: calc(100vw - 40px) !important;
+  }
+}
+
+/* ============================================================
+   PATCH: DROPDOWN MENU PRO (posicionado correcto + sin recorte)
+   ------------------------------------------------------------
+   Objetivo:
+   - Que el menú del dropdown salga EXACTO debajo del botón (Popper)
+   - Que NO se recorte por el overflow del modal
+   - Sin ese bug de aparecer arriba/izquierda (causado por position:fixed)
+   Técnica:
+   - Volvemos el menú a position:absolute (default de Bootstrap)
+   - Solo mientras el menú esté abierto, el modal-body permite overflow visible
+   - z-index alto + animación suave
+   ============================================================ */
+
+/* 1) Revertir el overlay FIXED (evita que aparezca en esquina) */
+/* [Doc] Se redefine z-index alto para asegurar visibilidad del menú. */
+.yelia-modal .yelia-pro-dropdown .dropdown-menu{
+  position: absolute !important;
+  z-index: 2000 !important;
+}
+
+/* 2) Modal-body normalmente scroll */
+/* [Doc] Estado base: modal-body scrolleable. */
+
+/* 3) Pero si un dropdown está abierto, permitimos overflow visible (no recorte) */
+/* [Doc] Mientras haya un dropdown abierto (.show), se permite overflow visible
+   para que el menú no se recorte dentro del contenedor con scroll. */
+.yelia-modal .modal-body:has(.yelia-pro-dropdown .dropdown-menu.show){
+  overflow: visible;
+}
+
+/* 4) Menú: look & feel pro + animación */
+/* [Doc] Animación de aparición del menú:
+   - opacity + translate + scale para transición suave. */
+.yelia-pro-dropdown .dropdown-menu{
+  transform-origin: top left;
+  opacity: 0;
+  transform: translateY(6px) scale(.98);
+  transition: opacity .14s ease, transform .14s ease;
+}
+
+.yelia-pro-dropdown .dropdown-menu.show{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* 5) Item activo */
+/* [Doc] Estado activo/seleccionado para mejor feedback visual. */
+.yelia-pro-dropdown .dropdown-item.active,
+.yelia-pro-dropdown .dropdown-item:active{
+  background: rgba(13,110,253,.20);
+  color: var(--yelia-text-main);
+}
+
+/* 6) Quita min-width forzado del patch anterior */
+/* [Doc] Cuando w-100, se fuerza que ocupe 100% del contenedor. */
+.yelia-modal .yelia-pro-dropdown .dropdown-menu.w-100{
+  min-width: 100% !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* ============================================================
+   PATCH: DROPDOWN MENU COMO CAJA (se lee perfecto en modal)
+   ------------------------------------------------------------
+   Síntoma:
+   - El menú se mezcla con el contenido del modal (no se lee bien)
+   - Se superpone con el siguiente campo
+   Solución:
+   - Convertimos el dropdown-menu en una "caja" debajo del botón
+     (estilo select pro), sin overlay flotante.
+   - Esto evita solapes y se ve igual en Windows/Chrome.
+   ============================================================ */
+
+/* El modal mantiene scroll normal */
+/* [Doc] Estado base reafirmado: scroll interno del modal. */
+.yelia-modal .modal-body{ overflow: auto; }
+
+/* Cuando el dropdown está abierto, el menú se vuelve una caja debajo */
+/* [Doc] Al abrir, el menú se vuelve "caja" dentro del flujo (relative),
+   evitando overlay y solapes en entornos con overflow del modal. */
+.yelia-modal .yelia-pro-dropdown .dropdown-menu.show{
+  position: relative !important;
+  inset: auto !important;      /* cancela top/left de Popper */
+  transform: none !important;  /* cancela translate3d */
+  margin-top: 10px !important;
+  width: 100% !important;
+  max-height: 240px !important;
+  overflow: auto !important;
+  background: var(--yelia-panel) !important;
+  border: 1px solid var(--yelia-border-soft) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--yelia-shadow) !important;
+  z-index: 10 !important;
+  opacity: 1 !important;
+}
+
+/* Quita la animación de "caída" para que no se vea raro en caja */
+/* [Doc] En modo "caja", se desactiva transición para evitar efectos extraños. */
+.yelia-modal .yelia-pro-dropdown .dropdown-menu{
+  transition: none !important;
+  opacity: 1 !important;
+}
+
+/* Items más claros y separados */
+/* [Doc] Ajuste de padding/line-height para legibilidad en lista. */
+.yelia-modal .yelia-pro-dropdown .dropdown-item{
+  padding: 10px 12px !important;
+  line-height: 1.2 !important;
+}
+
+/* Hover bonito */
+/* [Doc] Hover suave con azul translúcido. */
+.yelia-modal .yelia-pro-dropdown .dropdown-item:hover{
+  background: rgba(13,110,253,.12) !important;
+}
+
+/* Placeholder siempre con buen contraste */
+/* [Doc] Placeholder del botón del dropdown forzado a muted (consistencia). */
+.yelia-modal .yelia-pro-dropdown .yelia-pro-dropdown-btn.is-placeholder{
+  color: var(--yelia-text-muted) !important;
+}
+
+/* ============================================================
+   PATCH FINAL — DROPDOWN PERFIL ACADÉMICO (PC)
+   ============================================================ */
+/* [Doc] Normaliza label y dropdown (perfil académico):
+   - refuerzo de pesos tipográficos y tamaños, orientado a desktop. */
+.yelia-modal .form-label{
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+.yelia-pro-dropdown-btn{
+  border-radius:14px;
+  padding:10px 14px;
+  border:1px solid var(--yelia-border-soft);
+  background:var(--yelia-input-bg);
+  color:var(--yelia-text-main);
+}
+
+.yelia-pro-dropdown-menu{
+  max-height:280px;
+  overflow:auto;
+  border-radius:14px;
+  box-shadow:var(--yelia-shadow);
+  background:var(--yelia-panel);
+}
+
+.yelia-pro-dropdown-menu .dropdown-item{
+  padding:8px 14px;
+}
+
+.yelia-pro-dropdown-menu .dropdown-item:hover{
+  background:var(--yelia-accent-soft);
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-pro-dropdown-menu{
+  background:#202123;
+}
+
+/* ============================================================
+   OPTIMIZACIÓN VISUAL — PC (Windows)
+   ------------------------------------------------------------
+   Objetivo:
+   - Mejor legibilidad en pantallas grandes (Windows/PC)
+   - Mantener layout "sin scroll global" y scroll dentro de paneles
+   - Evitar "magic numbers" rígidos (usa tokens configurables)
+   ------------------------------------------------------------
+   ============================================================ */
+
+/* Token ajustable para el "chrome" (header + footer aprox.)
+   Si cambias alturas del header/footer en el futuro, solo toca esto. */
+/* [Doc] Token centralizado para alturas de UI fija (header/footer). */
+/* --- Variables / Tokens (CSS variables) --------------------------------------------------------- */
+:root {
+  --yelia-chrome-h: 80px;
+}
+
+/* Mejoras tipográficas (se notan mucho en Windows) */
+/* [Doc] Mejora renderizado de fuentes en desktop para mayor legibilidad. */
+/* --- Base / Reset --------------------------------------------------------- */
+body.yelia-body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* En PC, un poco más de aire mejora lectura (sin cambiar tu estética) */
+/* [Doc] Ajustes de spacing y scrollbar solo para pantallas >= 992px. */
+/* --- Responsive (Media queries) --------------------------------------------------------- */
+@media (min-width: 992px) {
+  .yelia-layout {
+    gap: 18px;
+    padding: 14px 22px 10px;
+  }
+
+  /* Scrollbars consistentes en paneles (solo WebKit: Chrome/Edge) */
+  .yelia-panel::-webkit-scrollbar {
+    width: 10px;
+  }
+  .yelia-panel::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.55);
+    border-radius: 999px;
+    border: 2px solid rgba(0, 0, 0, 0); /* separa el thumb del panel */
+    background-clip: padding-box;
+  }
+  .yelia-panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/* Respeta usuarios con "reducir movimiento" (buena práctica UX) */
+/* [Doc] Accesibilidad: reduce animaciones/transiciones si el usuario lo pidió. */
+/* --- Responsive (Media queries) --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   Accesibilidad + consistencia (pulido)
+   - Focus ring profesional (teclado)
+   - Estados coherentes
+   ========================================================= */
+
+/* [Doc] Focus visible consistente para navegación por teclado:
+   - :where reduce especificidad y evita peleas de cascada. */
+:where(a, button, [role="button"], input, textarea, select, summary, .yelia-btn):focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+:where(a, button, [role="button"], input, textarea, select, summary, .yelia-btn):focus {
+  /* Evita rings feos en clicks del mouse: usa :focus-visible arriba */
+  outline: none;
+}
+
+/* [Doc] Consistencia de radio en campos de formulario. */
+:where(input, textarea, select) {
+  border-radius: var(--radius-md);
+}
+
+/* [Doc] Consistencia visual en cards/panels con tokens globales. */
+:where(.card, .panel, .yelia-card, .yelia-panel) {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* =========================================================
+   Windows Desktop (opcional)
+   Si quieres que SOLO se aplique en Windows, agrega:
+   <html class="platform-windows">
+   ========================================================= */
+
+/* [Doc] Ajustes finos específicos para Windows (si se marca la clase en <html>). */
+/* --- Base / Reset --------------------------------------------------------- */
+html.platform-windows body {
+  /* Tipografía más “nativa” en Windows (sin perder Inter si está) */
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  text-rendering: geometricPrecision;
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+html.platform-windows * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   HEADER INSTITUCIONAL — YELIA (LOGOS + TÍTULO)
+   ========================================================= */
+
+/* Contenedor general del header */
+/* [Doc] Header institucional sticky:
+   - se mantiene visible arriba
+   - gradiente marca identidad visual
+   - sombra y borde separan del contenido.
+*/

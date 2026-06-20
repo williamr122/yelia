@@ -1,0 +1,81 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/base/base.responsive.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/base/base.responsive.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Hoja de estilos para la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Base.Responsive
+   Estilos visuales asociados a este módulo.
+*/
+
+@media (max-width: 992px) {
+
+  /* Body en móvil:
+     ------------------------------------------------------------
+     - Se habilita scroll global
+     - El layout se simplifica */
+/* --- Base / Reset --------------------------------------------------------- */
+  body.yelia-body {
+    overflow: auto;
+  }
+
+  /* Layout principal:
+     ------------------------------------------------------------
+     - Se convierte en una sola columna
+     - Altura automática para evitar cortes */
+  .yelia-layout {
+    grid-template-columns: 100%;
+    grid-auto-rows: auto;
+    height: auto;
+  }
+
+  /* Sidebar y panel de avatar:
+     ------------------------------------------------------------
+     - Se ocultan para priorizar el chat
+     - Reduce complejidad visual en móvil */
+  .yelia-sidebar,
+  .yelia-avatar-panel {
+    display: none;
+  }
+}
+
+
+/* ============================================================
+   AJUSTES GENERALES DE ESPACIADO
+   ============================================================
+   Padding lateral para mejorar comodidad visual
+   en pantallas pequeñas y medianas.
+*/
+
+/* Padding del contenedor principal */
+.yelia-main {
+  padding-inline: 6px;
+}
+
+
+/* ============================================================
+   PANTALLAS GRANDES (DESKTOP AMPLIO)
+   ============================================================
+   Limita el ancho máximo para evitar líneas de texto
+   excesivamente largas.
+*/
+
+/* --- Responsive (Media queries) --------------------------------------------------------- */
+@media (min-width: 1200px) {
+  .yelia-layout {
+    max-width: 1400px;
+  }
+}

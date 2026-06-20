@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="yelia-avatar-svg" role="img" aria-label="YELIA avatar cat">
+  <defs>
+    <linearGradient id="bgCat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6F7FF"/>
+      <stop offset="1" stop-color="#E9ECFF"/>
+    </linearGradient>
+    <radialGradient id="furCat" cx="40%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#FBE2C5"/>
+      <stop offset="1" stop-color="#F3C994"/>
+    </radialGradient>
+    <radialGradient id="earCat" cx="40%" cy="30%" r="80%">
+      <stop offset="0" stop-color="#F2C28B"/>
+      <stop offset="1" stop-color="#E7A969"/>
+    </radialGradient>
+    <radialGradient id="muzzleCat" cx="50%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#FFF1E2" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#F7DCC0" stop-opacity="0.9"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.18"/>
+    </filter>
+    <clipPath id="yelia-face-clip">
+      <circle cx="100" cy="110" r="58"/>
+    </clipPath>
+  </defs>
+
+  <style>
+    :root { --stroke:#1B2430; }
+    .s{ stroke:var(--stroke); stroke-width:6; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+    .shadow{ fill:rgba(0,0,0,.16); }
+    .cheek{ fill:#FFB3C1; opacity:.35; }
+    .eyeW{ fill:#FFFFFF; }
+    .pupil{ fill:#1B2430; }
+    .hl{ fill:#FFFFFF; opacity:.85; }
+    .mouthLine{ fill:none; }
+    .mouthOpen{ fill:#1B2430; opacity:0; }
+    .nose{ fill:#FF7A90; }
+    .furSpeck{ fill:#DCA36B; opacity:.12; }
+  </style>
+
+  <rect x="10" y="10" width="180" height="180" rx="24" fill="url(#bgCat)"/>
+  <ellipse class="shadow" cx="100" cy="168" rx="52" ry="14"/>
+
+  <g id="yelia-root" filter="url(#softShadow)">
+    <!-- ears -->
+    <path class="s" fill="url(#earCat)" d="M55 82 L62 44 C63 38 70 36 75 40 L94 62 Z"/>
+    <path class="s" fill="url(#earCat)" d="M145 82 L138 44 C137 38 130 36 125 40 L106 62 Z"/>
+
+    <!-- face -->
+    <circle class="s" cx="100" cy="110" r="62" fill="url(#furCat)"/>
+
+    <g clip-path="url(#yelia-face-clip)">
+      <!-- tiny fur specks (super subtle) -->
+      <circle class="furSpeck" cx="80" cy="92" r="7"/>
+      <circle class="furSpeck" cx="126" cy="96" r="6"/>
+      <circle class="furSpeck" cx="98" cy="78" r="5"/>
+
+      <!-- muzzle area -->
+      <ellipse cx="100" cy="135" rx="34" ry="24" fill="url(#muzzleCat)" opacity="0.95"/>
+
+      <!-- cheeks -->
+      <circle id="yelia-cheek-left" class="cheek" cx="66" cy="132" r="13"/>
+      <circle id="yelia-cheek-right" class="cheek" cx="134" cy="132" r="13"/>
+
+      <!-- brows -->
+      <path id="yelia-brow-left" class="s" fill="none" d="M60 90 C72 80 86 82 94 90"/>
+      <path id="yelia-brow-right" class="s" fill="none" d="M106 90 C114 82 128 80 140 90"/>
+
+      <!-- eyes -->
+      <g id="yelia-eye-left">
+        <ellipse class="s eyeW" cx="78" cy="112" rx="17" ry="15"/>
+        <circle id="yelia-pupil-left" class="pupil" cx="82" cy="115" r="6"/>
+        <circle class="hl" cx="84" cy="113" r="2.5"/>
+      </g>
+      <g id="yelia-eye-right">
+        <ellipse class="s eyeW" cx="122" cy="112" rx="17" ry="15"/>
+        <circle id="yelia-pupil-right" class="pupil" cx="118" cy="115" r="6"/>
+        <circle class="hl" cx="120" cy="113" r="2.5"/>
+      </g>
+
+      <!-- nose -->
+      <path class="s nose" d="M100 126 L92 134 L108 134 Z"/>
+
+      <!-- whiskers (soft) -->
+      <path class="s" fill="none" opacity=".55" d="M48 126 C58 122 68 122 78 126"/>
+      <path class="s" fill="none" opacity=".55" d="M48 140 C58 136 68 136 78 140"/>
+      <path class="s" fill="none" opacity=".55" d="M122 126 C132 122 142 122 152 126"/>
+      <path class="s" fill="none" opacity=".55" d="M122 140 C132 136 142 136 152 140"/>
+
+      <!-- mouth -->
+      <g id="yelia-mouth">
+        <path id="yelia-mouth-line" class="s mouthLine yelia-mouth-anim" d="M86 148 C94 156 106 156 114 148"/>
+        <path id="yelia-mouth-open" class="mouthOpen yelia-mouth-anim" d="M88 148 C92 164 108 164 112 148 C108 156 92 156 88 148Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,232 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/base/base.layout.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/base/base.layout.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Hoja de estilos para la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Base.Layout
+   Estilos visuales asociados a este módulo.
+*/
+
+body.yelia-body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+
+  background: var(--yelia-bg);
+  color: var(--yelia-text-main);
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: background 0.2s ease, color 0.2s ease;
+
+  /* El scroll se controla a nivel de panel */
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   HEADER / FOOTER
+   ============================================================
+   Elementos institucionales fijos del layout.
+*/
+
+/* ============================================================
+   HEADER SUPERIOR
+   ============================================================
+   Barra superior tipo “sticky” con identidad institucional.
+*/
+
+/* Header principal */
+.yelia-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  /* Degradado verde-azulado institucional */
+  background: linear-gradient(
+    135deg,
+    #e8f5e9 0%,
+    #b2dfdb 35%,
+    #80cbc4 60%,
+    #004d40 100%
+  );
+
+  color: #0f172a;
+
+  padding: 14px 32px;
+  text-align: center;
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Texto interno del header:
+   ------------------------------------------------------------
+   - Ancho limitado para mejor legibilidad
+   - Estilo institucional */
+.yelia-header-text {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  color: #0f172a;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================
+   Créditos y pie de página.
+*/
+
+/* Footer */
+.yelia-footer {
+  padding: 6px 18px;
+  font-size: 0.78rem;
+  color: var(--yelia-text-soft);
+
+  border-top: 1px solid rgba(148, 163, 184, 0.5);
+  text-align: center;
+}
+
+
+/* ============================================================
+   LAYOUT PRINCIPAL (3 COLUMNAS)
+   ============================================================
+   Estructura central del sistema:
+   Historial | Chat | Avatar
+*/
+
+/* Contenedor principal */
+.yelia-main {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  /* Permite que el grid interno gestione scroll */
+  min-height: 0;
+}
+
+/* Grid principal */
+.yelia-layout {
+  flex: 1;
+
+  display: grid;
+  grid-template-columns: 21% 56% 23%;
+  gap: 18px;
+
+  width: 100%;
+  max-width: 1850px;
+  margin: 0 auto;
+
+  padding: 14px 22px 10px;
+
+  /* Altura calculada:
+     viewport menos header/footer (controlado por token) */
+  height: calc(100vh - var(--yelia-chrome-h, 80px));
+
+  box-sizing: border-box;
+  min-height: 0;
+}
+
+/* Sidebar oculto:
+   ------------------------------------------------------------
+   El chat ocupa el espacio restante
+   y el avatar se mantiene visible */
+/* --- Base / Reset --------------------------------------------------------- */
+body.yelia-sidebar-hidden .yelia-layout {
+  grid-template-columns: minmax(0, 1fr) 23%;
+}
+
+
+/* ============================================================
+   PANEL REUTILIZABLE
+   ============================================================
+   Estilo base compartido por:
+   - Sidebar
+   - Chat
+   - Avatar
+*/
+
+/* Panel base */
+.yelia-panel {
+  background: var(--yelia-panel-bg);
+
+  border-radius: 18px;
+  border: 1px solid var(--yelia-border-soft);
+
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
+
+  padding: 12px 14px;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
+}
+
+
+/* ============================================================
+   TIPOGRAFÍA GENERAL
+   ============================================================
+   Estilos de texto reutilizados en todo el sistema.
+*/
+
+/* Título principal del chat */
+.yelia-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: var(--yelia-text-main);
+}
+
+/* Ajuste de color en modo oscuro */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-title {
+  color: #f9fafb;
+}
+
+/* Títulos de secciones */
+.yelia-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  color: var(--yelia-text-soft);
+}
+
+/* Texto placeholder / estados vacíos */
+.yelia-empty-text {
+  font-size: 0.85rem;
+  color: var(--yelia-text-soft);
+
+  text-align: center;
+  margin-top: 18px;
+}

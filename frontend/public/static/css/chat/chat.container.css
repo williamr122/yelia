@@ -1,0 +1,236 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/chat/chat.container.css
+   Descripción: Estilos del chatbot (contenedor, mensajes, botones, estados y responsive).
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/chat/chat.container.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Interacciones del chat: envío, recepción y render de mensajes.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Chat.Container
+   Estilos visuales asociados a este módulo.
+*/
+
+#chat-container,
+.yelia-chat-container {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 10px;
+  padding-right: 8px;
+
+  overflow-y: auto;   /* scroll interno, no en toda la página */
+}
+
+
+/* ============================================================
+   SCROLLBAR DEL CHAT (SOLO APARIENCIA)
+   ============================================================
+   Personalización del scrollbar para navegadores WebKit:
+   - Chrome / Edge / Safari
+
+   - No altera funcionamiento del scroll, solo estética.
+   - Mantiene coherencia visual con el resto del sistema.
+*/
+
+/* Ancho del scrollbar */
+#chat-container::-webkit-scrollbar,
+.yelia-chat-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* “Thumb” (parte arrastrable) */
+#chat-container::-webkit-scrollbar-thumb,
+.yelia-chat-container::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.7);
+  border-radius: 999px;
+}
+
+/* Track (fondo del scrollbar) */
+#chat-container::-webkit-scrollbar-track,
+.yelia-chat-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* ============================================================
+   INDICADOR DE NIVEL DEL CHAT (UI AUXILIAR)
+   ============================================================
+   Elemento flotante que informa el nivel activo de la conversación
+   y permite acciones de control asociadas (cambio / restablecimiento).
+
+   Características:
+   - Se posiciona de forma fija respecto al viewport.
+   - No participa en el layout del chat ni afecta el flujo de mensajes.
+   - Su visibilidad depende de la existencia del elemento en el DOM
+     (inyectado dinámicamente por JavaScript).
+
+   Integración visual:
+   - Usa tipografía heredada del sistema.
+   - Respeta tokens de color cuando están disponibles.
+   - Mantiene contraste suficiente para fondos claros u oscuros.
+
+   Nota técnica:
+   - Este bloque define solo apariencia.
+   - No contiene lógica ni estados.
+*/
+
+/* Contenedor principal del indicador de nivel */
+#yelia-nivel-badge {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+
+  z-index: 2147483647; /* Garantiza visibilidad sobre headers/sidebars */
+
+  font-family: inherit;
+}
+
+/* Cuerpo visible del badge */
+#yelia-nivel-badge > div {
+  background: var(--yelia-accent, #0d6efd);
+  color: #ffffff;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Botones internos del badge (menú / reset) */
+#yelia-nivel-badge button {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+
+  border: none;
+  border-radius: 999px;
+
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+/* Estados interactivos */
+#yelia-nivel-badge button:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+
+/* ============================================================
+   MENÚ DE CONTROL DEL NIVEL
+   ============================================================
+   Panel desplegable asociado al badge que permite:
+   - Seleccionar manualmente el nivel del chat
+   - Restablecer a estado neutro
+   - Acciones auxiliares (según JS)
+
+   Comportamiento:
+   - Se muestra/oculta mediante JavaScript.
+   - No afecta el scroll ni el tamaño del contenedor del chat.
+*/
+
+/* Contenedor del menú */
+#yelia-nivel-menu {
+  background: #111827;
+  color: #ffffff;
+
+  margin-top: 8px;
+  padding: 10px;
+
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Botones dentro del menú */
+#yelia-nivel-menu button {
+  background: #374151;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/* Hover de botones del menú */
+#yelia-nivel-menu button:hover {
+  background: #4b5563;
+}
+
+/* ============================================================
+   INDICADOR DE NIVEL DEL CHAT — MODO OSCURO
+   ============================================================
+   Ajustes visuales aplicados únicamente cuando el sistema
+   se encuentra en modo oscuro.
+
+   Objetivo:
+   - Mantener contraste adecuado sobre fondos oscuros.
+   - Evitar saturación excesiva del color primario.
+   - Preservar jerarquía visual sin alterar layout.
+
+   - Estas reglas solo sobrescriben colores.
+   - No modifican posición, tamaño ni comportamiento.
+*/
+
+/* Badge principal en modo oscuro */
+.dark-mode #yelia-nivel-badge > div {
+  background: var(--yelia-accent-dark, #1e40af);
+  color: #f9fafb;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* Botones del badge en modo oscuro */
+.dark-mode #yelia-nivel-badge button {
+  background: rgba(255, 255, 255, 0.18);
+  color: #f9fafb;
+}
+
+/* Hover de botones del badge */
+.dark-mode #yelia-nivel-badge button:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+
+/* ============================================================
+   MENÚ DE CONTROL DEL NIVEL — MODO OSCURO
+   ============================================================
+   Panel desplegable asociado al indicador de nivel
+   cuando el sistema se encuentra en modo oscuro.
+*/
+
+/* Contenedor del menú */
+.dark-mode #yelia-nivel-menu {
+  background: #020617; /* dark slate profundo */
+  color: #f9fafb;
+
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75);
+}
+
+/* Botones del menú en modo oscuro */
+.dark-mode #yelia-nivel-menu button {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+/* Hover de botones del menú */
+.dark-mode #yelia-nivel-menu button:hover {
+  background: #374151;
+}

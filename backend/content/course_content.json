@@ -1,0 +1,1909 @@
+﻿{
+    "schema_version":  "yelia-course-content.v1",
+    "generated_from":  "RECOMENDACION DE RECURSOS YELIA4AP.zip",
+    "course":  {
+                   "name":  "Programacion Avanzada",
+                   "units_count":  4,
+                   "source_type":  "docx/pdf academic base"
+               },
+    "diagnostic_questions":  [
+                                 {
+                                     "id":  "diag-01",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  1,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué significa POO?",
+                                     "options":  [
+                                                     "Programación Operativa Online",
+                                                     "Proceso Operativo Organizado",
+                                                     "Programación Orientada a Objetos",
+                                                     "Programación de Objetivos"
+                                                 ],
+                                     "answer":  2,
+                                     "answer_letter":  "C",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-02",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  2,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Cuál es uno de los objetivos de la POO?",
+                                     "options":  [
+                                                     "Aumentar errores",
+                                                     "Organizar mejor el código",
+                                                     "Eliminar bases de datos",
+                                                     "Evitar el uso de objetos"
+                                                 ],
+                                     "answer":  1,
+                                     "answer_letter":  "B",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-03",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  3,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué representa una clase?",
+                                     "options":  [
+                                                     "Un objeto creado",
+                                                     "Una plantilla para crear objetos",
+                                                     "Un método",
+                                                     "Una base de datos"
+                                                 ],
+                                     "answer":  1,
+                                     "answer_letter":  "B",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-04",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  4,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué es un objeto?",
+                                     "options":  [
+                                                     "Un atributo",
+                                                     "Un método",
+                                                     "Una tabla",
+                                                     "Una instancia de una clase"
+                                                 ],
+                                     "answer":  3,
+                                     "answer_letter":  "D",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-05",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  5,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Cuál de los siguientes es un atributo?",
+                                     "options":  [
+                                                     "MostrarDatos()",
+                                                     "Calcular()",
+                                                     "Registrar()",
+                                                     "Nombre"
+                                                 ],
+                                     "answer":  3,
+                                     "answer_letter":  "D",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-06",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  6,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué representan los métodos?",
+                                     "options":  [
+                                                     "Acciones o comportamientos",
+                                                     "Datos almacenados",
+                                                     "Tablas",
+                                                     "Clases"
+                                                 ],
+                                     "answer":  0,
+                                     "answer_letter":  "A",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-07",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  7,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué principio protege los datos de una clase?",
+                                     "options":  [
+                                                     "Herencia",
+                                                     "Encapsulamiento",
+                                                     "UML",
+                                                     "MVC"
+                                                 ],
+                                     "answer":  1,
+                                     "answer_letter":  "B",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-08",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  8,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué modificador restringe completamente el acceso desde fuera de la clase?",
+                                     "options":  [
+                                                     "public",
+                                                     "protected",
+                                                     "static",
+                                                     "private"
+                                                 ],
+                                     "answer":  3,
+                                     "answer_letter":  "D",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-09",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  9,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué método permite leer el valor de un atributo?",
+                                     "options":  [
+                                                     "Constructor",
+                                                     "Getter",
+                                                     "Setter",
+                                                     "Main"
+                                                 ],
+                                     "answer":  1,
+                                     "answer_letter":  "B",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-10",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  10,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué comando DDL permite crear una tabla?",
+                                     "options":  [
+                                                     "DROP",
+                                                     "ALTER",
+                                                     "CREATE",
+                                                     "TRUNCATE"
+                                                 ],
+                                     "answer":  2,
+                                     "answer_letter":  "C",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-11",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  11,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué permite la herencia?",
+                                     "options":  [
+                                                     "Eliminar objetos",
+                                                     "Reutilizar características entre clases",
+                                                     "Crear bases de datos",
+                                                     "Diseñar interfaces gráficas"
+                                                 ],
+                                     "answer":  1,
+                                     "answer_letter":  "B",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-12",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  12,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Cómo también se conoce una clase padre?",
+                                     "options":  [
+                                                     "Clase base",
+                                                     "Subclase",
+                                                     "Clase derivada",
+                                                     "Interfaz"
+                                                 ],
+                                     "answer":  0,
+                                     "answer_letter":  "A",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-13",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  13,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué es una clase hija?",
+                                     "options":  [
+                                                     "Un método",
+                                                     "Una base de datos",
+                                                     "Una clase que hereda características",
+                                                     "Un archivo"
+                                                 ],
+                                     "answer":  2,
+                                     "answer_letter":  "C",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-14",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  14,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué significa polimorfismo?",
+                                     "options":  [
+                                                     "Una sola clase",
+                                                     "Un solo método",
+                                                     "Varias tablas",
+                                                     "Muchas formas"
+                                                 ],
+                                     "answer":  3,
+                                     "answer_letter":  "D",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-15",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  15,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué permite la sobrecarga de métodos?",
+                                     "options":  [
+                                                     "Eliminar clases",
+                                                     "Crear bases de datos",
+                                                     "Usar el mismo nombre con diferentes parámetros",
+                                                     "Crear archivos"
+                                                 ],
+                                     "answer":  1,
+                                     "answer_letter":  "B",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-16",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  16,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué ocurre en la sobrescritura?",
+                                     "options":  [
+                                                     "Una clase hija redefine un método heredado",
+                                                     "Se elimina una clase",
+                                                     "Se crea un archivo",
+                                                     "Se modifica una tabla"
+                                                 ],
+                                     "answer":  0,
+                                     "answer_letter":  "A",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-17",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  17,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué es una clase abstracta?",
+                                     "options":  [
+                                                     "Una clase para crear objetos directamente",
+                                                     "Una clase base para otras clases",
+                                                     "Una interfaz",
+                                                     "Un diagrama"
+                                                 ],
+                                     "answer":  1,
+                                     "answer_letter":  "B",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-18",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  18,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué es un método abstracto?",
+                                     "options":  [
+                                                     "Un atributo",
+                                                     "Un método privado",
+                                                     "Un constructor",
+                                                     "Un método que debe ser implementado posteriormente"
+                                                 ],
+                                     "answer":  3,
+                                     "answer_letter":  "D",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-19",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  19,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué define una interfaz?",
+                                     "options":  [
+                                                     "Comportamientos que deben implementarse",
+                                                     "Datos de una tabla",
+                                                     "Diagramas UML",
+                                                     "Bases de datos"
+                                                 ],
+                                     "answer":  0,
+                                     "answer_letter":  "A",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-20",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  20,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Cuál es una ventaja de las interfaces?",
+                                     "options":  [
+                                                     "Reducen la flexibilidad",
+                                                     "Evitan la herencia",
+                                                     "Eliminan clases",
+                                                     "Promueven la flexibilidad"
+                                                 ],
+                                     "answer":  3,
+                                     "answer_letter":  "D",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-21",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  21,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué significa UML?",
+                                     "options":  [
+                                                     "Universal Method Language",
+                                                     "Unified Modeling Language",
+                                                     "Unified Management Logic",
+                                                     "Universal Modeling Logic"
+                                                 ],
+                                     "answer":  1,
+                                     "answer_letter":  "B",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-22",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  22,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Cuál es el objetivo principal de UML?",
+                                     "options":  [
+                                                     "Representar visualmente sistemas de software",
+                                                     "Crear bases de datos",
+                                                     "Ejecutar programas",
+                                                     "Crear objetos"
+                                                 ],
+                                     "answer":  0,
+                                     "answer_letter":  "A",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-23",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  23,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué muestra un diagrama de clases?",
+                                     "options":  [
+                                                     "Tablas SQL",
+                                                     "Archivos",
+                                                     "Clases, atributos y métodos",
+                                                     "Audio y video"
+                                                 ],
+                                     "answer":  2,
+                                     "answer_letter":  "C",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-24",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  24,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué representa un diagrama de secuencia?",
+                                     "options":  [
+                                                     "Bases de datos",
+                                                     "Tablas",
+                                                     "Archivos",
+                                                     "Interacción entre componentes a lo largo del tiempo"
+                                                 ],
+                                     "answer":  3,
+                                     "answer_letter":  "D",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-25",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  25,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué representan los diagramas de casos de uso?",
+                                     "options":  [
+                                                     "Funcionalidades del sistema y usuarios",
+                                                     "Clases abstractas",
+                                                     "Interfaces",
+                                                     "Archivos"
+                                                 ],
+                                     "answer":  0,
+                                     "answer_letter":  "A",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-26",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  26,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué representan los diagramas de actividad?",
+                                     "options":  [
+                                                     "Procesos y flujos de trabajo",
+                                                     "Bases de datos",
+                                                     "Objetos",
+                                                     "Métodos"
+                                                 ],
+                                     "answer":  0,
+                                     "answer_letter":  "A",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-27",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  27,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué son los patrones de diseño?",
+                                     "options":  [
+                                                     "Programas completos",
+                                                     "Soluciones reutilizables para problemas frecuentes",
+                                                     "Bases de datos",
+                                                     "Interfaces gráficas"
+                                                 ],
+                                     "answer":  1,
+                                     "answer_letter":  "B",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-28",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  28,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Cuál de los siguientes es un patrón de diseño?",
+                                     "options":  [
+                                                     "SQL",
+                                                     "Getter",
+                                                     "Factory",
+                                                     "Setter"
+                                                 ],
+                                     "answer":  2,
+                                     "answer_letter":  "C",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-29",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  29,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué significa MVC?",
+                                     "options":  [
+                                                     "Método, Variable y Clase",
+                                                     "Método, Vista y Clase",
+                                                     "Modelo, Variable y Control",
+                                                     "Modelo, Vista y Controlador"
+                                                 ],
+                                     "answer":  3,
+                                     "answer_letter":  "D",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-30",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  30,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué componente MVC administra los datos?",
+                                     "options":  [
+                                                     "Vista",
+                                                     "Controlador",
+                                                     "Modelo",
+                                                     "Usuario"
+                                                 ],
+                                     "answer":  2,
+                                     "answer_letter":  "C",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-31",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  31,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué es un archivo?",
+                                     "options":  [
+                                                     "Una unidad de almacenamiento permanente",
+                                                     "Una base de datos",
+                                                     "Un objeto",
+                                                     "Un método"
+                                                 ],
+                                     "answer":  0,
+                                     "answer_letter":  "A",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-32",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  32,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué operación permite recuperar información almacenada en un archivo?",
+                                     "options":  [
+                                                     "Escritura",
+                                                     "Compresión",
+                                                     "Eliminación",
+                                                     "Lectura"
+                                                 ],
+                                     "answer":  2,
+                                     "answer_letter":  "C",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-33",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  33,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué operación permite guardar información en un archivo?",
+                                     "options":  [
+                                                     "Lectura",
+                                                     "Escritura",
+                                                     "Consulta",
+                                                     "Herencia"
+                                                 ],
+                                     "answer":  1,
+                                     "answer_letter":  "B",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-34",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  34,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué es una base de datos?",
+                                     "options":  [
+                                                     "Un objeto",
+                                                     "Un conjunto organizado de información",
+                                                     "Un método",
+                                                     "Un patrón"
+                                                 ],
+                                     "answer":  1,
+                                     "answer_letter":  "B",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-35",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  35,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué almacena una tabla?",
+                                     "options":  [
+                                                     "Interfaces",
+                                                     "Métodos",
+                                                     "Clases",
+                                                     "Información relacionada con un mismo tema"
+                                                 ],
+                                     "answer":  3,
+                                     "answer_letter":  "D",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-36",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  36,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué representa un registro?",
+                                     "options":  [
+                                                     "Una fila dentro de una tabla",
+                                                     "Una columna",
+                                                     "Una clase",
+                                                     "Un archivo"
+                                                 ],
+                                     "answer":  0,
+                                     "answer_letter":  "A",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-37",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  37,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Qué significa ORM?",
+                                     "options":  [
+                                                     "Online Resource Manager",
+                                                     "Online Relational Method",
+                                                     "Object Relation Method",
+                                                     "Object Relational Mapping"
+                                                 ],
+                                     "answer":  3,
+                                     "answer_letter":  "D",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-38",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  38,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "En ORM, una clase se relaciona con:",
+                                     "options":  [
+                                                     "Un registro",
+                                                     "Una tabla",
+                                                     "Un archivo",
+                                                     "Una vista"
+                                                 ],
+                                     "answer":  1,
+                                     "answer_letter":  "B",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-39",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  39,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "Dentro de MVC, ¿qué componente interactúa normalmente con la base de datos?",
+                                     "options":  [
+                                                     "Vista",
+                                                     "Usuario",
+                                                     "Modelo",
+                                                     "Navegador"
+                                                 ],
+                                     "answer":  2,
+                                     "answer_letter":  "C",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 },
+                                 {
+                                     "id":  "diag-40",
+                                     "unit_id":  0,
+                                     "kind":  "diagnostic",
+                                     "number":  40,
+                                     "topic":  null,
+                                     "level":  null,
+                                     "question":  "¿Cuál es una buena práctica de desarrollo de software?",
+                                     "options":  [
+                                                     "Duplicar código",
+                                                     "Utilizar nombres confusos",
+                                                     "Mantener el código organizado",
+                                                     "Evitar pruebas"
+                                                 ],
+                                     "answer":  2,
+                                     "answer_letter":  "C",
+                                     "source":  "PRUEBA DE DIAGNOSTICO\\PRUEBA DE DIAGNOSTICO EN BASE A  LAS 4 UNIDADES.docx"
+                                 }
+                             ],
+    "units":  [
+                  {
+                      "id":  1,
+                      "title":  "Introduccion a la Programacion Orientada a Objetos",
+                      "lesson_questions":  [
+                                               {
+                                                   "id":  "u1-lesson-01",
+                                                   "unit_id":  1,
+                                                   "kind":  "lesson",
+                                                   "number":  1,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "¿Qué significa POO?",
+                                                   "options":  [
+                                                                   "Programación Orientada a Objetos",
+                                                                   "Programa Organizado por Objetos",
+                                                                   "Plataforma Orientada a Objetos",
+                                                                   "Procedimiento Organizado por Objetos"
+                                                               ],
+                                                   "answer":  0,
+                                                   "answer_letter":  "A",
+                                                   "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Lecci¢n Unidad 1 (5 preguntas)\\Lecci¢n Unidad 1.docx"
+                                               },
+                                               {
+                                                   "id":  "u1-lesson-02",
+                                                   "unit_id":  1,
+                                                   "kind":  "lesson",
+                                                   "number":  2,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "¿Cuál de los siguientes elementos representa una plantilla para crear objetos?",
+                                                   "options":  [
+                                                                   "Método",
+                                                                   "Clase",
+                                                                   "Atributo",
+                                                                   "Variable"
+                                                               ],
+                                                   "answer":  1,
+                                                   "answer_letter":  "B",
+                                                   "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Lecci¢n Unidad 1 (5 preguntas)\\Lecci¢n Unidad 1.docx"
+                                               },
+                                               {
+                                                   "id":  "u1-lesson-03",
+                                                   "unit_id":  1,
+                                                   "kind":  "lesson",
+                                                   "number":  3,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "Una __________ es una instancia creada a partir de una clase.",
+                                                   "options":  [
+                                                                   "método",
+                                                                   "objeto",
+                                                                   "atributo",
+                                                                   "variable"
+                                                               ],
+                                                   "answer":  1,
+                                                   "answer_letter":  "B",
+                                                   "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Lecci¢n Unidad 1 (5 preguntas)\\Lecci¢n Unidad 1.docx"
+                                               },
+                                               {
+                                                   "id":  "u1-lesson-04",
+                                                   "unit_id":  1,
+                                                   "kind":  "lesson",
+                                                   "number":  4,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "El __________ permite proteger los datos de una clase.",
+                                                   "options":  [
+                                                                   "herencia",
+                                                                   "polimorfismo",
+                                                                   "encapsulamiento",
+                                                                   "interfaz"
+                                                               ],
+                                                   "answer":  2,
+                                                   "answer_letter":  "C",
+                                                   "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Lecci¢n Unidad 1 (5 preguntas)\\Lecci¢n Unidad 1.docx"
+                                               },
+                                               {
+                                                   "id":  "u1-lesson-05",
+                                                   "unit_id":  1,
+                                                   "kind":  "lesson",
+                                                   "number":  5,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "Observe el siguiente código: class Persona { String nombre; int edad; void mostrarInformacion() { System.out.println(\"Nombre: \" + nombre); System.out.println(\"Edad: \" + edad); } } ¿Qué fragmento de código falta para poder ejecutar correctamente el programa ?",
+                                                   "options":  [
+                                                                   "public class Main { public static void main(String[] args) { Persona persona = new Persona(); persona.nombre = \"Juan\"; persona.edad = 20; persona.mostrarInformacion(); } }",
+                                                                   "String ciudad;",
+                                                                   "void saludar() { System.out.println(\"Hola\"); }",
+                                                                   "private double salario;"
+                                                               ],
+                                                   "answer":  0,
+                                                   "answer_letter":  "A",
+                                                   "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Lecci¢n Unidad 1 (5 preguntas)\\Lecci¢n Unidad 1.docx"
+                                               }
+                                           ],
+                      "unit_exam_questions":  [
+                                                  {
+                                                      "id":  "u1-exam-01",
+                                                      "unit_id":  1,
+                                                      "kind":  "unit_exam",
+                                                      "number":  1,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué significa POO?",
+                                                      "options":  [
+                                                                      "Programación Orientada a Objetos",
+                                                                      "Plataforma Orientada a Objetos",
+                                                                      "Programa Organizado por Objetos",
+                                                                      "Programación Operativa Online"
+                                                                  ],
+                                                      "answer":  0,
+                                                      "answer_letter":  "A",
+                                                      "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Examen Unidad 1 (10 preguntas)\\Examen Unidad 1.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u1-exam-02",
+                                                      "unit_id":  1,
+                                                      "kind":  "unit_exam",
+                                                      "number":  2,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Cuál es una ventaja de la Programación Orientada a Objetos?",
+                                                      "options":  [
+                                                                      "Eliminar completamente los errores",
+                                                                      "Facilitar la reutilización del código",
+                                                                      "Sustituir las bases de datos",
+                                                                      "Evitar el uso de variables"
+                                                                  ],
+                                                      "answer":  1,
+                                                      "answer_letter":  "B",
+                                                      "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Examen Unidad 1 (10 preguntas)\\Examen Unidad 1.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u1-exam-03",
+                                                      "unit_id":  1,
+                                                      "kind":  "unit_exam",
+                                                      "number":  3,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué elemento sirve como plantilla para crear objetos?",
+                                                      "options":  [
+                                                                      "Método",
+                                                                      "Objeto",
+                                                                      "Clase Constructor",
+                                                                      "Clase"
+                                                                  ],
+                                                      "answer":  3,
+                                                      "answer_letter":  "D",
+                                                      "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Examen Unidad 1 (10 preguntas)\\Examen Unidad 1.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u1-exam-04",
+                                                      "unit_id":  1,
+                                                      "kind":  "unit_exam",
+                                                      "number":  4,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué representan los atributos dentro de una clase?",
+                                                      "options":  [
+                                                                      "Las acciones que realiza el objeto",
+                                                                      "Las características o datos del objeto",
+                                                                      "Los diagramas UML",
+                                                                      "Los archivos de una aplicación"
+                                                                  ],
+                                                      "answer":  1,
+                                                      "answer_letter":  "B",
+                                                      "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Examen Unidad 1 (10 preguntas)\\Examen Unidad 1.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u1-exam-05",
+                                                      "unit_id":  1,
+                                                      "kind":  "unit_exam",
+                                                      "number":  5,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Cuál de los siguientes modificadores restringe el acceso a los atributos de una clase?",
+                                                      "options":  [
+                                                                      "public",
+                                                                      "protected",
+                                                                      "private",
+                                                                      "static"
+                                                                  ],
+                                                      "answer":  2,
+                                                      "answer_letter":  "C",
+                                                      "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Examen Unidad 1 (10 preguntas)\\Examen Unidad 1.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u1-exam-06",
+                                                      "unit_id":  1,
+                                                      "kind":  "unit_exam",
+                                                      "number":  6,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué comando DDL permite crear una tabla en una base de datos?",
+                                                      "options":  [
+                                                                      "CREATE",
+                                                                      "ALTER",
+                                                                      "CREATE",
+                                                                      "TRUNCATE"
+                                                                  ],
+                                                      "answer":  0,
+                                                      "answer_letter":  "A",
+                                                      "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Examen Unidad 1 (10 preguntas)\\Examen Unidad 1.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u1-exam-07",
+                                                      "unit_id":  1,
+                                                      "kind":  "unit_exam",
+                                                      "number":  7,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "Una __________ es una instancia creada a partir de una clase.",
+                                                      "options":  [
+                                                                      "atributo",
+                                                                      "método",
+                                                                      "objeto",
+                                                                      "variable"
+                                                                  ],
+                                                      "answer":  2,
+                                                      "answer_letter":  "C",
+                                                      "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Examen Unidad 1 (10 preguntas)\\Examen Unidad 1.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u1-exam-08",
+                                                      "unit_id":  1,
+                                                      "kind":  "unit_exam",
+                                                      "number":  8,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "Los métodos __________ y setter permiten acceder y modificar atributos de forma controlada.",
+                                                      "options":  [
+                                                                      "constructor",
+                                                                      "getter",
+                                                                      "main",
+                                                                      "private"
+                                                                  ],
+                                                      "answer":  1,
+                                                      "answer_letter":  "B",
+                                                      "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Examen Unidad 1 (10 preguntas)\\Examen Unidad 1.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u1-exam-09",
+                                                      "unit_id":  1,
+                                                      "kind":  "unit_exam",
+                                                      "number":  9,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "El encapsulamiento permite proteger la información de una clase y controlar el acceso a sus atributos.",
+                                                      "options":  [
+                                                                      "verdadero",
+                                                                      "falso"
+                                                                  ],
+                                                      "answer":  0,
+                                                      "answer_letter":  "A",
+                                                      "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Examen Unidad 1 (10 preguntas)\\Examen Unidad 1.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u1-exam-10",
+                                                      "unit_id":  1,
+                                                      "kind":  "unit_exam",
+                                                      "number":  10,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "Observe el siguiente código: class Persona { String nombre; int edad; String ciudad; void mostrarInformacion() { System.out.println(\"Nombre: \" + nombre); System.out.println(\"Edad: \" + edad); System.out.println(\"Ciudad: \" + ciudad); } } ¿Cuál de las siguientes opciones completa correctamente el programa para crear un objeto Persona y mostrar su información?",
+                                                      "options":  [
+                                                                      "public class Main { public static void main(String[] args) { Persona persona = new Persona(); persona.ciudad = \"Guayaquil\"; persona.mostrarInformacion(); } }",
+                                                                      "public class Main { public static void main(String[] args) { Persona persona = new Persona(); persona.nombre = \"Juan\"; persona.edad = 20; persona.ciudad = \"Guayaquil\"; } }",
+                                                                      "public class Main { public static void main(String[] args) { Persona persona = new Persona(); persona.nombre = \"Juan\"; persona.edad = 20; persona.mostrarInformacion(); } }",
+                                                                      "public class Main { public static void main(String[] args) { Persona persona = new Persona(); persona.nombre = \"Juan\"; persona.edad = 20; persona.ciudad = \"Guayaquil\"; persona.mostrarInformacion(); } }"
+                                                                  ],
+                                                      "answer":  3,
+                                                      "answer_letter":  "D",
+                                                      "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Examen Unidad 1 (10 preguntas)\\Examen Unidad 1.docx"
+                                                  }
+                                              ],
+                      "workshop_questions":  [
+
+                                             ],
+                      "resources":  [
+                                        {
+                                            "type":  "unit_content",
+                                            "title":  "Introduccion a la Programacion Orientada a Objetos",
+                                            "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\PDF Unidad 1\\UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos.docx",
+                                            "text_preview":  "INDICE (UNIDAD 1 ) 1.1 Introducción a la Programación Orientada a Objetos La Programación Orientada a Objetos (POO) es uno de los enfoques más utilizados en el desarrollo de software moderno. Actualmente, muchas aplicaciones que utilizamos diariamente, como sistemas académicos, aplicaciones móviles, plataformas web y videojuegos, han sido desarrolladas utilizando este paradigma de programación. La POO permite organizar y estructurar mejor los programas mediante la representación de elementos del mundo real en forma de objetos. Gracias a este enfoque, los sistemas pueden ser más fáciles de comprender, mantener y ampliar con el paso del tiempo. A diferencia de otros paradigmas de programación, la Programación Orientada a Objetos se enfoca en la creación de entidades que poseen características y comportamientos propios. Esto facilita el desarrollo de aplicaciones más organizadas y cercanas "
+                                        },
+                                        {
+                                            "type":  "workshop",
+                                            "title":  "Taller Unidad 1",
+                                            "source":  "UNIDAD 1 Introducci¢n a la Programaci¢n Orientada a Objetos\\Taller Unidad 1\\TALLER UNIDAD 1.docx",
+                                            "text_preview":  "TALLER (UNIDAD 1 ) Observe el siguiente código: class Estudiante { private String nombre; private int edad; private String carrera; private double promedio; public String getNombre ( ) { return nombre; } public void setNombre ( String nombre) { this.nombre = nombre; } public int getEdad ( ) { return edad; } public void setEdad ( int edad) { this.edad = edad; } public String getCarrera ( ) { return carrera; } public void setCarrera ( String carrera) { this.carrera = carrera; } public double getPromedio ( ) { return promedio; } public void setPromedio ( double promedio) { this.promedio = promedio; } public void mostrarInformacion ( ) { System.out.println (nombre); System.out.println (edad); Sy"
+                                        }
+                                    ]
+                  },
+                  {
+                      "id":  2,
+                      "title":  "Lenguaje de Modelado Unificado",
+                      "lesson_questions":  [
+                                               {
+                                                   "id":  "u2-lesson-01",
+                                                   "unit_id":  2,
+                                                   "kind":  "lesson",
+                                                   "number":  1,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "¿Qué principio de la Programación Orientada a Objetos permite que una clase adquiera características de otra clase?",
+                                                   "options":  [
+                                                                   "Encapsulamiento",
+                                                                   "ORM",
+                                                                   "UML",
+                                                                   "Herencia"
+                                                               ],
+                                                   "answer":  3,
+                                                   "answer_letter":  "D",
+                                                   "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Lecci¢n Unidad 2 (5 preguntas)\\Lecci¢n Unidad 2.docx"
+                                               },
+                                               {
+                                                   "id":  "u2-lesson-02",
+                                                   "unit_id":  2,
+                                                   "kind":  "lesson",
+                                                   "number":  2,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "¿Cuál de las siguientes opciones describe mejor el polimorfismo?",
+                                                   "options":  [
+                                                                   "Crear bases de datos",
+                                                                   "Proteger atributos de una clase",
+                                                                   "Permitir que una misma acción tenga diferentes comportamientos",
+                                                                   "Crear diagramas UML"
+                                                               ],
+                                                   "answer":  2,
+                                                   "answer_letter":  "C",
+                                                   "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Lecci¢n Unidad 2 (5 preguntas)\\Lecci¢n Unidad 2.docx"
+                                               },
+                                               {
+                                                   "id":  "u2-lesson-03",
+                                                   "unit_id":  2,
+                                                   "kind":  "lesson",
+                                                   "number":  3,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "La clase que transmite características a otras clases se denomina clase __________ .",
+                                                   "options":  [
+                                                                   "padre",
+                                                                   "interfaz",
+                                                                   "hija",
+                                                                   "abstracta"
+                                                               ],
+                                                   "answer":  0,
+                                                   "answer_letter":  "A",
+                                                   "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Lecci¢n Unidad 2 (5 preguntas)\\Lecci¢n Unidad 2.docx"
+                                               },
+                                               {
+                                                   "id":  "u2-lesson-04",
+                                                   "unit_id":  2,
+                                                   "kind":  "lesson",
+                                                   "number":  4,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "Una clase __________ sirve como base para otras clases y no puede utilizarse directamente para crear objetos.",
+                                                   "options":  [
+                                                                   "derivada",
+                                                                   "abstracta",
+                                                                   "interfaz",
+                                                                   "hija"
+                                                               ],
+                                                   "answer":  1,
+                                                   "answer_letter":  "B",
+                                                   "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Lecci¢n Unidad 2 (5 preguntas)\\Lecci¢n Unidad 2.docx"
+                                               },
+                                               {
+                                                   "id":  "u2-lesson-05",
+                                                   "unit_id":  2,
+                                                   "kind":  "lesson",
+                                                   "number":  5,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "Observe el siguiente código: class Animal { void hacerSonido() { System.out.println(\"El animal emite un sonido\"); } } class Perro extends Animal { } ¿Qué fragmento de código falta para ejecutar correctamente el programa y utilizar el método heredado?",
+                                                   "options":  [
+                                                                   "void correr() { System.out.println(\"Corriendo\"); }",
+                                                                   "String nombre;",
+                                                                   "public class Main { public static void main(String[] args) { Perro perro = new Perro(); perro.hacerSonido(); } }",
+                                                                   "private int edad;"
+                                                               ],
+                                                   "answer":  2,
+                                                   "answer_letter":  "C",
+                                                   "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Lecci¢n Unidad 2 (5 preguntas)\\Lecci¢n Unidad 2.docx"
+                                               }
+                                           ],
+                      "unit_exam_questions":  [
+                                                  {
+                                                      "id":  "u2-exam-01",
+                                                      "unit_id":  2,
+                                                      "kind":  "unit_exam",
+                                                      "number":  1,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué principio de la Programación Orientada a Objetos permite reutilizar características de otra clase?",
+                                                      "options":  [
+                                                                      "UML",
+                                                                      "Encapsulamiento",
+                                                                      "Herencia",
+                                                                      "ORM"
+                                                                  ],
+                                                      "answer":  2,
+                                                      "answer_letter":  "C",
+                                                      "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Examen Unidad 2 (10 preguntas)\\Examen Unidad 2.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u2-exam-02",
+                                                      "unit_id":  2,
+                                                      "kind":  "unit_exam",
+                                                      "number":  2,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Cómo se denomina la clase que transmite características a otras clases?",
+                                                      "options":  [
+                                                                      "Clase padre",
+                                                                      "Clase hija",
+                                                                      "Clase derivada",
+                                                                      "Clase interfaz"
+                                                                  ],
+                                                      "answer":  0,
+                                                      "answer_letter":  "A",
+                                                      "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Examen Unidad 2 (10 preguntas)\\Examen Unidad 2.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u2-exam-03",
+                                                      "unit_id":  2,
+                                                      "kind":  "unit_exam",
+                                                      "number":  3,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué principio permite que una misma acción tenga diferentes comportamientos?",
+                                                      "options":  [
+                                                                      "Instanciación",
+                                                                      "Polimorfismo",
+                                                                      "Encapsulamiento",
+                                                                      "Herencia"
+                                                                  ],
+                                                      "answer":  1,
+                                                      "answer_letter":  "B",
+                                                      "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Examen Unidad 2 (10 preguntas)\\Examen Unidad 2.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u2-exam-04",
+                                                      "unit_id":  2,
+                                                      "kind":  "unit_exam",
+                                                      "number":  4,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Cuál es una característica de una clase abstracta?",
+                                                      "options":  [
+                                                                      "Reemplaza a las bases de datos",
+                                                                      "Puede crear objetos directamente",
+                                                                      "Es un tipo de archivo",
+                                                                      "Sirve como base para otras clases"
+                                                                  ],
+                                                      "answer":  3,
+                                                      "answer_letter":  "D",
+                                                      "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Examen Unidad 2 (10 preguntas)\\Examen Unidad 2.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u2-exam-05",
+                                                      "unit_id":  2,
+                                                      "kind":  "unit_exam",
+                                                      "number":  5,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué define una interfaz?",
+                                                      "options":  [
+                                                                      "Comportamientos que deben implementarse",
+                                                                      "Diagramas UML",
+                                                                      "Objetos ya creados",
+                                                                      "Datos de una base de datos"
+                                                                  ],
+                                                      "answer":  0,
+                                                      "answer_letter":  "A",
+                                                      "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Examen Unidad 2 (10 preguntas)\\Examen Unidad 2.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u2-exam-06",
+                                                      "unit_id":  2,
+                                                      "kind":  "unit_exam",
+                                                      "number":  6,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Cuál es uno de los beneficios de la herencia?",
+                                                      "options":  [
+                                                                      "Evitar el uso de clases",
+                                                                      "Crear tablas SQL",
+                                                                      "Reutilizar código",
+                                                                      "Eliminar métodos"
+                                                                  ],
+                                                      "answer":  2,
+                                                      "answer_letter":  "C",
+                                                      "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Examen Unidad 2 (10 preguntas)\\Examen Unidad 2.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u2-exam-07",
+                                                      "unit_id":  2,
+                                                      "kind":  "unit_exam",
+                                                      "number":  7,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "La clase que hereda características de otra clase se denomina clase __________.",
+                                                      "options":  [
+                                                                      "interfaz",
+                                                                      "hija",
+                                                                      "abstracta",
+                                                                      "padre"
+                                                                  ],
+                                                      "answer":  1,
+                                                      "answer_letter":  "B",
+                                                      "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Examen Unidad 2 (10 preguntas)\\Examen Unidad 2.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u2-exam-08",
+                                                      "unit_id":  2,
+                                                      "kind":  "unit_exam",
+                                                      "number":  8,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "Una __________ establece comportamientos que otras clases deben implementar.",
+                                                      "options":  [
+                                                                      "instancia",
+                                                                      "variable",
+                                                                      "clase derivada",
+                                                                      "interfaz"
+                                                                  ],
+                                                      "answer":  3,
+                                                      "answer_letter":  "D",
+                                                      "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Examen Unidad 2 (10 preguntas)\\Examen Unidad 2.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u2-exam-09",
+                                                      "unit_id":  2,
+                                                      "kind":  "unit_exam",
+                                                      "number":  9,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "El polimorfismo permite que diferentes objetos respondan de manera distinta ante una misma acción.",
+                                                      "options":  [
+                                                                      "Verdadero",
+                                                                      "Falso"
+                                                                  ],
+                                                      "answer":  0,
+                                                      "answer_letter":  "A",
+                                                      "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Examen Unidad 2 (10 preguntas)\\Examen Unidad 2.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u2-exam-10",
+                                                      "unit_id":  2,
+                                                      "kind":  "unit_exam",
+                                                      "number":  10,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "Observe el siguiente código: abstract class Empleado { String nombre; double salario; abstract void mostrarCargo ( ); } interface Trabajable { void trabajar( ); } class Docente extends Empleado implements Trabajable { @Override void mostrarCargo ( ) { System.out.println (\"Cargo: Docente\"); } @Override public void trabajar( ) { System.out.println (\"El docente está impartiendo clases\"); } } ¿Cuál de las siguientes opciones completa correctamente el programa para crear un objeto Docente y ejecutar los métodos implementados?",
+                                                      "options":  [
+                                                                      "public class Main { public static void main (String[ ] args ) { Empleado empleado = new Empleado( ); empleado.mostrarCargo (); } }",
+                                                                      "public class Main { public static void main (String[ ] args ) { Docente docente = new Docente( ); docente.trabajar (); } }",
+                                                                      "public class Main { public static void main (String[ ] args ) { Docente docente = new Docente( ); docente.mostrarCargo (); docente.trabajar (); } }",
+                                                                      "public class Main { public static void main (String[ ] args ) { Docente docente = new Docente( ); docente.mostrarCargo (); } }"
+                                                                  ],
+                                                      "answer":  2,
+                                                      "answer_letter":  "C",
+                                                      "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Examen Unidad 2 (10 preguntas)\\Examen Unidad 2.docx"
+                                                  }
+                                              ],
+                      "workshop_questions":  [
+
+                                             ],
+                      "resources":  [
+                                        {
+                                            "type":  "unit_content",
+                                            "title":  "Lenguaje de Modelado Unificado",
+                                            "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\PDF Unidad 2\\UNIDAD 2 Lenguaje de Modelado Unificado.docx",
+                                            "text_preview":  "UNIDAD 2 Lenguaje de Modelado Unificado Introducción A medida que los sistemas informáticos aumentan en tamaño y complejidad, surge la necesidad de planificar y organizar adecuadamente su desarrollo. Antes de construir una aplicación, es importante comprender cómo estará estructurada, qué componentes la conformarán y cómo interactuarán entre sí. En el desarrollo de software moderno, no basta únicamente con escribir código. También es necesario diseñar soluciones que permitan visualizar el funcionamiento del sistema antes de implementarlo. En esta unidad se estudiarán conceptos fundamentales de la Programación Orientada a Objetos relacionados con la reutilización de código, la herencia, el polimorfismo, las clases abstractas y las interfaces. Estos elementos permiten construir aplicaciones más organizadas, flexibles y fáciles de mantener. El dominio de estos conceptos constituye un paso i"
+                                        },
+                                        {
+                                            "type":  "workshop",
+                                            "title":  "Taller Unidad 2",
+                                            "source":  "UNIDAD 2 Lenguaje de Modelado Unificado\\Taller Unidad 2\\TALLER UNIDAD 2.docx",
+                                            "text_preview":  "TALLER (UNIDAD 2 ) Observe el siguiente código: abstract class Empleado { String nombre; double salario; abstract void mostrarCargo(); } interface Trabajable { void trabajar(); } class Docente extends Empleado implements Trabajable { @Override void mostrarCargo() { System.out.println(\"Cargo: Docente\"); } @Override public void trabajar() { System.out.println(\"El docente está impartiendo clases\"); } } class Administrativo extends Empleado implements Trabajable { @Override void mostrarCargo() { System.out.println(\"Cargo: Administrativo\"); } @Override public void trabajar() { System.out.println(\"El administrativo está gestionando documentos\"); } } ¿Cuál de las siguientes opciones completa correc"
+                                        }
+                                    ]
+                  },
+                  {
+                      "id":  3,
+                      "title":  "Aplicacion de la Programacion Orientada a Objetos",
+                      "lesson_questions":  [
+                                               {
+                                                   "id":  "u3-lesson-01",
+                                                   "unit_id":  3,
+                                                   "kind":  "lesson",
+                                                   "number":  1,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "¿Qué significa UML?",
+                                                   "options":  [
+                                                                   "Universal Method Logic",
+                                                                   "Universal Modeling Language",
+                                                                   "Unified Method Language",
+                                                                   "Unified Modeling Language"
+                                                               ],
+                                                   "answer":  3,
+                                                   "answer_letter":  "D",
+                                                   "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Lecci¢n Unidad 3 (5 preguntas)\\Lecci¢n Unidad 3.docx"
+                                               },
+                                               {
+                                                   "id":  "u3-lesson-02",
+                                                   "unit_id":  3,
+                                                   "kind":  "lesson",
+                                                   "number":  2,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "¿Cuál es el propósito principal de UML?",
+                                                   "options":  [
+                                                                   "Crear bases de datos",
+                                                                   "Diseñar y representar sistemas de software",
+                                                                   "Ejecutar programas",
+                                                                   "Crear servidores web"
+                                                               ],
+                                                   "answer":  1,
+                                                   "answer_letter":  "B",
+                                                   "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Lecci¢n Unidad 3 (5 preguntas)\\Lecci¢n Unidad 3.docx"
+                                               },
+                                               {
+                                                   "id":  "u3-lesson-03",
+                                                   "unit_id":  3,
+                                                   "kind":  "lesson",
+                                                   "number":  3,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "En el patrón MVC, la letra V representa la __________.",
+                                                   "options":  [
+                                                                   "Vista",
+                                                                   "Variable",
+                                                                   "Validación",
+                                                                   "Versión"
+                                                               ],
+                                                   "answer":  0,
+                                                   "answer_letter":  "A",
+                                                   "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Lecci¢n Unidad 3 (5 preguntas)\\Lecci¢n Unidad 3.docx"
+                                               },
+                                               {
+                                                   "id":  "u3-lesson-04",
+                                                   "unit_id":  3,
+                                                   "kind":  "lesson",
+                                                   "number":  4,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "Los patrones de diseño son soluciones __________ para problemas frecuentes de desarrollo de software.",
+                                                   "options":  [
+                                                                   "temporales",
+                                                                   "privadas",
+                                                                   "complejas",
+                                                                   "reutilizables"
+                                                               ],
+                                                   "answer":  3,
+                                                   "answer_letter":  "D",
+                                                   "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Lecci¢n Unidad 3 (5 preguntas)\\Lecci¢n Unidad 3.docx"
+                                               },
+                                               {
+                                                   "id":  "u3-lesson-05",
+                                                   "unit_id":  3,
+                                                   "kind":  "lesson",
+                                                   "number":  5,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "Observe el siguiente código: class Estudiante { String nombre; String carrera; void mostrarDatos ( ) { System.out.println (\"Nombre: \" + nombre); System.out.println (\"Carrera: \" + carrera); } } ¿Cuál de las siguientes opciones completa correctamente el programa para crear un objeto Estudiante y mostrar sus datos?",
+                                                   "options":  [
+                                                                   "public class Main { public static void main (String[ ] args ) { Estudiante estudiante = new Estudiante( ); estudiante.nombre = \"Ana\"; estudiante.carrera = \"Telemática\"; estudiante.mostrarDatos (); } }",
+                                                                   "public class Main { public static void main (String[ ] args ) { Estudiante estudiante = new Estudiante( ); estudiante.nombre = \"Ana\"; estudiante.carrera = \"Telemática\"; } }",
+                                                                   "public class Main { public static void main (String[ ] args ) { Estudiante estudiante = new Estudiante( ); estudiante.nombre = \"Ana\"; estudiante.mostrarDatos (); } }",
+                                                                   "public class Main { public static void main (String[ ] args ) { Estudiante estudiante = new Estudiante( ); estudiante.carrera = \"Telemática\"; estudiante.mostrarDatos (); } }"
+                                                               ],
+                                                   "answer":  0,
+                                                   "answer_letter":  "A",
+                                                   "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Lecci¢n Unidad 3 (5 preguntas)\\Lecci¢n Unidad 3.docx"
+                                               }
+                                           ],
+                      "unit_exam_questions":  [
+                                                  {
+                                                      "id":  "u3-exam-01",
+                                                      "unit_id":  3,
+                                                      "kind":  "unit_exam",
+                                                      "number":  1,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué significa UML?",
+                                                      "options":  [
+                                                                      "Universal Modeling Language",
+                                                                      "Unified Method Language",
+                                                                      "Unified Modeling Language",
+                                                                      "Universal Method Logic"
+                                                                  ],
+                                                      "answer":  2,
+                                                      "answer_letter":  "C",
+                                                      "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Examen Unidad 3 (10 preguntas)\\Examen Unidad 3.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u3-exam-02",
+                                                      "unit_id":  3,
+                                                      "kind":  "unit_exam",
+                                                      "number":  2,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Cuál es el objetivo principal de UML?",
+                                                      "options":  [
+                                                                      "Diseñar y representar sistemas de software",
+                                                                      "Crear bases de datos",
+                                                                      "Ejecutar programas",
+                                                                      "Crear aplicaciones móviles"
+                                                                  ],
+                                                      "answer":  0,
+                                                      "answer_letter":  "A",
+                                                      "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Examen Unidad 3 (10 preguntas)\\Examen Unidad 3.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u3-exam-03",
+                                                      "unit_id":  3,
+                                                      "kind":  "unit_exam",
+                                                      "number":  3,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Cuál de los siguientes diagramas UML representa clases, atributos y métodos?",
+                                                      "options":  [
+                                                                      "Diagrama de actividad",
+                                                                      "Diagrama de clases",
+                                                                      "Diagrama de secuencia",
+                                                                      "Diagrama de casos de uso"
+                                                                  ],
+                                                      "answer":  1,
+                                                      "answer_letter":  "B",
+                                                      "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Examen Unidad 3 (10 preguntas)\\Examen Unidad 3.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u3-exam-04",
+                                                      "unit_id":  3,
+                                                      "kind":  "unit_exam",
+                                                      "number":  4,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué componente del patrón MVC administra los datos de la aplicación?",
+                                                      "options":  [
+                                                                      "Vista",
+                                                                      "Controlador",
+                                                                      "Interfaz",
+                                                                      "Modelo"
+                                                                  ],
+                                                      "answer":  3,
+                                                      "answer_letter":  "D",
+                                                      "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Examen Unidad 3 (10 preguntas)\\Examen Unidad 3.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u3-exam-05",
+                                                      "unit_id":  3,
+                                                      "kind":  "unit_exam",
+                                                      "number":  5,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué componente del patrón MVC interactúa directamente con el usuario?",
+                                                      "options":  [
+                                                                      "ORM",
+                                                                      "Modelo",
+                                                                      "Vista",
+                                                                      "Controlador"
+                                                                  ],
+                                                      "answer":  2,
+                                                      "answer_letter":  "C",
+                                                      "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Examen Unidad 3 (10 preguntas)\\Examen Unidad 3.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u3-exam-06",
+                                                      "unit_id":  3,
+                                                      "kind":  "unit_exam",
+                                                      "number":  6,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Cuál es una ventaja de utilizar MVC?",
+                                                      "options":  [
+                                                                      "Eliminar el uso de clases",
+                                                                      "Separar responsabilidades dentro de la aplicación",
+                                                                      "Evitar bases de datos",
+                                                                      "Sustituir UML"
+                                                                  ],
+                                                      "answer":  1,
+                                                      "answer_letter":  "B",
+                                                      "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Examen Unidad 3 (10 preguntas)\\Examen Unidad 3.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u3-exam-07",
+                                                      "unit_id":  3,
+                                                      "kind":  "unit_exam",
+                                                      "number":  7,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "Los patrones de diseño son soluciones __________ para problemas frecuentes de desarrollo de software.",
+                                                      "options":  [
+                                                                      "privadas",
+                                                                      "complejas",
+                                                                      "temporales",
+                                                                      "reutilizables"
+                                                                  ],
+                                                      "answer":  3,
+                                                      "answer_letter":  "D",
+                                                      "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Examen Unidad 3 (10 preguntas)\\Examen Unidad 3.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u3-exam-08",
+                                                      "unit_id":  3,
+                                                      "kind":  "unit_exam",
+                                                      "number":  8,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "La letra C en MVC representa el __________.",
+                                                      "options":  [
+                                                                      "Controlador",
+                                                                      "Constructor",
+                                                                      "Componente",
+                                                                      "Contenedor"
+                                                                  ],
+                                                      "answer":  0,
+                                                      "answer_letter":  "A",
+                                                      "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Examen Unidad 3 (10 preguntas)\\Examen Unidad 3.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u3-exam-09",
+                                                      "unit_id":  3,
+                                                      "kind":  "unit_exam",
+                                                      "number":  9,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "El diagrama de clases UML permite representar atributos, métodos y relaciones entre clases.",
+                                                      "options":  [
+                                                                      "Verdadero",
+                                                                      "Falso"
+                                                                  ],
+                                                      "answer":  0,
+                                                      "answer_letter":  "A",
+                                                      "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Examen Unidad 3 (10 preguntas)\\Examen Unidad 3.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u3-exam-10",
+                                                      "unit_id":  3,
+                                                      "kind":  "unit_exam",
+                                                      "number":  10,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "Observe el siguiente código: class Paciente { String codigo ; String nombre; int edad; void mostrarDatos ( ) { System.out.println (\"Código: \" + codigo ); System.out.println (\"Nombre: \" + nombre); System.out.println (\"Edad: \" + edad); } } ¿Cuál de las siguientes opciones completa correctamente el programa y cumple todos los requisitos planteados?",
+                                                      "options":  [
+                                                                      "public class Main { public static void main (String[ ] args ) { Paciente paciente = new Paciente( ); paciente.codigo = \"P001\"; paciente.nombre = \"Ana\"; paciente.mostrarDatos (); } }",
+                                                                      "public class Main { public static void main (String[ ] args ) { Paciente paciente = new Paciente( ); paciente.codigo = \"P001\"; paciente.nombre = \"Ana\"; paciente.edad = 30; } }",
+                                                                      "public class Main { public static void main (String[ ] args ) { Paciente paciente = new Paciente( ); paciente.codigo = \"P001\"; paciente.nombre = \"Ana\"; paciente.edad = 30; paciente.mostrarDatos (); } }",
+                                                                      "public class Main { public static void main (String[ ] args ) { Paciente paciente = new Paciente( ); paciente.edad = 30; paciente.mostrarDatos (); } }"
+                                                                  ],
+                                                      "answer":  2,
+                                                      "answer_letter":  "C",
+                                                      "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Examen Unidad 3 (10 preguntas)\\Examen Unidad 3.docx"
+                                                  }
+                                              ],
+                      "workshop_questions":  [
+
+                                             ],
+                      "resources":  [
+                                        {
+                                            "type":  "unit_content",
+                                            "title":  "Aplicacion de la Programacion Orientada a Objetos",
+                                            "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\PDF Unidad 3\\UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos.docx",
+                                            "text_preview":  "UNIDAD 3 Aplicación de la Programación Orientada a Objetos Introducción Hasta este punto se han estudiado diversos conceptos fundamentales de la Programación Orientada a Objetos, como clases, objetos, encapsulamiento, herencia, polimorfismo, clases abstractas e interfaces. Sin embargo, desarrollar software no consiste únicamente en escribir código. También es necesario planificar, organizar y diseñar adecuadamente las aplicaciones antes de construirlas. En el desarrollo profesional de software se utilizan herramientas y metodologías que permiten representar visualmente los sistemas antes de su implementación. Estas herramientas facilitan la comprensión de la estructura del proyecto y ayudan a reducir errores durante el proceso de desarrollo. En esta unidad se estudiará el Lenguaje de Modelado Unificado (UML), los patrones de diseño y el patrón arquitectónico MVC. Estos conceptos son ampl"
+                                        },
+                                        {
+                                            "type":  "workshop",
+                                            "title":  "Taller Unidad 3",
+                                            "source":  "UNIDAD 3 Aplicaci¢n de la Programaci¢n Orientada a Objetos\\Taller Unidad 3\\Taller Unidad 3.docx",
+                                            "text_preview":  "TALLER (UNIDAD 3 ) Observe el siguiente código: class Libro { private String codigo ; private String titulo ; private String autor; public Libro(String codigo , String titulo , String autor) { this.codigo = codigo ; this.titulo = titulo; this.autor = autor; } public void mostrarInformacion () { System.out.println (\"Código: \" + codigo ); System.out.println (\"Título: \" + titulo); System.out.println (\"Autor: \" + autor); } } ¿Cuál de las siguientes opciones completa correctamente el programa y permite mostrar la información del libro? A) public class Main { public static void main (String[] args ) { Libro libro = new Libro( \"L001\", \"Programación Avanzada\", \"Autor Ejemplo\" ); } } B) public class "
+                                        }
+                                    ]
+                  },
+                  {
+                      "id":  4,
+                      "title":  "Acceso a Archivos y Base de Datos",
+                      "lesson_questions":  [
+                                               {
+                                                   "id":  "u4-lesson-01",
+                                                   "unit_id":  4,
+                                                   "kind":  "lesson",
+                                                   "number":  1,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "¿Qué técnica permite relacionar objetos de una aplicación con tablas de una base de datos?",
+                                                   "options":  [
+                                                                   "MVC",
+                                                                   "UML",
+                                                                   "ORM",
+                                                                   "DDL"
+                                                               ],
+                                                   "answer":  2,
+                                                   "answer_letter":  "C",
+                                                   "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Lecci¢n Unidad 4 (5 preguntas)\\Lecci¢n Unidad 4.docx"
+                                               },
+                                               {
+                                                   "id":  "u4-lesson-02",
+                                                   "unit_id":  4,
+                                                   "kind":  "lesson",
+                                                   "number":  2,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "¿Cuál es la principal función de una base de datos?",
+                                                   "options":  [
+                                                                   "Crear diagramas UML",
+                                                                   "Almacenar y organizar información",
+                                                                   "Ejecutar programas",
+                                                                   "Diseñar interfaces gráficas"
+                                                               ],
+                                                   "answer":  1,
+                                                   "answer_letter":  "B",
+                                                   "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Lecci¢n Unidad 4 (5 preguntas)\\Lecci¢n Unidad 4.docx"
+                                               },
+                                               {
+                                                   "id":  "u4-lesson-03",
+                                                   "unit_id":  4,
+                                                   "kind":  "lesson",
+                                                   "number":  3,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "ORM significa Object Relational __________.",
+                                                   "options":  [
+                                                                   "Manager",
+                                                                   "Module",
+                                                                   "Mapping",
+                                                                   "Monitor"
+                                                               ],
+                                                   "answer":  2,
+                                                   "answer_letter":  "C",
+                                                   "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Lecci¢n Unidad 4 (5 preguntas)\\Lecci¢n Unidad 4.docx"
+                                               },
+                                               {
+                                                   "id":  "u4-lesson-04",
+                                                   "unit_id":  4,
+                                                   "kind":  "lesson",
+                                                   "number":  4,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "La operación que permite recuperar información almacenada en un archivo se denomina __________.",
+                                                   "options":  [
+                                                                   "escritura",
+                                                                   "lectura",
+                                                                   "eliminación",
+                                                                   "compresión"
+                                                               ],
+                                                   "answer":  1,
+                                                   "answer_letter":  "B",
+                                                   "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Lecci¢n Unidad 4 (5 preguntas)\\Lecci¢n Unidad 4.docx"
+                                               },
+                                               {
+                                                   "id":  "u4-lesson-05",
+                                                   "unit_id":  4,
+                                                   "kind":  "lesson",
+                                                   "number":  5,
+                                                   "topic":  null,
+                                                   "level":  null,
+                                                   "question":  "Observe el siguiente código: class Producto { String codigo ; String nombre; double precio; } ¿Cuál de las siguientes opciones completa correctamente el programa para crear un objeto Producto y mostrar su información?",
+                                                   "options":  [
+                                                                   "void mostrarInformacion ( ) { System.out.println (\"Código: \" + codigo ); System.out.println (\"Nombre: \" + nombre); System.out.println (\"Precio: \" + precio); } } public class Main { public static void main (String[ ] args ) { Producto producto = new Producto( ); producto.codigo = \"P001\"; producto.nombre = \"Laptop\"; producto.mostrarInformacion (); } }",
+                                                                   "void mostrarInformacion ( ) { System.out.println (\"Código: \" + codigo ); System.out.println (\"Nombre: \" + nombre); System.out.println (\"Precio: \" + precio); } } public class Main { public static void main (String[ ] args ) { Producto producto = new Producto( ); producto.codigo = \"P001\"; producto.nombre = \"Laptop\"; producto.precio = 850; } }",
+                                                                   "void mostrarInformacion ( ) { System.out.println (\"Código: \" + codigo ); System.out.println (\"Nombre: \" + nombre); System.out.println (\"Precio: \" + precio); } } public class Main { public static void main (String[ ] args ) { Producto producto = new Producto( ); producto.codigo = \"P001\"; producto.nombre = \"Laptop\"; producto.precio = 850; producto.mostrarInformacion (); } }",
+                                                                   "void mostrarInformacion ( ) { System.out.println (\"Código: \" + codigo ); System.out.println (\"Nombre: \" + nombre); } } public class Main { public static void main (String[ ] args ) { Producto producto = new Producto( ); producto.codigo = \"P001\"; producto.nombre = \"Laptop\"; producto.precio = 850; producto.mostrarInformacion (); } }"
+                                                               ],
+                                                   "answer":  2,
+                                                   "answer_letter":  "C",
+                                                   "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Lecci¢n Unidad 4 (5 preguntas)\\Lecci¢n Unidad 4.docx"
+                                               }
+                                           ],
+                      "unit_exam_questions":  [
+                                                  {
+                                                      "id":  "u4-exam-01",
+                                                      "unit_id":  4,
+                                                      "kind":  "unit_exam",
+                                                      "number":  1,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué función cumplen los archivos dentro de una aplicación?",
+                                                      "options":  [
+                                                                      "Diseñar interfaces gráficas",
+                                                                      "Ejecutar consultas SQL",
+                                                                      "Almacenar información de forma permanente",
+                                                                      "Crear diagramas UML"
+                                                                  ],
+                                                      "answer":  2,
+                                                      "answer_letter":  "C",
+                                                      "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Examen Unidad 4 (10 preguntas)\\Examen Unidad 4.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u4-exam-02",
+                                                      "unit_id":  4,
+                                                      "kind":  "unit_exam",
+                                                      "number":  2,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué es una base de datos?",
+                                                      "options":  [
+                                                                      "Un conjunto organizado de información",
+                                                                      "Un lenguaje de programación",
+                                                                      "Un sistema operativo",
+                                                                      "Un diagrama UML"
+                                                                  ],
+                                                      "answer":  0,
+                                                      "answer_letter":  "A",
+                                                      "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Examen Unidad 4 (10 preguntas)\\Examen Unidad 4.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u4-exam-03",
+                                                      "unit_id":  4,
+                                                      "kind":  "unit_exam",
+                                                      "number":  3,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Qué significa ORM?",
+                                                      "options":  [
+                                                                      "Object Resource Manager",
+                                                                      "Online Resource Mapping",
+                                                                      "Object Relation Method",
+                                                                      "Object Relational Mapping"
+                                                                  ],
+                                                      "answer":  3,
+                                                      "answer_letter":  "D",
+                                                      "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Examen Unidad 4 (10 preguntas)\\Examen Unidad 4.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u4-exam-04",
+                                                      "unit_id":  4,
+                                                      "kind":  "unit_exam",
+                                                      "number":  4,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Con qué elemento de una base de datos se relaciona normalmente una clase en ORM?",
+                                                      "options":  [
+                                                                      "Campo",
+                                                                      "Registro",
+                                                                      "Consulta",
+                                                                      "Tabla"
+                                                                  ],
+                                                      "answer":  3,
+                                                      "answer_letter":  "D",
+                                                      "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Examen Unidad 4 (10 preguntas)\\Examen Unidad 4.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u4-exam-05",
+                                                      "unit_id":  4,
+                                                      "kind":  "unit_exam",
+                                                      "number":  5,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Cuál es el componente de MVC que normalmente interactúa con la base de datos?",
+                                                      "options":  [
+                                                                      "Modelo",
+                                                                      "Vista",
+                                                                      "Controlador",
+                                                                      "Interfaz"
+                                                                  ],
+                                                      "answer":  0,
+                                                      "answer_letter":  "A",
+                                                      "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Examen Unidad 4 (10 preguntas)\\Examen Unidad 4.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u4-exam-06",
+                                                      "unit_id":  4,
+                                                      "kind":  "unit_exam",
+                                                      "number":  6,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "¿Cuál es una buena práctica en el desarrollo de software?",
+                                                      "options":  [
+                                                                      "Duplicar código cuando sea posible",
+                                                                      "Mantener el código organizado y documentado",
+                                                                      "Utilizar nombres confusos",
+                                                                      "Evitar realizar pruebas"
+                                                                  ],
+                                                      "answer":  1,
+                                                      "answer_letter":  "B",
+                                                      "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Examen Unidad 4 (10 preguntas)\\Examen Unidad 4.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u4-exam-07",
+                                                      "unit_id":  4,
+                                                      "kind":  "unit_exam",
+                                                      "number":  7,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "ORM significa Object Relational __________.",
+                                                      "options":  [
+                                                                      "Resource",
+                                                                      "Relation",
+                                                                      "Mapping",
+                                                                      "Method"
+                                                                  ],
+                                                      "answer":  2,
+                                                      "answer_letter":  "C",
+                                                      "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Examen Unidad 4 (10 preguntas)\\Examen Unidad 4.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u4-exam-08",
+                                                      "unit_id":  4,
+                                                      "kind":  "unit_exam",
+                                                      "number":  8,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "Una __________ permite almacenar información organizada en tablas relacionadas.",
+                                                      "options":  [
+                                                                      "interfaz",
+                                                                      "base de datos",
+                                                                      "clase",
+                                                                      "variable"
+                                                                  ],
+                                                      "answer":  1,
+                                                      "answer_letter":  "B",
+                                                      "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Examen Unidad 4 (10 preguntas)\\Examen Unidad 4.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u4-exam-09",
+                                                      "unit_id":  4,
+                                                      "kind":  "unit_exam",
+                                                      "number":  9,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "Las pruebas de software ayudan a detectar errores antes de que el sistema sea utilizado por los usuarios.",
+                                                      "options":  [
+                                                                      "Verdadero",
+                                                                      "Falso"
+                                                                  ],
+                                                      "answer":  0,
+                                                      "answer_letter":  "A",
+                                                      "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Examen Unidad 4 (10 preguntas)\\Examen Unidad 4.docx"
+                                                  },
+                                                  {
+                                                      "id":  "u4-exam-10",
+                                                      "unit_id":  4,
+                                                      "kind":  "unit_exam",
+                                                      "number":  10,
+                                                      "topic":  null,
+                                                      "level":  null,
+                                                      "question":  "Observe el siguiente código: class Producto { private String codigo ; private String nombre; private double precio; public Producto( String codigo , String nombre, double precio) { this.codigo = codigo ; this.nombre = nombre; this.precio = precio; } public void mostrarInformacion ( ) { System.out.println (\"Código: \" + codigo ); System.out.println (\"Nombre: \" + nombre); System.out.println (\"Precio: $\" + precio); } } ¿ Cuál de las siguientes opciones completa correctamente el programa y cumple todos los requisitos planteados?",
+                                                      "options":  [
+                                                                      "public class Main { public static void main (String[ ] args ) { Producto p1 = new Producto( \"P001\", \"Laptop\", 850); Producto p2 = new Producto( \"P002\", \"Mouse\", 20); p 1.mostrarInformacion (); p 2.mostrarInformacion (); } }",
+                                                                      "public class Main { public static void main (String[ ] args ) { Producto p1 = new Producto( \"P001\", \"Laptop\", 850); Producto p2 = new Producto( \"P002\", \"Mouse\", 20); Producto p3 = new Producto( \"P003\", \"Teclado\", 35); p 1.mostrarInformacion (); p 2.mostrarInformacion (); p 3.mostrarInformacion (); } }",
+                                                                      "public class Main { public static void main (String[ ] args ) { Producto p1 = new Producto( \"P001\", \"Laptop\", 850); p 1.mostrarInformacion (); } }",
+                                                                      "public class Main { public static void main (String[ ] args ) { Producto p1 = new Producto( \"P001\", \"Laptop\", 850); Producto p2 = new Producto( \"P002\", \"Mouse\", 20); Producto p3 = new Producto( \"P003\", \"Teclado\", 35); } }"
+                                                                  ],
+                                                      "answer":  1,
+                                                      "answer_letter":  "B",
+                                                      "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Examen Unidad 4 (10 preguntas)\\Examen Unidad 4.docx"
+                                                  }
+                                              ],
+                      "workshop_questions":  [
+
+                                             ],
+                      "resources":  [
+                                        {
+                                            "type":  "unit_content",
+                                            "title":  "Acceso a Archivos y Base de Datos",
+                                            "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\PDF Unidad 4\\UNIDAD 4 Acceso a Archivos y Base de Datos.docx",
+                                            "text_preview":  "UNIDAD 4 Acceso a Archivos y Base de Datos Introducción Las aplicaciones modernas manejan grandes cantidades de información. Desde sistemas académicos hasta plataformas bancarias, todos los programas necesitan almacenar datos para utilizarlos posteriormente. Si una aplicación no pudiera guardar información, cada vez que se cerrara perdería todos los datos generados por los usuarios. Por esta razón, el almacenamiento de información constituye una de las funciones más importantes dentro del desarrollo de software. En esta unidad se estudiarán los mecanismos utilizados para almacenar datos mediante archivos y bases de datos. También se analizará el uso de ORM, la integración entre Programación Orientada a Objetos, MVC y bases de datos, así como las pruebas y buenas prácticas necesarias para desarrollar aplicaciones de calidad. Estos conocimientos permiten construir sistemas capaces de gesti"
+                                        },
+                                        {
+                                            "type":  "workshop",
+                                            "title":  "Taller Unidad 4",
+                                            "source":  "UNIDAD 4 Acceso a Archivos y Base de Datos\\Taller Unidad 4\\Taller Unidad 4.docx",
+                                            "text_preview":  "TALLER (UNIDAD 4 ) Observe el siguiente código: class Producto { String codigo ; String nombre; double precio; void mostrarInformacion ( ) { System.out.println (\"Código: \" + codigo ); System.out.println (\"Nombre: \" + nombre); System.out.println (\"Precio: \" + precio); } } ¿Cuál de las siguientes opciones completa correctamente el programa para crear cinco productos y mostrar la información de todos? A) public class Main { public static void main (String[ ] args ) { Producto p1 = new Producto( ); Producto p2 = new Producto( ); Producto p3 = new Producto( ); Producto p4 = new Producto( ); Producto p5 = new Producto( ); p 1.codigo = \"P001\"; p 1.nombre = \"Laptop\"; p 1.precio = 850; p 2.codigo = \""
+                                        }
+                                    ]
+                  }
+              ],
+    "final_exam_strategy":  {
+                                "source":  "derived_from_unit_exams",
+                                "note":  "No se encontro un archivo separado de examen final en el ZIP. Puede generarse tomando preguntas balanceadas de los examenes de las 4 unidades."
+                            }
+}

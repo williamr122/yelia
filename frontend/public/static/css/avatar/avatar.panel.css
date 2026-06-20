@@ -1,0 +1,123 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/avatar/avatar.panel.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/avatar/avatar.panel.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Componentes de avatar (UI/animación/estado) en el cliente.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Avatar.Panel
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-avatar-panel{
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  overflow:hidden;
+}
+
+/* ============================================================
+   SELECTOR DE AVATAR
+   ============================================================
+   Control visual para elegir el tipo de avatar (gatito, perro,
+   búho, etc.). El comportamiento es gestionado por JS.
+*/
+
+/* Select del avatar:
+   ------------------------------------------------------------
+   - Forma tipo “pill” (border-radius alto)
+   - Tamaño reducido para no competir visualmente con el avatar
+*/
+.yelia-avatar-panel .form-select{
+  border-radius:999px;
+  font-size:.88rem;
+  padding:6px 10px;
+}
+
+/* Texto secundario del panel (helper text)
+   ------------------------------------------------------------
+   - Usado para aclaraciones o mensajes informativos
+   - Color suave definido por variables del sistema
+*/
+.yelia-avatar-panel small{
+  font-size:.78rem;
+  color:var(--yelia-text-soft);
+}
+
+
+/* ============================================================
+   SUBTÍTULOS TTS (TEXT-TO-SPEECH) — “KARAOKE LIGHT”
+   ============================================================
+   Propósito:
+   ------------------------------------------------------------
+   - Mostrar el texto que YELIA está pronunciando por voz
+   - Funciona de forma independiente al chat
+   - Resalta dinámicamente la palabra actual
+
+   Diseño:
+   ------------------------------------------------------------
+   - Estilo discreto, semitransparente
+   - Fondo con blur para integrarse con el avatar
+   - No interfiere con la lectura del chat principal
+*/
+
+/* Contenedor de subtítulos TTS */
+.yelia-tts-captions{
+  margin-top: .75rem;
+  padding: .65rem .75rem;
+  border-radius: 14px;
+  line-height: 1.35;
+  font-size: .92rem;
+
+  /* Reserva espacio aunque no haya texto
+     para evitar saltos visuales */
+  min-height: 2.2rem;
+
+  /* Estética visual:
+     fondo translúcido + borde suave */
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+
+  /* Color principal del texto */
+  color: var(--yelia-text, #e9eef5);
+
+  /* Efecto blur para aspecto moderno */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  /* Evita desbordes cuando el texto es largo */
+  overflow: hidden;
+}
+
+/* Cuando no hay subtítulos activos:
+   ------------------------------------------------------------
+   - El contenedor se oculta completamente
+   - Evita mostrar cajas vacías
+*/
+.yelia-tts-captions:empty{
+  display: none;
+}
+
+/* Palabra resaltada (karaoke effect)
+   ------------------------------------------------------------
+   - Se aplica dinámicamente desde JS
+   - No altera el color base del texto
+*/
+.yelia-tts-captions mark{
+  background: rgba(255,255,255,.16);
+  color: inherit;
+  padding: 0 .18rem;
+  border-radius: 8px;
+}

@@ -1,0 +1,124 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/base/base.legacy.patches.scrollbars.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/base/base.legacy.patches.scrollbars.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Hoja de estilos para la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Base.Legacy.Patches.Scrollbars
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-pro-dropdown .yelia-pro-dropdown-menu{
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(148, 163, 184, 0.70) transparent;
+}
+
+/* Chrome / Edge — ancho del scrollbar */
+.yelia-pro-dropdown .yelia-pro-dropdown-menu::-webkit-scrollbar{
+  width: 8px;
+}
+
+/* Thumb del scrollbar */
+.yelia-pro-dropdown .yelia-pro-dropdown-menu::-webkit-scrollbar-thumb{
+  background: rgba(148, 163, 184, 0.70);
+  border-radius: 999px;
+}
+
+/* Track del scrollbar */
+.yelia-pro-dropdown .yelia-pro-dropdown-menu::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+/* Ajustes para modo oscuro — Firefox */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-pro-dropdown .yelia-pro-dropdown-menu{
+  scrollbar-color: rgba(203, 213, 225, 0.25) transparent;
+}
+
+/* Ajustes para modo oscuro — Chrome / Edge */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-pro-dropdown .yelia-pro-dropdown-menu::-webkit-scrollbar-thumb{
+  background: rgba(203, 213, 225, 0.25);
+}
+
+
+/* ============================================================
+   PATCH “NUCLEAR” — SCROLLBAR MODAL PERFIL
+   ============================================================
+   PROBLEMA REAL:
+   ------------------------------------------------------------
+   En ciertos casos:
+   - El scroll NO ocurre en el <ul> esperado
+   - Bootstrap o JS generan wrappers internos
+   - El scrollbar real cae en .modal-content / .modal-body
+     u otros contenedores internos
+
+   SOLUCIÓN DEFINITIVA (CONTROLADA):
+   ------------------------------------------------------------
+   - Se estiliza CUALQUIER scrollbar dentro de #perfil-modal
+   - El alcance queda estrictamente acotado al modal
+   - No afecta scrollbars fuera de este contexto
+
+   ------------------------------------------------------------
+   Este enfoque es intencionalmente agresivo, pero seguro,
+   ya que el selector raíz es #perfil-modal.
+*/
+
+
+/* Firefox:
+   ------------------------------------------------------------
+   Aplica a cualquier elemento con scroll interno
+   dentro del modal de perfil */
+#perfil-modal * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.55) transparent;
+}
+
+/* Firefox — modo oscuro */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode #perfil-modal * {
+  scrollbar-color: rgba(203, 213, 225, 0.25) transparent;
+}
+
+
+/* Chrome / Edge:
+   ------------------------------------------------------------
+   Cubre cualquier scrollbar generado dentro del modal */
+#perfil-modal *::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+/* Thumb del scrollbar (Chrome / Edge) */
+#perfil-modal *::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.55) !important;
+  border-radius: 999px !important;
+
+  /* Técnica para mantener borde limpio */
+  border: 2px solid rgba(0, 0, 0, 0) !important;
+  background-clip: padding-box !important;
+}
+
+/* Track transparente */
+#perfil-modal *::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+/* Thumb en modo oscuro */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode #perfil-modal *::-webkit-scrollbar-thumb {
+  background: rgba(203, 213, 225, 0.25) !important;
+}

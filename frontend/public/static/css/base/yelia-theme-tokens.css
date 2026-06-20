@@ -1,0 +1,58 @@
+/* =========================================================
+   YELIA4AP — tokens visuales compartidos
+   Solo define variables. No pisa componentes ni páginas.
+========================================================= */
+:root{
+  --yd-bg:#071120;
+  --yd-bg2:#0b1830;
+  --yd-panel:#0f1d34;
+  --yd-panel2:#12243f;
+  --yd-panel3:#172b4a;
+  --yd-line:rgba(125,166,214,.28);
+  --yd-line2:rgba(90,196,255,.45);
+  --yd-text:#f3f8ff;
+  --yd-soft:#c6d7ef;
+  --yd-muted:#93a8c7;
+  --yd-blue:#38bdf8;
+  --yd-indigo:#6366f1;
+  --yd-purple:#8b5cf6;
+  --yd-green:#34d399;
+  --yd-red:#fb7185;
+  --yd-radius:22px;
+  --yd-shadow:0 22px 55px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+
+/* Utilidades compartidas usadas por templates */
+.yelia-hidden { display: none; }
+.yelia-container-narrow { max-width: 520px; }
+.yelia-container-wide { max-width: 1200px; }
+.yelia-container-xl { max-width: 1500px; }
+.yelia-min-w-220 { min-width: 220px; }
+.yelia-min-w-260 { min-width: 260px; }
+.yelia-min-w-320 { min-width: 320px; }
+.yelia-w-auto { width: auto; }
+.yelia-w-80 { width: 80px; }
+.yelia-w-90 { width: 90px; }
+.yelia-w-110 { width: 110px; }
+.yelia-w-120 { width: 120px; }
+.yelia-w-170 { width: 170px; }
+.yelia-w-180 { width: 180px; }
+.yelia-w-190 { width: 190px; }
+.yelia-w-200 { width: 200px; }
+.yelia-w-220 { width: 220px; }
+.yelia-scroll-220 { max-height: 220px; overflow: auto; }
+.yelia-scroll-260 { max-height: 260px; overflow: auto; }
+.yelia-pre-wrap { white-space: pre-wrap; word-break: break-word; }
+.yelia-cta-mt { margin-top: 10px; }
+.yelia-cta-no-mt { margin-top: 0; }
+.yelia-muted-copy { margin: 0 0 12px; color: var(--muted); }
+.yelia-admin-warning { background: rgba(245, 158, 11, .12); border-color: rgba(245, 158, 11, .28); color: rgba(229, 231, 235, .95); }
+.yelia-setup-notice { margin: 14px 0 0; padding: 12px 14px; border-radius: 14px; }
+.yelia-setup-notice-compact { margin: 10px 0 0; padding: 12px 14px; border-radius: 14px; }
+.yelia-setup-warning { margin: 14px 0 0; padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(255, 200, 80, .35); background: rgba(255, 200, 80, .08); color: rgba(255, 240, 210, .92); }
+.yelia-setup-danger { margin: 10px 0 0; padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(255, 80, 80, .35); background: rgba(255, 80, 80, .08); color: rgba(255, 230, 230, .92); }
+.yelia-link-inherit { color: inherit; text-decoration: underline; }
+.yelia-modal-dark { background: rgba(15, 23, 42, .95); color: #e5e7eb; border: 1px solid rgba(148, 163, 184, .22); }
+.yelia-modal-header-line { border-bottom: 1px solid rgba(148, 163, 184, .22); }
+.yelia-modal-footer-line { border-top: 1px solid rgba(148, 163, 184, .22); }

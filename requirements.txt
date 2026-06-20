@@ -1,0 +1,183 @@
+# Requirements
+
+# descriptivo del módulo.
+
+# 
+# Dependencias Python necesarias para ejecutar YELIA4AP.
+
+# ============================================================
+# yelia/requirements.txt
+# ============================================================
+# Archivo de dependencias del proyecto YELIA.
+#
+# FUNCIÓN PRINCIPAL:
+# - Declarar todas las librerías necesarias para ejecutar
+#   el backend del asistente virtual educativo YELIA.
+#
+# CRITERIOS DE DISEÑO:
+# - Versiones fijadas explícitamente (pinning) para:
+#  Garantizar reproducibilidad del entorno
+#   Evitar incompatibilidades entre dependencias
+#   Asegurar consistencia en evaluación académica
+#     y despliegue en distintos sistemas
+#
+# ALCANCE DEL ARCHIVO:
+# - Incluye únicamente librerías públicas y necesarias
+#   para el funcionamiento del prototipo.
+# - No contiene claves, tokens ni configuraciones sensibles.
+# - La configuración del entorno se gestiona mediante
+#   variables definidas en el archivo .env (no versionado).
+#
+# INSTALACIÓN RECOMENDADA:
+#   pip install -r requirements.txt
+# ============================================================
+
+
+# ------------------------------------------------------------
+# Framework web principal
+# ------------------------------------------------------------
+# Flask:
+# - Framework web ligero y extensible.
+# - Base del backend de YELIA (API, rutas, middlewares).
+# - Versión 3.x compatible con Python 3.11+ (actualizado a última estable 2025-2026).
+# - Corrige limitaciones y vulnerabilidades de versiones previas.
+Flask==3.1.2
+
+# Flask-Cors:
+# - Manejo de Cross-Origin Resource Sharing (CORS).
+# - Permite que el backend sea consumido desde un frontend
+#   alojado en otro dominio (ej: React, Vue).
+Flask-Cors==4.0.1
+
+# Flask-Limiter:
+# - Implementa rate limiting a nivel de API.
+# - Protege endpoints frente a abuso, spam o sobrecarga.
+# - Se integra con configuraciones definidas en .env.
+Flask-Limiter==3.8.0
+
+
+# ------------------------------------------------------------
+# Integración con modelos de lenguaje (LLM)
+# ------------------------------------------------------------
+
+# groq:
+# - Cliente oficial para consumir la API de Groq.
+# - Permite interactuar con modelos LLM (ej: Llama 3).
+groq>=1.0.0
+
+# openai:
+# - Cliente compatible con la API de OpenAI.
+# - Utilizado también para consumir servicios compatibles
+#   como DeepSeek mediante cambio de base_url.
+openai>=2.0.0                 # Última ~2.16.0 (ene 2026) - recomendado para features nuevas
+
+# gTTS (Google Text-to-Speech):
+# - Permite generar audio a partir de texto.
+# - Usado para funcionalidades de síntesis de voz (TTS)
+#   dentro del asistente YELIA.
+gTTS==2.5.3
+
+# ------------------------------------------------------------
+# google-genai:
+# - SDK oficial para interactuar con Google GenAI (Gemini, etc.)
+# - Versión sin pinning para instalar la más reciente (~1.61.0 ene 2026)
+# - Reemplaza el legacy google-generativeai (EOL nov 2025)
+google-genai
+
+# ------------------------------------------------------------
+# deepseek:
+# - Cliente para la API de DeepSeek.
+# - Utilizado para interactuar con el modelo DeepSeek y obtener respuestas generativas.
+# Comentado: descomenta si lo usas directamente; alterna con openai + base_url=https://api.deepseek.com
+deepseek==1.0.0
+
+
+# ------------------------------------------------------------
+# Configuración y utilidades
+# ------------------------------------------------------------
+# python-dotenv:
+# - Carga variables de entorno desde archivos .env.
+# - Facilita la separación entre código y configuración.
+python-dotenv==1.0.1
+
+# werkzeug:
+# - Biblioteca base utilizada internamente por Flask.
+# - Proporciona utilidades HTTP, routing y manejo de requests.
+# - Mantener la versión alineada con Flask 3.x evita conflictos.
+werkzeug>=3.0.3
+
+# cachetools:
+# - Implementa mecanismos de cache en memoria.
+# - Utilizado para optimización de NLP, rate limiting
+#   y reducción de llamadas repetidas al modelo.
+cachetools==5.5.0
+
+# structlog:
+# - Logging estructurado y consistente.
+# - Facilita trazabilidad, depuración y análisis de eventos
+#   en desarrollo y producción.
+structlog==24.4.0
+
+# pydantic:
+# - Validación de datos basada en tipos.
+# - Garantiza integridad de entradas, configuraciones
+#   y estructuras internas del sistema.
+pydantic==2.8.2
+
+# retrying:
+# - Implementa lógica de reintentos automáticos.
+# - Útil para manejar fallos temporales en llamadas externas
+#   (APIs, red, servicios LLM).
+retrying==1.3.4
+
+# httpx:
+# - Cliente HTTP moderno y eficiente.
+# - Soporta async/sync y es usado para consumir APIs externas.
+httpx==0.28.1
+
+
+# ------------------------------------------------------------
+# Base de datos (uso opcional en futuras iteraciones)
+# ------------------------------------------------------------
+# psycopg (v3):
+# - Driver oficial moderno para PostgreSQL.
+# - Preparado para entornos productivos y escalables.
+# - Incluido para facilitar futuras migraciones desde SQLite.
+psycopg==3.2.2
+
+
+# ------------------------------------------------------------
+# Servidor WSGI para ejecución local / producción ligera
+# ------------------------------------------------------------
+# waitress:
+# - Servidor WSGI estable y multiplataforma.
+# - Especialmente recomendado para entornos Windows.
+# - Permite ejecutar la aplicación sin usar el servidor
+#   de desarrollo de Flask.
+#
+# Ejemplo de uso:
+#   waitress-serve --host=127.0.0.1 --port=5000 app:create_app
+# ------------------------------------------------------------
+waitress==3.0.0
+
+# ------------------------------------------------------------
+# Lectura de archivos (PDF / Word / Imagen) + OCR
+# ------------------------------------------------------------
+pypdf==4.3.1
+python-docx==1.1.2
+Pillow==10.4.0
+pytesseract==0.3.10
+reportlab==4.0.9
+
+
+# ------------------------------------------------------------
+# Producción opcional (Linux / Deploy)
+# ------------------------------------------------------------
+# gunicorn:
+# - Servidor WSGI común en entornos Linux.
+# - Comentado porque no es necesario en Windows/local.
+gunicorn==21.2.0
+
+# PDF parsing
+pdfplumber==0.9.0
+psycopg2-binary==2.9.10

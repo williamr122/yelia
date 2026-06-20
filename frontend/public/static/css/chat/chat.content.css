@@ -1,0 +1,143 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/chat/chat.content.css
+   Descripción: Estilos del chatbot (contenedor, mensajes, botones, estados y responsive).
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/chat/chat.content.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Interacciones del chat: envío, recepción y render de mensajes.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Chat.Content
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-message-body p {
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   PADDING INTERNO DEL MENSAJE
+   ============================================================
+   Refuerzo de separación vertical para que el texto respire.
+*/
+
+/* Padding vertical del cuerpo del mensaje */
+.yelia-message-body {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+/* ============================================================
+   SEPARACIÓN FINAL DEL CHAT
+   ============================================================
+   Evita que el último mensaje quede pegado a la barra de input.
+*/
+
+/* Espacio inferior del contenedor del chat */
+.yelia-chat-container {
+  padding-bottom: 8px;
+}
+
+
+/* ============================================================
+   LISTAS DENTRO DE MENSAJES
+   ============================================================
+   Estilos para listas generadas por Markdown o respuestas largas.
+*/
+
+/* Lista (ul / ol):
+   ------------------------------------------------------------
+   - Margen controlado
+   - Sangría suficiente para legibilidad */
+.yelia-message-list {
+  margin: 0.35rem 0 0.5rem 1.2rem;
+  padding-left: 0.9rem;
+}
+
+/* Ítems de lista */
+.yelia-message-list li {
+  margin-bottom: 0.15rem;
+}
+
+
+/* ============================================================
+   TÍTULOS DENTRO DEL MENSAJE
+   ============================================================
+   Encabezados renderizados dentro del contenido del chat.
+*/
+
+/* Encabezados base (h3, h4, h5):
+   ------------------------------------------------------------
+   - Apariencia tipo “sección”
+   - Uso de mayúsculas para jerarquía visual */
+.yelia-message-body h3.yelia-msg-heading,
+.yelia-message-body h4.yelia-msg-heading,
+.yelia-message-body h5.yelia-msg-heading {
+  margin: 0.4rem 0 0.35rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--yelia-text-main);
+}
+
+
+/* ============================================================
+   NIVELES DE ENCABEZADO
+   ============================================================
+   Diferenciación visual según jerarquía.
+*/
+
+/* Nivel 1 (# Título):
+   ------------------------------------------------------------
+   - Barra izquierda destacada con color primario */
+.yelia-message-body .yelia-msg-heading-1 {
+  font-size: 0.95rem;
+  border-left: 3px solid var(--yelia-primary);
+  padding-left: 8px;
+}
+
+/* Nivel 2 (## Subtítulo):
+   ------------------------------------------------------------
+   - Barra más delgada y neutra */
+.yelia-message-body .yelia-msg-heading-2 {
+  font-size: 0.9rem;
+  border-left: 2px solid rgba(148, 163, 184, 0.9);
+  padding-left: 6px;
+}
+
+/* Nivel 3 (### Punto):
+   ------------------------------------------------------------
+   - Texto más discreto, sin barra */
+.yelia-message-body .yelia-msg-heading-3 {
+  font-size: 0.88rem;
+  color: var(--yelia-text-soft);
+}
+
+
+/* ============================================================
+   MODO OSCURO — HEADINGS
+   ============================================================
+   Asegura contraste y legibilidad en temas oscuros.
+*/
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-message-body h3.yelia-msg-heading,
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-message-body h4.yelia-msg-heading,
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-message-body h5.yelia-msg-heading {
+  color: #e5e7eb;
+}

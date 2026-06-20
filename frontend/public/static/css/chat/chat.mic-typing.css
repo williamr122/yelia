@@ -1,0 +1,282 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/chat/chat.mic-typing.css
+   Descripción: Estilos del chatbot (contenedor, mensajes, botones, estados y responsive).
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/chat/chat.mic-typing.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Interacciones del chat: envío, recepción y render de mensajes.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Chat.Mic Typing
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-icon-button.yelia-voice-recording {
+  position: relative;
+  animation: yelia-pulse 1s infinite;
+  background: rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.4);
+}
+
+
+/* Keyframes del pulso del micrófono:
+   ------------------------------------------------------------
+   - Expansión radial de la sombra
+   - Fade-out progresivo */
+@keyframes yelia-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(37, 99, 235, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+}
+
+
+/* ============================================================
+   INDICADOR “YELIA ESTÁ ESCRIBIENDO”
+   ============================================================
+   Señal visual de procesamiento de respuesta.
+*/
+
+/* Contenedor del indicador */
+.yelia-typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px 4px 12px;
+  font-size: 0.8rem;
+  color: var(--yelia-text-soft);
+}
+
+/* Texto “YELIA está escribiendo…” */
+.yelia-typing-text {
+  opacity: 0.85;
+}
+
+/* Puntos animados (3 dots):
+   ------------------------------------------------------------
+   - Rebote vertical suave
+   - Desfase temporal entre puntos */
+.yelia-typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--yelia-text-soft);
+  opacity: 0.6;
+  animation: yelia-typing-bounce 1s infinite ease-in-out;
+}
+
+.yelia-typing-dot:nth-child(1) { animation-delay: 0s; }
+.yelia-typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.yelia-typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+/* Keyframes del indicador de escritura */
+@keyframes yelia-typing-bounce {
+  0%, 80%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+
+/* ============================================================
+   CLASES DE ESTADO (CHAT / AVATAR)
+   ============================================================
+   Clases opcionales para sincronizar estados con JS.
+*/
+
+/* Estados de actividad:
+   ------------------------------------------------------------
+   - No alteran layout
+   - Suavizan comportamiento de scroll */
+.yelia-chat-container.is-thinking {
+  scroll-behavior: smooth;
+}
+
+.yelia-chat-container.is-speaking {
+  scroll-behavior: smooth;
+}
+
+
+/* ============================================================
+   BOTÓN “BAJAR AL FINAL” DEL CHAT
+   ============================================================
+   Botón flotante dentro del panel del chat.
+*/
+
+/* El panel del chat actúa como contenedor relativo */
+.yelia-chat-panel{
+  position: relative;
+}
+
+/* Botón flotante */
+.yelia-scroll-bottom-btn{
+  position: absolute;
+  right: 68px;
+  bottom: 96px;
+  z-index: 999;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.20);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  cursor: pointer;
+  user-select: none;
+
+  transition: transform 120ms ease, opacity 120ms ease;
+}
+
+/* Icono interno */
+.yelia-scroll-bottom-btn .yelia-scroll-bottom-icon{
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Estado visible */
+.yelia-scroll-bottom-btn.show{
+  display: flex;
+}
+
+/* Hover */
+.yelia-scroll-bottom-btn:hover{
+  transform: translateY(-1px);
+}
+
+/* Responsive móvil */
+@media (max-width: 768px){
+  .yelia-scroll-bottom-btn{
+    right: 14px;
+    bottom: 92px;
+  }
+}
+
+
+/* ============================================================
+   PATCH CHAT RESPONSIVE — ESTABILIDAD DE SCROLL
+   ============================================================
+   Evita que el layout se rompa con mensajes largos o zoom.
+*/
+
+.yelia-chat-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.yelia-chat-container {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Barra de input fija */
+.yelia-input-bar {
+  flex: 0 0 auto;
+}
+
+/* Robustez de burbujas y código */
+.yelia-message,
+.yelia-message-body,
+.yelia-code-block,
+pre, code {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* ============================================================
+   AJUSTES FINOS — SOLO PC (ESCRITORIO)
+   ============================================================
+   Mejora legibilidad en pantallas anchas.
+*/
+
+/* --- Responsive (Media queries) --------------------------------------------------------- */
+@media (min-width: 1200px) {
+
+  .yelia-message {
+    max-width: 72%;
+  }
+
+  .yelia-message-body {
+    line-height: 1.55;
+    font-size: 0.97rem;
+  }
+
+  .yelia-code-block {
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+}
+
+
+/* ============================================================
+   PULIDO FINAL — SCROLL Y CONSISTENCIA
+   ============================================================
+   Ajustes globales de scrollbar.
+*/
+
+.chat-messages,
+#chatMessages,
+.yelia-chat-messages {
+  scrollbar-gutter: stable both-edges;
+}
+
+/* Windows-only scrollbar polish */
+/* --- Base / Reset --------------------------------------------------------- */
+html.platform-windows :where(.chat-messages, #chatMessages, .yelia-chat-messages, .sidebar, .sidebar-content) {
+  scrollbar-width: thin;
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+html.platform-windows :where(.chat-messages, #chatMessages, .yelia-chat-messages, .sidebar, .sidebar-content)::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+html.platform-windows :where(.chat-messages, #chatMessages, .yelia-chat-messages, .sidebar, .sidebar-content)::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.55);
+  border-radius: 999px;
+  border: 2px solid rgba(255,255,255,0.35);
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+html.platform-windows :where(.chat-messages, #chatMessages, .yelia-chat-messages, .sidebar, .sidebar-content)::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.75);
+}
+
+
+/* Mensajes: ancho cómodo de lectura */
+:where(.message, .msg, .chat-bubble, .yelia-message) {
+  max-width: min(72ch, 92%);
+}

@@ -1,0 +1,273 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/core/sidebar.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/core/sidebar.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Control de navegación y estado del sidebar en la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Sidebar
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 6px;
+  border-right: 1px solid var(--yelia-border-soft);
+  gap: 6px;
+}
+
+/* ============================================================
+   2) LISTA DE CONVERSACIONES (SCROLL)
+   ------------------------------------------------------------
+   - Zona central que crece (flex: 1)
+   - Scroll vertical cuando hay muchas conversaciones
+   ============================================================ */
+
+/* Contenedor scrollable de conversaciones */
+.yelia-conversation-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 3px;
+  margin-top: 6px;
+}
+
+/* Scrollbar vertical del listado (WebKit)
+   - Se estiliza para mantener una UI limpia y consistente */
+.yelia-conversation-list::-webkit-scrollbar {
+  width: 6px;
+}
+.yelia-conversation-list::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.55);
+  border-radius: 999px;
+}
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-conversation-list::-webkit-scrollbar-thumb {
+  background: rgba(203, 213, 225, 0.25);
+}
+
+/* ============================================================
+   3) ITEM DEL HISTORIAL (TARJETA)
+   ------------------------------------------------------------
+   - Cada conversación se presenta como una tarjeta clickeable
+   - Incluye:
+     • Bloque principal (título + fecha)
+     • Acciones (renombrar / eliminar)
+   - Se aplican estados hover/active para feedback visual
+   ============================================================ */
+
+/* Tarjeta de cada conversación (título + fecha + acciones) */
+.yelia-conversation-item {
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  cursor: pointer;
+
+  background: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.08s ease;
+}
+
+/* Hover suave: resalta la tarjeta para indicar interactividad */
+.yelia-conversation-item:hover {
+  background: var(--yelia-primary-soft, #e6f7f3);
+  border-color: var(--yelia-primary);
+  transform: translateY(-1px);
+}
+
+/* Estado activo: conversación actualmente seleccionada */
+.yelia-conversation-item.active {
+  border-color: var(--yelia-primary);
+  background: var(--yelia-primary-soft);
+}
+
+/* 🌑 Modo oscuro: adapta fondo y borde para mantener contraste */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-conversation-item {
+  background: #111827;
+  border-color: rgba(100, 116, 139, 0.35);
+}
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-conversation-item:hover {
+  background: rgba(16, 163, 127, 0.15);
+  border-color: var(--yelia-primary);
+}
+
+/* ============================================================
+   4) TEXTO PRINCIPAL DEL ITEM (TÍTULO + FECHA)
+   ------------------------------------------------------------
+   - Se asegura truncamiento en una línea para títulos largos
+   - La fecha funciona como texto secundario (más suave)
+   ============================================================ */
+
+.yelia-conversation-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0; /* Importante para que ellipsis funcione dentro de flex */
+}
+
+/* Título de la conversación (se trunca si es demasiado largo) */
+.yelia-conversation-title {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--yelia-text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Fecha o descripción secundaria */
+.yelia-conversation-date {
+  font-size: 0.74rem;
+  color: var(--yelia-text-soft);
+  margin-top: 2px;
+}
+
+/* Modo oscuro: ajusta tonos para contraste legible */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-conversation-title {
+  color: #e5e7eb;
+}
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-conversation-date {
+  color: #94a3b8;
+}
+
+/* ============================================================
+   5) ACCIONES DEL ITEM (RENOMBRAR / ELIMINAR)
+   ------------------------------------------------------------
+   - Contenedor de botones/íconos a la derecha
+   - Se mantiene compacto y alineado
+   ============================================================ */
+
+.yelia-conversation-actions {
+  display: flex;
+  gap: 4px;
+}
+
+/* ============================================================
+   6) MINI PANEL DE PERFIL (FOOTER DE SIDEBAR)
+   ------------------------------------------------------------
+   - Tarjeta inferior para mostrar “Perfil actual”
+   - Sirve como referencia rápida (ciclo / estado)
+   ============================================================ */
+
+/* Tarjeta que muestra el “Perfil actual” */
+.yelia-mini-perfil {
+  padding: 12px;
+  border-radius: 12px;
+  margin-top: 10px;
+  background: var(--yelia-panel-surface, #ffffff);
+  border: 1px solid var(--yelia-border-soft);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05);
+}
+
+/* Modo oscuro del mini panel */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-mini-perfil {
+  background: #0f172a;
+  border-color: rgba(100, 116, 139, 0.4);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+/* Título “Perfil actual” dentro del mini panel */
+.yelia-mini-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--yelia-text-main);
+}
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-mini-title {
+  color: #e2e8f0;
+}
+
+/* Texto de ciclo y estado en el mini panel */
+.yelia-mini-text {
+  font-size: 12px;
+  margin: 0;
+  opacity: 0.88;
+  color: var(--yelia-text-soft);
+}
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-mini-text {
+  color: #cbd5e1;
+  opacity: 0.9;
+}
+
+/* ==========================================================
+    7) COMPORTAMIENTO DE ALTURA Y SCROLL CONTROLADO
+   ==========================================================
+   NOTA TÉCNICA:
+   - Este bloque refuerza el comportamiento de “altura controlada”
+     y scroll interno para evitar que el sidebar empuje el layout.
+   - Es un parche seguro porque solo aplica al sidebar/lista.
+   ========================================================== */
+.yelia-sidebar {
+  flex: 0 0 auto;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#conversation-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* =========================================================
+    8) ESTILOS DE SOMBRA Y RADIO PARA COHERENCIA GLOBAL
+   =========================================================
+   - Aplica tokens de sombra/radio para coherencia global
+   - :where() reduce especificidad y evita guerras de CSS
+   ========================================================= */
+
+:where(.sidebar, #sidebar, .yelia-sidebar) {
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+}
+
+/* =========================================================
+    9) COMPORTAMIENTO RESPONSIVO (MOBILE/SMALL SCREENS)
+   ------------------------------------------------------------
+   - Sidebar como overlay (tipo drawer)
+   - html.sidebar-open controla la apertura (JS)
+   - Mantiene transición corta y estable
+*/
+/* --- Responsive (Media queries) --------------------------------------------------------- */
+@media (max-width: 900px) {
+  :where(.sidebar, #sidebar, .yelia-sidebar) {
+    position: fixed;
+    inset: 12px auto 12px 12px;
+    width: min(360px, calc(100vw - 24px));
+    z-index: 50;
+    transform: translateX(-110%);
+    transition: transform .22s ease;
+  }
+/* --- Base / Reset --------------------------------------------------------- */
+  html.sidebar-open :where(.sidebar, #sidebar, .yelia-sidebar) {
+    transform: translateX(0);
+  }
+}

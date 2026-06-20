@@ -1,0 +1,290 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/core/interactivity.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/core/interactivity.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Hoja de estilos para la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Interactivity
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-panel,
+.yelia-chat-container,
+.yelia-input-wrapper,
+.yelia-avatar-circle {
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.12s ease;
+}
+
+
+/* ============================================================
+   PANEL CENTRAL DEL CHAT
+   ============================================================
+   Efecto sutil de “levitación” al hover:
+   - Da sensación de profundidad
+   - Refuerza que es el panel principal de interacción
+*/
+
+/* Hover del panel de chat */
+.yelia-chat-panel:hover {
+  transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   BOTONES E ICONOS
+   ============================================================
+   Aplica a:
+   - Botones icónicos (renombrar, eliminar, adjuntar)
+   - Botón de enviar mensaje
+   - Toggle de modo oscuro
+
+   Objetivo:
+   - Feedback visual inmediato
+   - Comportamiento consistente entre controles
+*/
+
+/* Transición base de botones */
+.yelia-icon-button,
+#send-button,
+.yelia-dark-toggle {
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.05s ease;
+}
+
+/* Hover de botones:
+   - Elevación mínima
+   - Sensación táctil */
+.yelia-icon-button:hover,
+#send-button:hover,
+.yelia-dark-toggle:hover {
+  transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   BOTÓN FLOTANTE DEL HISTORIAL
+   ============================================================
+   Botón usado en layouts responsive (mobile / tablet).
+
+   Efecto:
+   - Escala ligera
+   - Sombra más marcada
+   - Destaca sobre el fondo
+*/
+
+/* Transición base */
+.yelia-floating-btn {
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.12s ease;
+}
+
+/* Hover del botón flotante */
+.yelia-floating-btn:hover {
+  transform: translateY(-52%) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+
+/* ============================================================
+   INPUT DE TEXTO (TEXTAREA)
+   ============================================================
+   Se elimina el outline por defecto del navegador porque:
+   - El foco visual se gestiona en chat.css
+   - Se prioriza un estilo uniforme usando :focus-within
+*/
+
+/* Focus del textarea */
+#user-input:focus {
+  outline: none;
+}
+
+
+/* ============================================================
+   PATCH — REDUCE MOTION (ACCESIBILIDAD)
+   ============================================================
+   Respeta la preferencia del sistema operativo del usuario:
+   - Desactiva animaciones y transiciones
+   - Mejora accesibilidad y confort visual
+*/
+/* --- Responsive (Media queries) --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after{
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ============================================================
+   TOASTS (NOTIFICACIONES)
+   ============================================================
+   Sistema visual de notificaciones flotantes:
+   - Info
+   - Error
+   - Feedback breve
+*/
+
+/* Contenedor de toasts */
+#yelia-toast-container{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+
+  z-index:9999;
+}
+
+/* Toast base */
+.yelia-toast{
+  background:#222;
+  color:#fff;
+
+  padding:10px 14px;
+  border-radius:8px;
+
+  font-size:14px;
+  box-shadow:0 4px 12px rgba(0,0,0,.2);
+
+  opacity:1;
+  transition:opacity .4s, transform .4s;
+}
+
+/* Tipos de toast */
+.yelia-toast.info{ background:#2563eb; }
+.yelia-toast.error{ background:#dc2626; }
+
+/* Estado oculto */
+.yelia-toast.hide{
+  opacity:0;
+  transform:translateY(10px);
+}
+
+
+/* ============================================================
+   PULIDO DE TRANSICIONES (CONSISTENCIA GLOBAL)
+   ============================================================
+   Aplica una transición coherente a:
+   - Botones
+   - Inputs
+   - Links
+   - Controles interactivos
+*/
+
+/* Transición global controlada */
+:where(button, .btn, .yelia-btn, a, input, textarea, select) {
+  transition:
+    transform .12s ease,
+    box-shadow .12s ease,
+    background-color .12s ease,
+    border-color .12s ease,
+    color .12s ease;
+}
+
+/* Estado active (click) */
+:where(button, .btn, .yelia-btn):active {
+  transform: translateY(1px);
+}
+
+
+/* ============================================================
+   FEEDBACK DEL USUARIO (NIVEL 3)
+   ============================================================
+   Componentes opcionales para recoger feedback rápido
+   del usuario sobre respuestas del sistema.
+*/
+
+/* Contenedor de feedback */
+.yelia-feedback{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-top:10px;
+  padding:8px 10px;
+
+  border-radius:12px;
+  border:1px solid rgba(148,163,184,.25);
+  background: rgba(148,163,184,.06);
+}
+
+/* Ajuste en modo oscuro */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-feedback{
+  border-color: rgba(203,213,225,.12);
+  background: rgba(203,213,225,.05);
+}
+
+/* Texto del feedback */
+.yelia-feedback-label{
+  font-size: 12px;
+  opacity: .85;
+}
+
+/* Botones de feedback */
+.yelia-feedback-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  width:34px;
+  height:34px;
+  border-radius:10px;
+
+  border:1px solid rgba(148,163,184,.35);
+  background: transparent;
+
+  cursor:pointer;
+  transition:
+    transform .08s ease,
+    background .15s ease,
+    border-color .15s ease;
+}
+
+/* Hover */
+.yelia-feedback-btn:hover{
+  transform: translateY(-1px);
+  background: rgba(148,163,184,.10);
+}
+
+/* Dark mode */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-feedback-btn{
+  border-color: rgba(203,213,225,.18);
+}
+
+/* Feedback bloqueado */
+.yelia-feedback.is-locked .yelia-feedback-btn{
+  opacity: .55;
+  cursor: default;
+}
+
+/* Disabled */
+.yelia-feedback-btn:disabled{
+  pointer-events:none;
+}

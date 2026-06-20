@@ -1,0 +1,171 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/app.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/app.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Estilos globales de la aplicación.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* App
+   Estilos visuales asociados a este módulo.
+*/
+
+@import url("./base/base.tokens.css");
+
+/* Layout general:
+   Define la estructura principal del sistema:
+   body, contenedores, paneles y grid base. */
+
+@import url("./base/base.layout.css");
+@import url("./base/base.header.css");
+
+/* Botones base:
+   Botones primarios, secundarios, ghost, icon-buttons
+   y sus estados (hover, active, disabled). */
+@import url("./base/base.buttons.css");
+
+/* Chat shell:
+   Estructura base del área de chat:
+   contenedor, scroll y separación visual. */
+@import url("./base/base.chat-shell.css");
+
+/* Sidebar + Avatar shell:
+   Layout compartido entre el historial de chats
+   y el panel del avatar. */
+@import url("./base/base.sidebar-avatar-shell.css");
+
+/* Responsive:
+   Ajustes visuales para tablet y móvil,
+   colapsos de paneles y escalado adaptativo. */
+@import url("./base/base.responsive.css");
+
+/* Modales:
+   Estilos base para ventanas modales
+   (perfil académico, diálogos del sistema). */
+@import url("./base/base.modal.css");
+
+
+/* =========================================================
+   LEGACY — COMPATIBILIDAD
+   =========================================================
+   Este bloque contiene estilos heredados del sistema.
+
+   Motivo de existencia:
+   ---------------------
+   - Mantener compatibilidad con versiones anteriores
+   - Evitar romper funcionalidades ya estables
+   - Permitir migración progresiva al nuevo sistema visual
+
+   -----
+   Los parches específicos (ej. scrollbars antiguos)
+   se mantienen desacoplados para activación opcional.
+*/
+
+/* Estilos heredados */
+@import url("./base/base.legacy.css");
+@import url("./base/base.dropdown-pro.css");
+
+
+/* =========================================================
+   CORE UI — ESTILOS TRANSVERSALES
+   =========================================================
+   Estilos que no pertenecen exclusivamente
+   al chat ni al avatar, pero son parte
+   del funcionamiento general del sistema.
+*/
+
+/* Sidebar:
+   Historial de conversaciones, navegación,
+   estados activos y botones de control. */
+@import url("./core/sidebar.css");
+
+
+/* =========================================================
+   CHAT — MÓDULOS ESPECÍFICOS
+   =========================================================
+   Estilos exclusivos del sistema de chat,
+   separados por responsabilidad funcional.
+*/
+
+/* Contenedor del chat:
+   Área principal scrollable de mensajes. */
+@import url("./chat/chat.container.css");
+
+/* Mensajes:
+   Burbujas del usuario y del bot,
+   encabezados, alineación y estados. */
+@import url("./chat/chat.messages.css");
+
+/* Input:
+   Barra de entrada de texto,
+   botones de enviar, adjuntar y micrófono. */
+@import url("./chat/chat.input.css");
+
+/* Contenido enriquecido:
+   Markdown, listas, enlaces y bloques especiales. */
+@import url("./chat/chat.content.css");
+
+/* Micrófono y typing:
+   Indicador de grabación por voz
+   y animación “YELIA está escribiendo”. */
+@import url("./chat/chat.mic-typing.css");
+
+
+/* =========================================================
+   CODE BLOCKS
+   =========================================================
+   Estilos para bloques de código mostrados
+   dentro del chat, integrados con highlight.js.
+*/
+
+/* Código:
+   Fondo oscuro, tipografía monoespaciada,
+   scroll horizontal y contraste adecuado. */
+@import url("./core/code.css");
+
+
+/* =========================================================
+   AVATAR — PANEL Y ESTADOS
+   =========================================================
+   Estilos exclusivos del sistema de avatar:
+   panel, contenedor visual e indicadores.
+*/
+
+/* Panel del avatar:
+   Layout, títulos y controles. */
+@import url("./avatar/avatar.panel.css");
+@import url("./avatar/avatar.shell.base.css");
+
+/* Contenedor del avatar:
+   Placeholder, SVGs, centrado y escalado. */
+@import url("./avatar/avatar.container.css");
+
+/* Indicadores:
+   Estado activo/inactivo, avatar hablando,
+   animaciones visuales. */
+@import url("./avatar/avatar.indicators.css");
+
+
+/* =========================================================
+   EFFECTS / INTERACTIVITY
+   =========================================================
+   Estilos que mejoran la experiencia de usuario:
+   animaciones, transiciones y feedback visual.
+*/
+
+/* Interactividad:
+   Hover, focus, microinteracciones
+   que hacen que YELIA se sienta fluido y profesional. */
+@import url("./core/interactivity.css");
+@import url("./base/base.profile-modal.css");

@@ -1,0 +1,237 @@
+/* Shared panel scrollbar polish.
+   Matches the launcher/demo scrollbar and intentionally excludes chat. */
+
+html:has(body.demo),
+html:has(body.launcher),
+html:has(body.admin-login),
+html:has(body.teacher-login),
+html:has(body.admin-setup-page),
+html:has(body.status-page),
+html:has(body.metrics-page),
+html:has(body.db-viewer-page),
+html:has(body.teacher-pro),
+html:has(body.desktop-pro:not(.yelia-body)),
+body.demo,
+body.launcher,
+body.admin-login,
+body.teacher-login,
+body.admin-setup-page,
+body.status-page,
+body.metrics-page,
+body.db-viewer-page,
+body.teacher-pro,
+body.desktop-pro:not(.yelia-body),
+body.demo *,
+body.launcher *,
+body.admin-login *,
+body.teacher-login *,
+body.admin-setup-page *,
+body.status-page *,
+body.metrics-page *,
+body.db-viewer-page *,
+body.teacher-pro *,
+body.desktop-pro:not(.yelia-body) * {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(148, 163, 184, .42) rgba(4, 17, 29, .96) !important;
+}
+
+html:has(body.demo)::-webkit-scrollbar,
+html:has(body.launcher)::-webkit-scrollbar,
+html:has(body.admin-login)::-webkit-scrollbar,
+html:has(body.teacher-login)::-webkit-scrollbar,
+html:has(body.admin-setup-page)::-webkit-scrollbar,
+html:has(body.status-page)::-webkit-scrollbar,
+html:has(body.metrics-page)::-webkit-scrollbar,
+html:has(body.db-viewer-page)::-webkit-scrollbar,
+html:has(body.teacher-pro)::-webkit-scrollbar,
+html:has(body.desktop-pro:not(.yelia-body))::-webkit-scrollbar,
+body.demo::-webkit-scrollbar,
+body.launcher::-webkit-scrollbar,
+body.admin-login::-webkit-scrollbar,
+body.teacher-login::-webkit-scrollbar,
+body.admin-setup-page::-webkit-scrollbar,
+body.status-page::-webkit-scrollbar,
+body.metrics-page::-webkit-scrollbar,
+body.db-viewer-page::-webkit-scrollbar,
+body.teacher-pro::-webkit-scrollbar,
+body.desktop-pro:not(.yelia-body)::-webkit-scrollbar,
+body.demo *::-webkit-scrollbar,
+body.launcher *::-webkit-scrollbar,
+body.admin-login *::-webkit-scrollbar,
+body.teacher-login *::-webkit-scrollbar,
+body.admin-setup-page *::-webkit-scrollbar,
+body.status-page *::-webkit-scrollbar,
+body.metrics-page *::-webkit-scrollbar,
+body.db-viewer-page *::-webkit-scrollbar,
+body.teacher-pro *::-webkit-scrollbar,
+body.desktop-pro:not(.yelia-body) *::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+html:has(body.demo)::-webkit-scrollbar-track,
+html:has(body.launcher)::-webkit-scrollbar-track,
+html:has(body.admin-login)::-webkit-scrollbar-track,
+html:has(body.teacher-login)::-webkit-scrollbar-track,
+html:has(body.admin-setup-page)::-webkit-scrollbar-track,
+html:has(body.status-page)::-webkit-scrollbar-track,
+html:has(body.metrics-page)::-webkit-scrollbar-track,
+html:has(body.db-viewer-page)::-webkit-scrollbar-track,
+html:has(body.teacher-pro)::-webkit-scrollbar-track,
+html:has(body.desktop-pro:not(.yelia-body))::-webkit-scrollbar-track,
+body.demo::-webkit-scrollbar-track,
+body.launcher::-webkit-scrollbar-track,
+body.admin-login::-webkit-scrollbar-track,
+body.teacher-login::-webkit-scrollbar-track,
+body.admin-setup-page::-webkit-scrollbar-track,
+body.status-page::-webkit-scrollbar-track,
+body.metrics-page::-webkit-scrollbar-track,
+body.db-viewer-page::-webkit-scrollbar-track,
+body.teacher-pro::-webkit-scrollbar-track,
+body.desktop-pro:not(.yelia-body)::-webkit-scrollbar-track,
+body.demo *::-webkit-scrollbar-track,
+body.launcher *::-webkit-scrollbar-track,
+body.admin-login *::-webkit-scrollbar-track,
+body.teacher-login *::-webkit-scrollbar-track,
+body.admin-setup-page *::-webkit-scrollbar-track,
+body.status-page *::-webkit-scrollbar-track,
+body.metrics-page *::-webkit-scrollbar-track,
+body.db-viewer-page *::-webkit-scrollbar-track,
+body.teacher-pro *::-webkit-scrollbar-track,
+body.desktop-pro:not(.yelia-body) *::-webkit-scrollbar-track {
+  background: rgba(4, 17, 29, .96) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html:has(body.demo)::-webkit-scrollbar-thumb,
+html:has(body.launcher)::-webkit-scrollbar-thumb,
+html:has(body.admin-login)::-webkit-scrollbar-thumb,
+html:has(body.teacher-login)::-webkit-scrollbar-thumb,
+html:has(body.admin-setup-page)::-webkit-scrollbar-thumb,
+html:has(body.status-page)::-webkit-scrollbar-thumb,
+html:has(body.metrics-page)::-webkit-scrollbar-thumb,
+html:has(body.db-viewer-page)::-webkit-scrollbar-thumb,
+html:has(body.teacher-pro)::-webkit-scrollbar-thumb,
+html:has(body.desktop-pro:not(.yelia-body))::-webkit-scrollbar-thumb,
+body.demo::-webkit-scrollbar-thumb,
+body.launcher::-webkit-scrollbar-thumb,
+body.admin-login::-webkit-scrollbar-thumb,
+body.teacher-login::-webkit-scrollbar-thumb,
+body.admin-setup-page::-webkit-scrollbar-thumb,
+body.status-page::-webkit-scrollbar-thumb,
+body.metrics-page::-webkit-scrollbar-thumb,
+body.db-viewer-page::-webkit-scrollbar-thumb,
+body.teacher-pro::-webkit-scrollbar-thumb,
+body.desktop-pro:not(.yelia-body)::-webkit-scrollbar-thumb,
+body.demo *::-webkit-scrollbar-thumb,
+body.launcher *::-webkit-scrollbar-thumb,
+body.admin-login *::-webkit-scrollbar-thumb,
+body.teacher-login *::-webkit-scrollbar-thumb,
+body.admin-setup-page *::-webkit-scrollbar-thumb,
+body.status-page *::-webkit-scrollbar-thumb,
+body.metrics-page *::-webkit-scrollbar-thumb,
+body.db-viewer-page *::-webkit-scrollbar-thumb,
+body.teacher-pro *::-webkit-scrollbar-thumb,
+body.desktop-pro:not(.yelia-body) *::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, .42) !important;
+  border: 2px solid rgba(4, 17, 29, .96) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+html:has(body.demo)::-webkit-scrollbar-thumb:hover,
+html:has(body.launcher)::-webkit-scrollbar-thumb:hover,
+html:has(body.admin-login)::-webkit-scrollbar-thumb:hover,
+html:has(body.teacher-login)::-webkit-scrollbar-thumb:hover,
+html:has(body.admin-setup-page)::-webkit-scrollbar-thumb:hover,
+html:has(body.status-page)::-webkit-scrollbar-thumb:hover,
+html:has(body.metrics-page)::-webkit-scrollbar-thumb:hover,
+html:has(body.db-viewer-page)::-webkit-scrollbar-thumb:hover,
+html:has(body.teacher-pro)::-webkit-scrollbar-thumb:hover,
+html:has(body.desktop-pro:not(.yelia-body))::-webkit-scrollbar-thumb:hover,
+body.demo::-webkit-scrollbar-thumb:hover,
+body.launcher::-webkit-scrollbar-thumb:hover,
+body.admin-login::-webkit-scrollbar-thumb:hover,
+body.teacher-login::-webkit-scrollbar-thumb:hover,
+body.admin-setup-page::-webkit-scrollbar-thumb:hover,
+body.status-page::-webkit-scrollbar-thumb:hover,
+body.metrics-page::-webkit-scrollbar-thumb:hover,
+body.db-viewer-page::-webkit-scrollbar-thumb:hover,
+body.teacher-pro::-webkit-scrollbar-thumb:hover,
+body.desktop-pro:not(.yelia-body)::-webkit-scrollbar-thumb:hover,
+body.demo *::-webkit-scrollbar-thumb:hover,
+body.launcher *::-webkit-scrollbar-thumb:hover,
+body.admin-login *::-webkit-scrollbar-thumb:hover,
+body.teacher-login *::-webkit-scrollbar-thumb:hover,
+body.admin-setup-page *::-webkit-scrollbar-thumb:hover,
+body.status-page *::-webkit-scrollbar-thumb:hover,
+body.metrics-page *::-webkit-scrollbar-thumb:hover,
+body.db-viewer-page *::-webkit-scrollbar-thumb:hover,
+body.teacher-pro *::-webkit-scrollbar-thumb:hover,
+body.desktop-pro:not(.yelia-body) *::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, .56) !important;
+}
+
+/* This file is never loaded by chat, so these final global rules make the
+   viewport scrollbar match panels even when the browser scrolls html/body. */
+html,
+body,
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(148, 163, 184, .42) rgba(4, 17, 29, .96) !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+  background: rgba(4, 17, 29, .96) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, .42) !important;
+  border: 2px solid rgba(4, 17, 29, .96) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, .56) !important;
+}
+
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-corner {
+  background: rgba(4, 17, 29, .96) !important;
+}
+
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button,
+*::-webkit-scrollbar-button {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+  background: rgba(4, 17, 29, .96) !important;
+}
+
+html:has(body.metrics-page),
+html:has(body.db-viewer-page),
+html:has(body.status-page),
+body.metrics-page,
+body.db-viewer-page,
+body.status-page {
+  background-color: #04111d !important;
+}

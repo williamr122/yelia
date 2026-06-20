@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="yelia-avatar-svg" role="img" aria-label="YELIA avatar dog">
+  <defs>
+    <linearGradient id="bgDog" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF3F6"/>
+      <stop offset="1" stop-color="#FFE5EE"/>
+    </linearGradient>
+    <radialGradient id="furDog" cx="45%" cy="28%" r="80%">
+      <stop offset="0" stop-color="#F7E0C2"/>
+      <stop offset="1" stop-color="#EFC99B"/>
+    </radialGradient>
+    <radialGradient id="earDog" cx="45%" cy="25%" r="85%">
+      <stop offset="0" stop-color="#E5B37A"/>
+      <stop offset="1" stop-color="#CF945A"/>
+    </radialGradient>
+    <radialGradient id="muzzleDog" cx="50%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#FFF6EA" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#F2D9BD" stop-opacity="0.9"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.18"/>
+    </filter>
+    <clipPath id="yelia-face-clip">
+      <circle cx="100" cy="105" r="58"/>
+    </clipPath>
+  </defs>
+
+  <style>
+    :root { --stroke:#1B2430; }
+    .s{ stroke:var(--stroke); stroke-width:6; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+    .shadow{ fill:rgba(0,0,0,.16); }
+    .cheek{ fill:#FFB3C1; opacity:.33; }
+    .eyeW{ fill:#FFFFFF; }
+    .pupil{ fill:#1B2430; }
+    .hl{ fill:#FFFFFF; opacity:.85; }
+    .mouthLine{ fill:none; }
+    .mouthOpen{ fill:#1B2430; opacity:0; }
+    .nose{ fill:#3B3F46; }
+    .freckle{ fill:#B07948; opacity:.14; }
+  </style>
+
+  <rect x="10" y="10" width="180" height="180" rx="24" fill="url(#bgDog)"/>
+  <ellipse class="shadow" cx="100" cy="168" rx="52" ry="14"/>
+
+  <g id="yelia-root" filter="url(#softShadow)">
+    <!-- ears -->
+    <path class="s" fill="url(#earDog)" d="M45 78 C30 78 24 92 26 106 C28 122 38 136 58 126 C63 121 66 113 66 104 C66 90 59 78 45 78Z"/>
+    <path class="s" fill="url(#earDog)" d="M155 78 C170 78 176 92 174 106 C172 122 162 136 142 126 C137 121 134 113 134 104 C134 90 141 78 155 78Z"/>
+
+    <!-- face -->
+    <circle class="s" cx="100" cy="105" r="62" fill="url(#furDog)"/>
+
+    <g clip-path="url(#yelia-face-clip)">
+      <!-- subtle muzzle -->
+      <ellipse cx="100" cy="133" rx="36" ry="26" fill="url(#muzzleDog)" opacity="0.95"/>
+
+      <!-- tiny freckles -->
+      <circle class="freckle" cx="86" cy="128" r="4"/>
+      <circle class="freckle" cx="116" cy="130" r="3.5"/>
+
+      <!-- cheeks -->
+      <circle id="yelia-cheek-left" class="cheek" cx="66" cy="126" r="14"/>
+      <circle id="yelia-cheek-right" class="cheek" cx="134" cy="126" r="14"/>
+
+      <!-- brows -->
+      <path id="yelia-brow-left" class="s" fill="none" d="M62 82 C72 74 86 74 94 82"/>
+      <path id="yelia-brow-right" class="s" fill="none" d="M106 82 C114 74 128 74 138 82"/>
+
+      <!-- eyes -->
+      <g id="yelia-eye-left">
+        <ellipse class="s eyeW" cx="78" cy="102" rx="18" ry="16"/>
+        <circle id="yelia-pupil-left" class="pupil" cx="82" cy="105" r="6"/>
+        <circle class="hl" cx="84" cy="103" r="2.5"/>
+      </g>
+      <g id="yelia-eye-right">
+        <ellipse class="s eyeW" cx="122" cy="102" rx="18" ry="16"/>
+        <circle id="yelia-pupil-right" class="pupil" cx="118" cy="105" r="6"/>
+        <circle class="hl" cx="120" cy="103" r="2.5"/>
+      </g>
+
+      <!-- nose -->
+      <ellipse class="s nose" cx="100" cy="124" rx="10" ry="8"/>
+
+      <!-- mouth -->
+      <g id="yelia-mouth">
+        <path id="yelia-mouth-line" class="s mouthLine yelia-mouth-anim" d="M86 146 C94 154 106 154 114 146"/>
+        <path id="yelia-mouth-open" class="mouthOpen yelia-mouth-anim" d="M88 146 C92 162 108 162 112 146 C108 154 92 154 88 146Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,317 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/avatar/avatar.shell.base.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/avatar/avatar.shell.base.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Componentes de avatar (UI/animación/estado) en el cliente.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Avatar.Shell.Base
+   Estilos visuales asociados a este módulo.
+*/
+
+/* ==========================================================================
+   1) CONTENEDOR PRINCIPAL (placeholder / "shell")
+   - Marco, fondo, tipografía y composición del contenedor.
+   - Actúa como "stage" donde vive el icono, la imagen o el canvas.
+   ========================================================================== */
+.yelia-avatar-placeholder{
+  position:relative;
+  border-radius:18px;
+  background: radial-gradient(circle at 20% 20%, #e0f2fe, #0f172a);
+  color:#e5e7eb;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:3rem;
+  font-weight:600;
+
+  box-shadow:0 12px 30px rgba(15,23,42,.4);
+  min-height:180px;
+  overflow:hidden;
+
+  transition:
+    box-shadow .3s ease,
+    transform .3s ease,
+    filter .3s ease,
+    border .3s ease,
+    background .4s ease;
+
+  /* Optimización visual:
+     - translateZ fuerza composición en GPU
+     - will-change anticipa animaciones (hover/estados) */
+  transform: translateZ(0);
+  will-change: transform, filter, box-shadow;
+}
+
+/* Capa decorativa: brillo/sutiles gradientes encima del fondo base.
+   No debe capturar eventos; se usa para "depth" (profundidad). */
+.yelia-avatar-placeholder::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:18px;
+  background:
+    radial-gradient(120% 90% at 30% 15%, rgba(255,255,255,.18), transparent 55%),
+    radial-gradient(90% 110% at 70% 60%, rgba(99,102,241,.12), transparent 55%);
+  opacity:.55;
+  pointer-events:none;
+}
+
+/* ==========================================================================
+   2) CONTENIDO: ICONO / IMAGEN / CANVAS
+   - Icono: fallback cuando no hay canvas.
+   - Imagen: alternativa renderizada como <img>.
+   - Canvas: render principal (z-index alto para quedar encima de capas).
+   ========================================================================== */
+.yelia-avatar-icon{
+  font-size:3rem;
+  font-weight:700;
+  transform: translateY(-4px);
+  transition: transform .25s ease, filter .25s ease;
+  will-change: transform, filter;
+}
+
+.yelia-avatar-image{
+  width:80%;
+  height:80%;
+  object-fit:contain;
+}
+
+.yelia-avatar-canvas{
+  width:100%;
+  height:100%;
+  display:block;
+
+  /* Calidad de render: evita pixelado/serrucho en escalado */
+  image-rendering: auto;
+  shape-rendering: geometricPrecision;
+
+  position:relative;
+  z-index:2;
+}
+
+.yelia-avatar-3d-stage{
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+  min-height:220px;
+}
+
+.yelia-avatar-3d-stage canvas{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.yelia-avatar-3d-fallback{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:1rem;
+  text-align:center;
+  color:#dbeafe;
+  font-size:.86rem;
+  font-weight:700;
+  background:rgba(15,23,42,.55);
+}
+
+/* Si el canvas está presente, el icono se oculta (evita duplicar contenido). */
+.yelia-avatar-placeholder:has(.yelia-avatar-canvas) .yelia-avatar-icon{
+  display:none;
+}
+
+/* ==========================================================================
+   3) INTERACCIÓN: HOVER (feedback sutil)
+   - Elevación ligera y sombra para "card effect".
+   ========================================================================== */
+.yelia-avatar-placeholder:hover{
+  transform: translateY(-2px) scale(1.01);
+  box-shadow:0 16px 36px rgba(15,23,42,.55);
+}
+
+.yelia-avatar-placeholder:hover .yelia-avatar-icon{
+  filter: drop-shadow(0 10px 22px rgba(99,102,241,.35));
+}
+
+/* ==========================================================================
+   4) ESTADOS VISUALES DEL AVATAR
+   - Estos estados se activan con clases (p.ej. desde JS/Flask).
+   - No hay lógica aquí: solo estilos asociados al estado.
+   ========================================================================== */
+
+/* IDLE: estado neutral (sin énfasis), con animación de "float" en el icono. */
+.yelia-avatar-placeholder.yelia-avatar-state-idle{
+  box-shadow:0 12px 30px rgba(15,23,42,.4);
+  transform: translateY(0);
+  filter:none;
+}
+
+.yelia-avatar-placeholder.yelia-avatar-state-idle .yelia-avatar-icon{
+  animation: yelia-idle-float 4.5s ease-in-out infinite;
+}
+
+/* LISTENING: resaltado cyan + ondas (::before/::after) como "escuchando". */
+.yelia-avatar-placeholder.yelia-avatar-state-listening{
+  border:2px solid rgba(56,189,248,.9);
+  box-shadow:0 0 18px rgba(56,189,248,.9);
+  animation:yelia-listen-glow 1.2s infinite ease-in-out;
+}
+
+.yelia-avatar-placeholder.yelia-avatar-state-listening .yelia-avatar-icon{
+  filter: drop-shadow(0 6px 18px rgba(56,189,248,.55));
+}
+
+/* Ondas de escucha: dos anillos animados (delay en ::after). */
+.yelia-avatar-placeholder.yelia-avatar-state-listening::before,
+.yelia-avatar-placeholder.yelia-avatar-state-listening::after{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border-radius:18px;
+  border:2px solid rgba(56,189,248,.35);
+  animation: yelia-listen-wave 1.6s infinite;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* Asegura que el canvas quede por encima de las ondas. */
+.yelia-avatar-placeholder.yelia-avatar-state-listening .yelia-avatar-canvas{
+  z-index:2;
+}
+
+.yelia-avatar-placeholder.yelia-avatar-state-listening::after{
+  animation-delay:.8s;
+}
+
+/* THINKING: resaltado amarillo + "breathing" y glow sutil (overlay ::after). */
+.yelia-avatar-placeholder.yelia-avatar-state-thinking{
+  border:2px solid rgba(234,179,8,.9);
+  box-shadow:0 0 18px rgba(234,179,8,.8);
+  animation:yelia-avatar-breath 1.6s infinite;
+  filter: brightness(1.05);
+}
+
+.yelia-avatar-placeholder.yelia-avatar-state-thinking .yelia-avatar-icon{
+  transform: translateY(-6px);
+  filter: drop-shadow(0 6px 18px rgba(234,179,8,.55));
+}
+
+/* Overlay de "pensando": gradientes animados para dar vida sin saturar. */
+.yelia-avatar-placeholder.yelia-avatar-state-thinking::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(234,179,8,.18), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(234,179,8,.14), transparent 45%);
+  animation: yelia-thinking-glow 2.4s infinite alternate;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* SPEAKING: resaltado verde + glow y animación rápida (talk). */
+.yelia-avatar-placeholder.yelia-avatar-state-speaking{
+  border:2px solid rgba(34,197,94,.95);
+  box-shadow:0 0 24px rgba(34,197,94,.9);
+  animation:yelia-avatar-glow 1.2s infinite;
+}
+
+.yelia-avatar-placeholder.yelia-avatar-state-speaking .yelia-avatar-icon{
+  filter: drop-shadow(0 10px 22px rgba(34,197,94,.55));
+  animation: yelia-mouth-talk .35s infinite ease-in-out;
+}
+
+/* ERROR: rojo + shake y pulso; comunica fallo sin bloquear UI. */
+.yelia-avatar-placeholder.yelia-avatar-state-error{
+  border:2px solid rgba(239,68,68,.95);
+  animation:
+    yelia-avatar-shake .35s ease-in-out 0s 2,
+    yelia-error-pulse 1.2s ease-in-out 2;
+  box-shadow:0 0 22px rgba(239,68,68,.9);
+}
+
+.yelia-avatar-placeholder.yelia-avatar-state-error .yelia-avatar-icon{
+  filter: drop-shadow(0 10px 22px rgba(239,68,68,.55));
+}
+
+/* ==========================================================================
+   5) REDUCCIÓN DE MOVIMIENTO (ACCESIBILIDAD)
+   - IMPORTANTE: este bloque está "suelto" (sin @media envolvente).
+   - Normalmente se encapsula en @media (prefers-reduced-motion: reduce),
+     pero NO se modifica para no cambiar el comportamiento actual.
+   ========================================================================== */
+  .yelia-avatar-placeholder,
+  .yelia-avatar-placeholder::before,
+  .yelia-avatar-placeholder::after,
+  .yelia-avatar-icon{
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .yelia-avatar-icon{
+    animation: none !important;
+    transition: none !important;
+  }
+
+/* ==========================================================================
+   6) SOPORTE PARA <img> (ANIMACIONES Y EFECTOS POR ESTADO)
+   - Cuando el avatar se renderiza como imagen, se aplican animaciones
+     equivalentes a las del icono/canvas para coherencia visual.
+   ========================================================================== */
+.yelia-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: floatAvatar 3s ease-in-out infinite;
+}
+
+.yelia-avatar-state-speaking .yelia-avatar-image{
+  animation: talkAvatar .35s infinite;
+}
+
+.yelia-avatar-state-listening .yelia-avatar-image{
+  filter: drop-shadow(0 0 16px #38bdf8);
+}
+
+.yelia-avatar-state-thinking .yelia-avatar-image{
+  filter: drop-shadow(0 0 16px #facc15);
+}
+
+.yelia-avatar-state-error .yelia-avatar-image{
+  filter: drop-shadow(0 0 16px #f43f5e);
+}
+
+/* ==========================================================================
+   7) SOMBRA FINAL / "DEPTH" ADICIONAL
+   - Ajuste de sombra para el canvas y refuerzo del contenedor.
+   - Este bloque complementa la estética (no afecta layout).
+   ========================================================================== */
+.yelia-avatar-placeholder .yelia-avatar-canvas{
+  filter:
+    drop-shadow(0 18px 36px rgba(0,0,0,.40))
+    drop-shadow(0 0 26px rgba(255,255,255,.08));
+}
+
+.yelia-avatar-placeholder{
+  box-shadow:
+    0 18px 54px rgba(15,23,42,.62),
+    0 0 0 2px rgba(255,255,255,.10) inset,
+    0 0 0 1px rgba(255,255,255,.08);
+}

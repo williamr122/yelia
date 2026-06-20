@@ -1,0 +1,89 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/base/base.sidebar-avatar-shell.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/base/base.sidebar-avatar-shell.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Control de navegación y estado del sidebar en la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Base.Sidebar Avatar Shell
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-sidebar,
+.yelia-avatar-panel {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ============================================================
+   SIDEBAR OCULTO
+   ============================================================
+   Estado donde el panel izquierdo (historial)
+   se elimina visualmente.
+*/
+
+/* Sidebar oculto:
+   ------------------------------------------------------------
+   - Se elimina completamente del layout
+   - !important asegura prioridad sobre otros estilos */
+/* --- Base / Reset --------------------------------------------------------- */
+body.yelia-sidebar-hidden .yelia-sidebar {
+  display: none !important;
+}
+
+
+/* ============================================================
+   BOTÓN FLOTANTE — REABRIR SIDEBAR
+   ============================================================
+   Botón que permite volver a mostrar el historial
+   cuando el sidebar está oculto.
+*/
+
+/* Botón flotante base */
+.yelia-sidebar-reopen-btn {
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 50;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  background: var(--yelia-panel-bg);
+  color: var(--yelia-text-main);
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Visible solo cuando el sidebar está oculto:
+   ------------------------------------------------------------
+   - Controlado por la clase en <body> */
+/* --- Base / Reset --------------------------------------------------------- */
+body.yelia-sidebar-hidden .yelia-sidebar-reopen-btn {
+  display: flex;
+}

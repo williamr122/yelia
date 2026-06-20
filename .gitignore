@@ -1,0 +1,118 @@
+# Lista de patrones a excluir del control de versiones.
+
+# ============================================================
+# Archivo .gitignore — Proyecto YELIA
+#
+# Este archivo define explícitamente qué archivos y carpetas
+# NO deben ser versionados por Git.
+#
+# OBJETIVOS PRINCIPALES:
+# - Proteger información sensible (credenciales, claves, logs)
+# - Mantener el repositorio limpio, portable y reproducible
+# - Cumplir buenas prácticas académicas y profesionales
+# ============================================================
+
+
+# ===============================
+# Python / Entorno de ejecución
+# ===============================
+# intérprete de Python durante la ejecución.
+# No contienen código fuente real y varían por entorno.
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Entornos virtuales de Python
+# Contienen dependencias locales del proyecto.
+# No deben subirse porque:
+# - Son específicos del sistema operativo
+# - Se regeneran con requirements.txt / poetry / pip
+.venv/
+venv/
+ENV/
+env/
+
+# Cachés de herramientas de desarrollo y testing
+# Mejoran rendimiento local, pero no son parte del proyecto.
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# Se recrean automáticamente durante la instalación.
+pip-wheel-metadata/
+
+
+# ===============================
+# Variables de entorno (SEGURIDAD)
+# ===============================
+# Archivos con credenciales reales, tokens y configuraciones
+# sensibles del sistema.
+#
+# ⚠️ NUNCA deben subirse a repositorios públicos.
+# Se permite únicamente el archivo .env.example como plantilla.
+.env
+.env.*
+!.env.example
+
+
+# ===============================
+# Flask / Runtime
+# ===============================
+# Carpeta de instancia de Flask
+# Usada para configuraciones locales o datos en runtime.
+# No es portable entre entornos.
+instance/
+
+# Bases de datos locales
+# Usadas solo en desarrollo o pruebas.
+# En producción se usan motores externos (ej: PostgreSQL).
+yelia.db
+*.sqlite3
+
+# Pueden contener información sensible y crecen con el tiempo.
+logs/
+*.log
+
+
+# ===============================
+# Frontend (si aplica)
+# ===============================
+# Dependencias de Node.js
+# Se regeneran automáticamente con package.json.
+node_modules/
+
+# Carpetas de salida de compilación
+# Generadas por herramientas como Vite, Webpack, etc.
+dist/
+build/
+
+
+# ===============================
+# Sistema Operativo / Editor
+# ===============================
+# Configuración específica de editores/IDEs
+# Cada desarrollador puede tener ajustes distintos.
+.vscode/
+.idea/
+
+# No aportan nada al proyecto.
+.DS_Store
+Thumbs.db
+
+
+# ===============================
+# Otros
+# ===============================
+# Archivos temporales o de respaldo
+*.tmp
+*.bak
+
+# Archivos comprimidos de entrega o respaldo
+# No forman parte del código fuente.
+*.zip
+
+# Carpetas temporales del sistema
+.tmp_resource_zip_20260615/
+scratch/

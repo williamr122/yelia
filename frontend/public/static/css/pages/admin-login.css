@@ -1,0 +1,352 @@
+/* Página autónoma: contenido base incorporado para evitar dependencias cruzadas. */
+
+
+:root{
+  --login-surface: rgba(15, 27, 51, 0.86);
+  --login-border: rgba(155, 176, 209, 0.2);
+  --login-cyan: #67e8f9;
+  --login-blue: #60a5fa;
+  --login-radius: 22px;
+}
+
+body{
+  min-height: 100vh;
+  position: relative;
+  color: #e9f2ff !important;
+  background:
+    radial-gradient(900px 520px at 18% 12%, rgba(34,197,94,.08), transparent 55%),
+    radial-gradient(900px 520px at 82% 12%, rgba(96,165,250,.12), transparent 58%),
+    linear-gradient(180deg, #071423, #0b1f36) !important;
+}
+
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(103,232,249,.08), transparent 38%),
+    radial-gradient(circle at 70% 20%, rgba(129,140,248,.08), transparent 26%);
+}
+
+.container{
+  max-width: 560px !important;
+}
+
+.card.glass{
+  background: var(--login-surface) !important;
+  border: 1px solid var(--login-border) !important;
+  border-radius: var(--login-radius) !important;
+  box-shadow:
+    0 28px 70px rgba(3, 10, 24, .46),
+    0 0 0 1px rgba(255,255,255,.03) inset !important;
+  overflow: hidden;
+}
+
+.card.glass::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.04), transparent 22%),
+    radial-gradient(circle at top right, rgba(103,232,249,.12), transparent 32%);
+}
+
+.card-body{
+  position: relative;
+  z-index: 1;
+  padding: 2rem !important;
+}
+
+.brand{
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.form-control{
+  min-height: 50px;
+  background: rgba(255,255,255,.05) !important;
+  border: 1px solid var(--login-border) !important;
+  color: #e9f2ff !important;
+  border-radius: 16px !important;
+  transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+
+.form-control:focus{
+  border-color: rgba(103,232,249,.58) !important;
+  box-shadow:
+    0 0 0 .18rem rgba(103,232,249,.14),
+    0 0 30px rgba(96,165,250,.12) !important;
+  transform: translateY(-1px);
+}
+
+.btn-primary{
+  min-height: 50px;
+  border: 1px solid rgba(103,232,249,.34) !important;
+  background: linear-gradient(135deg, rgba(34,211,238,.88), rgba(37,99,235,.9)) !important;
+  box-shadow: 0 14px 32px rgba(37,99,235,.18);
+}
+
+.btn-primary:hover{
+  box-shadow:
+    0 18px 38px rgba(37,99,235,.24),
+    0 0 24px rgba(103,232,249,.10);
+}
+
+.badgeRole{
+  background: rgba(103,232,249,.12) !important;
+  border: 1px solid rgba(103,232,249,.24) !important;
+}
+
+.alert{
+  border-radius: 16px !important;
+}
+
+
+/* ===== Estilos propios de la página ===== */
+
+/* Page-specific styles extracted from template */
+
+
+:root{
+      --bg:#070c18;
+      --text:#e5e7eb;
+      --muted: rgba(229,231,235,.75);
+      --panel: rgba(255,255,255,.06);
+      --panel-b: rgba(255,255,255,.12);
+      --accent: #3b82f6;
+      --radius: 18px;
+      --danger-bg: rgba(220,38,38,.20);
+      --danger-br: rgba(248,113,113,.42);
+      --danger-tx: #ffe2e2;
+    }
+    body{
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(59,130,246,.18), transparent 55%),
+        radial-gradient(700px 500px at 85% 25%, rgba(14,165,233,.14), transparent 60%),
+        radial-gradient(900px 600px at 40% 110%, rgba(99,102,241,.10), transparent 55%),
+        var(--bg);
+    }
+    .glass{ background: var(--panel); border:1px solid var(--panel-b); backdrop-filter: blur(12px); }
+    .muted{ color: var(--muted) !important; }
+    .brand{ letter-spacing:.6px; }
+    .badgeRole{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 12px; border-radius:999px;
+      background: rgba(59,130,246,.14);
+      border: 1px solid rgba(59,130,246,.25);
+      color: rgba(229,231,235,.92);
+      font-size:.85rem;
+    }
+    .card{ border-radius: var(--radius); box-shadow: 0 20px 60px rgba(0,0,0,.45); }
+    .form-control{
+      background: rgba(255,255,255,.06) !important;
+      color: var(--text) !important;
+      border-color: rgba(255,255,255,.14) !important;
+    }
+    .form-control::placeholder{ color: rgba(229,231,235,.55); }
+    .form-control:focus{
+      box-shadow: 0 0 0 .2rem rgba(59,130,246,.22);
+      border-color: rgba(59,130,246,.70) !important;
+    }
+    .btn-primary{ background: var(--accent); border-color: rgba(59,130,246,.9); }
+    .btn-primary:hover{ filter: brightness(1.04); }
+    .card, .card * { color: var(--text); }
+    .card .form-label{ opacity:.9; }
+
+    .alert-danger,
+    #errBox{
+      background: var(--danger-bg) !important;
+      border: 1px solid var(--danger-br) !important;
+      color: var(--danger-tx) !important;
+    }
+    .alert-danger *,
+    #errBox *{
+      color: var(--danger-tx) !important;
+    }
+
+/* =========================================================
+   Diseño propio login administrador
+========================================================= */
+body.admin-login{
+  color:var(--yd-text);
+  background:
+    radial-gradient(900px 520px at 25% 0%,rgba(96,165,250,.22),transparent 58%),
+    linear-gradient(135deg,#050b18,#0b1d36 60%,#111827)!important;
+}
+body.admin-login .card,
+body.admin-login .panel,
+body.admin-login .modal-content{
+  background:linear-gradient(180deg, rgba(18,36,63,.96), rgba(10,22,42,.96))!important;
+  border:1px solid var(--yd-line)!important;
+  box-shadow:var(--yd-shadow)!important;
+  color:var(--yd-text)!important;
+}
+body.admin-login input,
+body.admin-login .form-control{
+  background:#08162a!important;
+  border:1px solid rgba(125,166,214,.30)!important;
+  color:var(--yd-text)!important;
+  border-radius:16px!important;
+}
+body.admin-login .btn-primary,
+body.admin-login .btn-accent{
+  background:linear-gradient(135deg,#10bdf2 0%,#2563eb 48%,#7c3aed 100%)!important;
+  border:0!important;
+  color:white!important;
+}
+
+/* Pulido visual 2026 - Login administrador */
+body.admin-login {
+  background:
+    radial-gradient(780px 480px at 50% 8%, rgba(34, 211, 238, 0.16), transparent 58%),
+    radial-gradient(680px 460px at 88% 82%, rgba(124, 58, 237, 0.14), transparent 62%),
+    linear-gradient(135deg, #04111d 0%, #071426 52%, #0b1b35 100%) !important;
+}
+
+body.admin-login .card {
+  border-radius: 22px !important;
+  padding: 26px !important;
+}
+
+body.admin-login .form-control {
+  min-height: 44px;
+}
+
+body.admin-login .btn-primary {
+  min-height: 46px;
+  border-radius: 14px !important;
+  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.24), 0 0 22px rgba(34, 211, 238, 0.12) !important;
+}
+
+body.admin-login .alert,
+body.admin-login #errBox {
+  border-radius: 15px !important;
+}
+
+/* Ajuste final 100% zoom: la pantalla debe desplazarse y no cortar el formulario. */
+html:has(body.admin-login),
+body.admin-login {
+  min-height: 100%;
+  height: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+body.admin-login {
+  padding: 18px 14px 36px !important;
+}
+
+body.admin-login .yelia-container-narrow {
+  width: min(100%, 520px) !important;
+  max-width: 520px !important;
+  min-height: auto !important;
+  margin-inline: auto !important;
+  padding: 0 !important;
+}
+
+body.admin-login .text-center.mb-4 {
+  margin-bottom: 16px !important;
+}
+
+body.admin-login .brand {
+  font-size: 1.65rem !important;
+  line-height: 1.05 !important;
+}
+
+body.admin-login .card {
+  padding: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body.admin-login .card-body {
+  padding: 24px 28px !important;
+}
+
+body.admin-login .form-control,
+body.admin-login .btn-primary {
+  min-height: 44px !important;
+}
+
+body.admin-login .border-secondary.my-4 {
+  margin-top: 18px !important;
+  margin-bottom: 18px !important;
+}
+
+@media (max-height: 760px) {
+  body.admin-login {
+    padding-top: 10px !important;
+  }
+
+  body.admin-login .card-body {
+    padding: 20px 24px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  body.admin-login .card-body {
+    padding: 20px !important;
+  }
+}
+
+/* Final unified auth polish */
+html:has(body.admin-login) {
+  background: #04111d;
+}
+
+body.admin-login {
+  display: grid !important;
+  place-items: start center !important;
+  padding: 28px 16px 44px !important;
+}
+
+body.admin-login::before {
+  opacity: .95;
+}
+
+body.admin-login .yelia-container-narrow,
+body.admin-login .container {
+  width: min(100%, 540px) !important;
+  max-width: 540px !important;
+}
+
+body.admin-login .card.glass,
+body.admin-login .card {
+  border-radius: 24px !important;
+  border: 1px solid rgba(70, 130, 196, .42) !important;
+  background:
+    linear-gradient(180deg, rgba(17, 36, 64, .96), rgba(7, 21, 40, .96)) !important;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, .38),
+    inset 0 1px 0 rgba(255, 255, 255, .045) !important;
+  overflow: hidden !important;
+}
+
+body.admin-login .card-body {
+  padding: 28px !important;
+}
+
+body.admin-login .brand {
+  color: #f8fbff !important;
+  text-shadow: 0 0 24px rgba(34, 211, 238, .12);
+}
+
+body.admin-login .badgeRole {
+  border-color: rgba(103, 232, 249, .34) !important;
+  background: rgba(15, 31, 56, .72) !important;
+  color: rgba(238, 247, 255, .92) !important;
+}
+
+body.admin-login .form-control {
+  min-height: 46px !important;
+  border-radius: 15px !important;
+  background: rgba(3, 15, 30, .66) !important;
+  border-color: rgba(125, 166, 214, .34) !important;
+}
+
+body.admin-login .btn-primary {
+  border-radius: 15px !important;
+}

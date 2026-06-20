@@ -1,0 +1,225 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/base/base.header.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/base/base.header.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Hoja de estilos para la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Base.Header
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 8px 24px;               /* 🔽 compacto */
+  min-height: 64px;
+
+  background: linear-gradient(
+    90deg,
+    #e6f4f1 0%,
+    #b2dfdb 35%,
+    #80cbc4 60%,
+    #004d40 100%
+  );
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================
+   BLOQUES LATERALES (LOGOS)
+   ========================= */
+.yelia-header .header-left,
+.yelia-header .header-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 10px;
+  min-width: 56px;
+
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(6px);
+
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.yelia-header .header-left:hover,
+.yelia-header .header-right:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+/* Logos */
+.yelia-header .header-left img,
+.yelia-header .header-right img {
+  height: 34px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+/* =========================
+   CENTRO (TÍTULOS)
+   ========================= */
+.yelia-header .header-center {
+  flex: 1;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Título principal */
+.yelia-header .header-center h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+/* Subtítulo */
+.yelia-header .header-center .subtitle {
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0f172a;
+  opacity: 0.9;
+}
+
+/* Texto académico extra */
+.yelia-header .header-center small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #0f172a;
+  opacity: 0.7;
+}
+
+/* =========================
+   DARK MODE
+   ========================= */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-header {
+  background: linear-gradient(
+    90deg,
+    #0f172a 0%,
+    #134e4a 45%,
+    #0f766e 70%,
+    #022c22 100%
+  );
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-header .header-center h1,
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-header .header-center .subtitle,
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-header .header-center small {
+  color: #e5e7eb;
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-header .header-left,
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-header .header-right {
+  background: rgba(226, 228, 233, 0.82);
+  box-shadow: 0 6px 18px rgba(248, 247, 247, 0.65);
+}
+
+/* =========================
+   EFECTO SHINE SUTIL
+   ========================= */
+.yelia-header {
+  overflow: hidden;
+}
+
+.yelia-header::after {
+  content: "";
+  position: absolute;
+  inset: -40% -60%;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 60%
+  );
+  transform: translateX(-35%) rotate(6deg);
+  animation: yeliaShine 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes yeliaShine {
+  0%, 75% {
+    transform: translateX(-35%) rotate(6deg);
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(35%) rotate(6deg);
+    opacity: 0;
+  }
+}
+
+/* --- Responsive (Media queries) --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .yelia-header::after {
+    animation: none !important;
+    display: none;
+  }
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+/* --- Responsive (Media queries) --------------------------------------------------------- */
+@media (max-width: 768px) {
+  .yelia-header {
+    padding: 6px 12px;
+    min-height: 56px;
+  }
+
+  .yelia-header .header-left img,
+  .yelia-header .header-right img {
+    height: 28px;
+  }
+
+  .yelia-header .header-center h1 {
+    font-size: 16px;
+    letter-spacing: 0.1em;
+  }
+
+  .yelia-header .header-center .subtitle {
+    font-size: 12px;
+  }
+
+  .yelia-header .header-center small {
+    display: none;
+  }
+}

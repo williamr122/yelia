@@ -1,0 +1,383 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/core/code.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/core/code.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Hoja de estilos para la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Code
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-message-body pre {
+  margin: 14px 0;
+  border-radius: 12px;
+  overflow: auto;
+  position: relative;
+}
+
+
+/* ============================================================
+   HEADER DEL BLOQUE DE CÓDIGO
+   ============================================================
+   Barra superior sticky que muestra:
+   - Lenguaje del código
+   - Botón de copiar
+*/
+
+/* --- Base / Reset --------------------------------------------------------- */
+.yelia-code-header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  padding: 10px 12px;
+
+  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+  backdrop-filter: blur(8px);
+}
+
+/* Etiqueta de lenguaje */
+.yelia-code-lang {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  opacity: 0.9;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Botón de copiar */
+.yelia-copy-btn {
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 10px;
+  padding: 6px 10px;
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 12px;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition: transform 0.08s ease, opacity 0.12s ease;
+}
+
+/* Estados del botón copiar */
+.yelia-copy-btn:active { transform: scale(0.98); }
+.yelia-copy-btn[disabled] { opacity: 0.7; cursor: default; }
+
+
+/* ============================================================
+   CÓDIGO (BLOQUE PRINCIPAL)
+   ============================================================
+   Estilo del <code> renderizado por highlight.js
+*/
+
+.yelia-message-body pre code {
+  display: block;
+  padding: 16px 18px;
+
+  font-family: "Fira Code", "JetBrains Mono", Consolas, monospace;
+  font-size: 0.88em;
+  line-height: 1.6;
+
+  white-space: pre;
+}
+
+
+/* ============================================================
+   INLINE CODE
+   ============================================================
+   Código en línea dentro de párrafos.
+*/
+
+.yelia-message-body p > code {
+  padding: 3px 6px;
+  border-radius: 6px;
+
+  font-family: "Fira Code", monospace;
+  font-size: 0.9em;
+}
+
+
+/* ============================================================
+   MODO OSCURO
+   ============================================================
+   Ajustes visuales completos para dark mode.
+*/
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-message-body pre {
+  background: #0f172a;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-code-header {
+  background: rgba(15, 23, 42, 0.78);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-code-lang { color: #e5e7eb; }
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-copy-btn {
+  background: rgba(148, 163, 184, 0.12);
+  color: #e5e7eb;
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-message-body pre code.hljs {
+  background: transparent;
+  color: #e5e7eb;
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-message-body p > code {
+  background: rgba(148, 163, 184, 0.15);
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+
+/* ============================================================
+   MODO CLARO (FIX + PRO)
+   ============================================================
+   Ajustes específicos para vista clara.
+*/
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .yelia-message-body pre {
+  background: #f3f4f6;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .yelia-code-header { background: rgba(243, 244, 246, 0.82); }
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .yelia-code-lang { color: #111827; }
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .yelia-copy-btn {
+  background: rgba(15, 23, 42, 0.06);
+  color: #0f172a;
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .yelia-message-body pre code.hljs {
+  background: transparent;
+  color: #111827;
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .yelia-message-body p > code {
+  background: rgba(15, 23, 42, 0.07);
+  color: #0f172a;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+}
+
+
+/* ============================================================
+   TOKENS HIGHLIGHT.JS — MODO CLARO
+   ============================================================
+   Colores semánticos para sintaxis.
+*/
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-comment,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-quote { color: #6b7280; font-style: italic; }
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-keyword,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-selector-tag,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-literal { color: #7c3aed; font-weight: 600; }
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-string,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-title,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-section { color: #0f766e; }
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-number,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-symbol { color: #b45309; }
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-function,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-built_in,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-type { color: #1d4ed8; }
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-variable,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-attr,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-name { color: #0f172a; }
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-meta,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .hljs-doctag { color: #9a3412; }
+
+
+/* ============================================================
+   SELECCIÓN / WRAP OPCIONAL
+   ============================================================ */
+
+.yelia-message-body pre code.hljs::selection {
+  background: rgba(59, 130, 246, 0.25);
+}
+
+.yelia-message-body pre code.wrap {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+
+/* ============================================================
+   TOAST “COPIADO”
+   ============================================================
+   Notificación visual mínima al copiar código.
+*/
+
+.yelia-copy-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 13px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.yelia-copy-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-copy-toast {
+  background: rgba(15, 23, 42, 0.92);
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .yelia-copy-toast {
+  background: rgba(243, 244, 246, 0.95);
+  color: #111827;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+}
+
+
+/* ============================================================
+   PULIDO Y CONSISTENCIA
+   ============================================================ */
+
+:where(pre, code, .code-block) {
+  border-radius: var(--radius-md);
+}
+
+:where(pre) {
+  box-shadow: var(--shadow-sm);
+}
+
+/* Compatibilidad con renderers externos */
+.copy-code {
+  border-radius: 999px;
+}
+
+
+/* ============================================================
+   SCROLLBAR PRO PARA BLOQUES DE CÓDIGO
+   ============================================================
+   Se aplica únicamente a <pre>.
+*/
+
+/* Firefox */
+.yelia-message-body pre {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.55) transparent;
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-message-body pre {
+  scrollbar-color: rgba(203, 213, 225, 0.25) transparent;
+}
+
+/* WebKit */
+.yelia-message-body pre::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+.yelia-message-body pre::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 999px;
+}
+
+.yelia-message-body pre::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.55);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.yelia-message-body pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.75);
+  background-clip: content-box;
+}
+
+/* Dark mode */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-message-body pre::-webkit-scrollbar-thumb {
+  background: rgba(203, 213, 225, 0.25);
+  background-clip: content-box;
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-message-body pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(203, 213, 225, 0.38);
+  background-clip: content-box;
+}
+
+/* Evita saltos de layout cuando aparece scrollbar */
+.yelia-message-body pre {
+  scrollbar-gutter: stable both-edges;
+}

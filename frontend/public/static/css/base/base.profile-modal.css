@@ -1,0 +1,148 @@
+/*  Shared profile modal styles used by chat, demo and launcher pages.  */
+#perfil-modal .modal-dialog {
+  max-width: 500px !important;
+}
+#perfil-modal .modal-content {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+  border: 1px solid #334155 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 25px 70px rgba(240, 234, 234, 0.863) !important;
+  overflow: hidden;
+}
+#perfil-modal .modal-header {
+  background: #1e293b !important;
+  border-bottom: 1px solid #334155 !important;
+  padding: 1.25rem 1.5rem !important;
+}
+#perfil-modal .modal-title {
+  color: #60a5fa !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+  margin: 0 !important;
+}
+#perfil-modal .btn-close {
+  filter: invert(1) brightness(1.2) !important;
+  opacity: 0.8 !important;
+}
+#perfil-modal .btn-close:hover {
+  opacity: 1 !important;
+}
+#perfil-modal .modal-body {
+  padding: 1.75rem 1.75rem 1.25rem !important;
+}
+#perfil-modal .modal-body p {
+  color: #cbd5e1 !important;
+  line-height: 1.6 !important;
+  font-size: 1rem !important;
+  margin-bottom: 1.25rem !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+#perfil-modal .form-label {
+  color: #94a3b8 !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 0.95rem !important;
+}
+#perfil-modal .form-control,
+#perfil-modal .form-select {
+  background: #1e293b !important;
+  border: 1px solid #475569 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 1rem !important;
+  height: calc(2.25rem + 2px) !important;
+}
+#perfil-modal .form-control:focus,
+#perfil-modal .form-select:focus {
+  border-color: #60a5fa !important;
+  box-shadow: 0 0 0 0.25rem rgba(96, 165, 250, 0.25) !important;
+  outline: none !important;
+}
+#perfil-modal .form-control::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+#perfil-modal .yelia-pro-dropdown-btn {
+  background: #1e293b !important;
+  border: 1px solid #475569 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  text-align: left !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 1rem !important;
+}
+#perfil-modal .yelia-pro-dropdown .dropdown-menu {
+  background: #1e293b !important;
+  border: 1px solid #475569 !important;
+  border-radius: 8px !important;
+  margin-top: 0.25rem !important;
+}
+#perfil-modal .yelia-pro-dropdown .dropdown-item {
+  color: #e2e8f0 !important;
+  padding: 0.5rem 1rem !important;
+}
+#perfil-modal .yelia-pro-dropdown .dropdown-item:hover,
+#perfil-modal .yelia-pro-dropdown .dropdown-item:focus {
+  background: #334155 !important;
+  color: white !important;
+}
+#perfil-modal .modal-footer {
+  border-top: 1px solid #334155 !important;
+  padding: 1rem 1.5rem !important;
+  gap: 1rem !important;
+}
+#perfil-modal .yelia-btn-primary {
+  background: linear-gradient(135deg, #60a5fa, #38bdf8) !important;
+  border: none !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 50px !important;
+  transition: all 0.2s ease !important;
+  min-width: 160px !important;
+}
+#perfil-modal .yelia-btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.45) !important;
+}
+#perfil-modal .yelia-btn-ghost {
+  color: #94a3b8 !important;
+  border: 1px solid #475569 !important;
+  background: transparent !important;
+  border-radius: 50px !important;
+  padding: 0.75rem 1.5rem !important;
+  min-width: 160px !important;
+  transition: all 0.2s ease !important;
+}
+#perfil-modal .yelia-btn-ghost:hover {
+  background: rgba(255,255,255,0.08) !important;
+  color: white !important;
+  border-color: #60a5fa !important;
+}
+.modal-backdrop.show {
+  background: rgba(0, 0, 0, 0.88) !important;
+  backdrop-filter: blur(10px) !important;
+}
+#perfil-modal .form-text,
+#perfil-modal .form-text.text-muted,
+#perfil-modal small {
+  color: #cbd5e1 !important;          /* Gris claro legible sobre fondo oscuro */
+  font-size: 0.875rem !important;     /* Mantiene tamaño pequeño pero legible */
+  line-height: 1.5 !important;
+  margin-top: 0.25rem !important;
+  display: block !important;
+}
+#perfil-modal .form-text a,
+#perfil-modal small a {
+  color: #93c5fd !important;
+  text-decoration: underline !important;
+}
+#perfil-modal .form-text a:hover {
+  color: #60a5fa !important;
+}
+#perfil-modal .form-text strong {
+  color: #f1f5f9 !important;
+}

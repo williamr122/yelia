@@ -1,0 +1,241 @@
+:root {
+  --status-bg: #06111f;
+  --status-panel: rgba(15, 31, 56, 0.9);
+  --status-panel-2: rgba(9, 22, 42, 0.94);
+  --status-line: rgba(125, 166, 214, 0.28);
+  --status-text: #eef7ff;
+  --status-soft: rgba(226, 239, 255, 0.76);
+  --status-muted: rgba(197, 216, 244, 0.65);
+  --status-cyan: #67e8f9;
+  --status-green: #22c55e;
+  --status-red: #fb7185;
+  --status-yellow: #fbbf24;
+}
+
+html:has(body.status-page),
+body.status-page {
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+}
+
+body.status-page {
+  margin: 0;
+  color: var(--status-text);
+  background:
+    radial-gradient(920px 540px at 4% -10%, rgba(34, 211, 238, 0.16), transparent 58%),
+    radial-gradient(780px 500px at 96% 0%, rgba(20, 184, 166, 0.12), transparent 60%),
+    linear-gradient(135deg, #04111d 0%, #071426 50%, #0a1a33 100%);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.status-shell {
+  width: calc(100vw - 44px);
+  max-width: 1580px;
+  margin: 0 auto;
+  padding: 22px 0 28px;
+}
+
+.status-hero,
+.status-card,
+.status-section,
+.status-alert {
+  border: 1px solid var(--status-line);
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--status-panel), var(--status-panel-2));
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.status-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+  margin-bottom: 16px;
+}
+
+.status-eyebrow {
+  color: var(--status-cyan);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.status-hero h1,
+.status-section h2 {
+  margin: 6px 0;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.status-hero h1 {
+  font-size: clamp(1.8rem, 2.5vw, 2.45rem);
+}
+
+.status-hero p,
+.status-card p,
+.status-section-head p,
+.status-note {
+  margin: 0;
+  color: var(--status-soft);
+}
+
+.status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.status-actions a {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 13px;
+  border: 1px solid rgba(125, 166, 214, 0.28);
+  border-radius: 999px;
+  color: var(--status-text);
+  background: rgba(3, 15, 30, 0.58);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.status-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.status-grid-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 14px;
+}
+
+.status-card,
+.status-section {
+  padding: 16px;
+}
+
+.status-card-head,
+.status-section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.status-section {
+  margin-top: 14px;
+}
+
+.status-section-head span,
+.status-note {
+  color: var(--status-muted);
+  font-size: 0.88rem;
+}
+
+.status-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.status-kpi {
+  min-height: 110px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(3, 15, 30, 0.42);
+}
+
+.status-kpi span {
+  color: var(--status-muted);
+  font-size: 0.86rem;
+}
+
+.status-kpi b {
+  display: block;
+  margin-top: 8px;
+  color: #ffffff;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.status-kpi i {
+  color: var(--status-cyan);
+  font-size: 1.25rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(125, 166, 214, 0.28);
+  border-radius: 999px;
+  background: rgba(3, 15, 30, 0.58);
+  color: var(--status-text);
+  font-weight: 900;
+}
+
+.status-pill.ok {
+  color: #dcfce7;
+  border-color: rgba(34, 197, 94, 0.38);
+  background: rgba(34, 197, 94, 0.15);
+}
+
+.status-pill.warn {
+  color: #fef3c7;
+  border-color: rgba(251, 191, 36, 0.42);
+  background: rgba(251, 191, 36, 0.13);
+}
+
+.status-pill.bad,
+.status-alert {
+  color: #ffe4ea;
+  border-color: rgba(251, 113, 133, 0.42);
+  background: rgba(127, 29, 29, 0.22);
+}
+
+.status-alert {
+  padding: 13px 15px;
+  margin-bottom: 14px;
+}
+
+.status-section code,
+.status-card code {
+  color: #d9f8ff;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  border-radius: 8px;
+  padding: 2px 6px;
+}
+
+@media (max-width: 1100px) {
+  .status-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .status-shell {
+    width: calc(100vw - 20px);
+  }
+
+  .status-hero,
+  .status-card-head,
+  .status-section-head {
+    flex-direction: column;
+  }
+
+  .status-grid-two,
+  .status-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,309 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/base/base.legacy.core.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/base/base.legacy.core.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Hoja de estilos para la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Base.Legacy.Core
+   Estilos visuales asociados a este módulo.
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+/* [Doc] html/body ocupan toda la ventana, sin scroll global.
+   - overflow:hidden: evita que la página haga scroll completo.
+   - El scroll debe vivir dentro de contenedores/paneles internos. */
+/* --- Base / Reset --------------------------------------------------------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+/* [Doc] Contenedor raíz de la app:
+   - flex para dividir layout (sidebar + contenido, etc.)
+   - 100vw/100vh para ocupar pantalla completa. */
+#app {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Contenedor principal */
+/* [Doc] Contenedor de la zona principal (columna):
+   - min-width/min-height 0 permite que los hijos flex puedan encogerse
+     (evita overflow inesperado en layouts flex). */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* [Doc] Badge simple (texto de usuario/estado), estilo neutral y reutilizable. */
+.user-badge{
+  font-size: 12px;
+  opacity: .8;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.15);
+}
+
+/* [Doc] Botón copiar (versión simple); se usa en headers de snippets. */
+.yelia-code-copy{
+  background:none;
+  border:none;
+  color:#7dd3fc;
+  cursor:pointer;
+}
+
+/* ============================================================
+   CODE BLOCKS (Highlight-init compatible)
+   - Header + Copy button + Toast
+   ============================================================ */
+/* Header inside <pre> (inserted by highlight-init.js) */
+/* [Doc] Segunda definición de .yelia-code-header:
+   - Diseñada para header "sticky" dentro de <pre>.
+   - Compatible con inserción dinámica por JS (highlight-init.js).
+   - backdrop-filter aporta efecto vidrio; z-index asegura visibilidad. */
+.yelia-code-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:6px 10px;
+  font-size:12px;
+  border-radius:10px 10px 0 0;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  backdrop-filter: blur(6px);
+}
+
+/* [Doc] Ajustes del header de código en dark-mode:
+   - mejora contraste y coherencia con el tema oscuro. */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-code-header{
+  background:rgba(32,33,35,.55);
+  border-color:rgba(148,163,184,.22);
+}
+
+/* [Doc] Etiqueta del lenguaje (ej: "JS", "PY") en header de código:
+   - usa tokens CSS (var) para integrarse con la paleta global. */
+.yelia-code-lang{
+  font-weight:600;
+  letter-spacing:.04em;
+  opacity:.9;
+  color: var(--yelia-text-soft);
+}
+
+/* [Doc] Botón "Copiar" pro:
+   - estados hover/disabled controlados
+   - transición suave para sensación de UI premium. */
+.yelia-copy-btn{
+  background:transparent;
+  border:1px solid rgba(148,163,184,.35);
+  color: var(--yelia-text-main);
+  padding:4px 10px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:12px;
+  line-height:1.2;
+  transition: transform .12s ease, background .15s ease, border-color .15s ease;
+}
+.yelia-copy-btn:hover{
+  transform: translateY(-1px);
+  background: var(--yelia-primary-soft);
+  border-color: rgba(16,163,127,.55);
+}
+.yelia-copy-btn:disabled{
+  opacity:.7;
+  cursor:not-allowed;
+  transform:none;
+}
+
+/* Toast simple "Copiado ✅" */
+/* [Doc] Toast global para feedback de "copiado":
+   - fixed centrado abajo, con animación de entrada.
+   - pointer-events:none evita bloquear clicks. */
+.yelia-copy-toast{
+  position:fixed;
+  left:50%;
+  bottom:22px;
+  transform:translate(-50%, 8px);
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(15,23,42,.92);
+  color:#fff;
+  font-size:13px;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .15s ease, transform .15s ease;
+  z-index:9999;
+  box-shadow:0 14px 30px rgba(0,0,0,.35);
+}
+/* [Doc] Estado visible del toast. */
+.yelia-copy-toast.show{
+  opacity:1;
+  transform:translate(-50%, 0);
+}
+
+/* Badge de usuario (header de chat) */
+/* [Doc] Badge específico para encabezado de chat:
+   - truncado con ellipsis para nombres largos
+   - respeta tokens de tema. */
+.yelia-user-badge{
+  font-size: 0.82rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--yelia-panel-surface);
+  border: 1px solid rgba(148,163,184,.6);
+  color: var(--yelia-text-main);
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-user-badge{ background: rgba(52,53,65,.85); }
+
+/* ============================================================
+   PATCH: SELECTS (modo claro/oscuro) + MODAL SCROLL
+   ------------------------------------------------------------
+   Nota técnica:
+   - En Windows/Chrome el desplegable del <select> es nativo del sistema,
+     por eso algunos colores del menú pueden ignorarse parcialmente.
+   - Estas reglas mejoran el contraste y activan color-scheme para que el
+     navegador respete mejor el tema.
+   - También hacemos el modal scrollable para que no “corte” el contenido.
+   ------------------------------------------------------------
+   ✅ NO rompe tu estilo: solo aplica al modal y a form-select.
+   ============================================================ */
+
+/* 1) Modal scrollable (para pantallas pequeñas / listas largas) */
+/* [Doc] Limita altura del contenido del modal y activa scroll interno (modal-body).
+   Evita que el modal crezca más allá de la pantalla. */
+.yelia-modal .modal-body{
+  max-height: 70vh;
+  overflow: auto;
+}
+
+/* 2) Ayuda al navegador a pintar correctamente controles nativos */
+/* [Doc] En modo claro, solicita UI nativa clara para selects dentro del modal. */
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .yelia-modal .form-select,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .yelia-modal select{
+  color-scheme: light;
+}
+
+/* [Doc] En modo oscuro, solicita UI nativa oscura para selects dentro del modal. */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal .form-select,
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal select{
+  color-scheme: dark;
+}
+
+/* 3) Colores base de opciones (cuando el navegador permite estilizado) */
+/* [Doc] Fallback de colores para <option> cuando el navegador lo permita. */
+.yelia-modal .form-select option{
+  background-color: #ffffff;
+  color: #111827;
+}
+
+/* [Doc] Variante dark-mode para <option>. */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal .form-select option{
+  background-color: var(--yelia-panel-surface);
+  color: var(--yelia-text-main);
+}
+
+/* 4) Intento de color al seleccionar opción (soportado en algunos navegadores) */
+/* [Doc] Resalta opción seleccionada: soporte parcial según navegador/SO. */
+.yelia-modal .form-select option:checked{
+  background-color: var(--yelia-accent);
+  color: #ffffff;
+}
+
+/* 5) Focus más visible (sin cambiar tu identidad) */
+/* [Doc] Focus accesible: borde + glow para indicar campo activo. */
+.yelia-modal .form-select:focus,
+.yelia-modal .form-control:focus{
+  border-color: var(--focus-border);
+  box-shadow: var(--focus-shadow);
+}
+
+/* ============================================================
+   PATCH: PLACEHOLDER SELECT (experto UX)
+   ------------------------------------------------------------
+   Objetivo:
+   - Que "Selecciona una opción" se vea como placeholder
+   - Cambie a color normal SOLO cuando el usuario elige algo
+   - Funcione en modo claro y oscuro
+   ============================================================ */
+
+/* Estado placeholder (cuando value="") */
+/* [Doc] Marca la opción placeholder con color "muted". */
+.yelia-modal select option[value=""]{
+  color: var(--yelia-text-muted);
+}
+
+/* Mientras el select está en placeholder */
+/* [Doc] Cuando la opción value="" está seleccionada, el texto del select se atenúa.
+.yelia-modal select:has(option[value=""]:checked){
+  color: var(--yelia-text-muted);
+}
+
+/* Cuando ya se eligió una opción real */
+/* [Doc] Cuando ya NO está seleccionada la opción vacía, el texto vuelve a normal. */
+.yelia-modal select:not(:has(option[value=""]:checked)){
+  color: var(--yelia-text-main);
+}
+
+/* Dark mode */
+/* [Doc] Redundancia intencional para asegurar consistencia en dark-mode. */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal select:has(option[value=""]:checked){
+  color: var(--yelia-text-muted);
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal select:not(:has(option[value=""]:checked)){
+  color: var(--yelia-text-main);
+}
+
+/* ============================================================
+   PATCH: FLOATING LABEL + SELECT PREMIUM (nivel final)
+   ------------------------------------------------------------
+   Objetivo:
+   - Hacer que los selects se vean "pro" en claro/oscuro
+   - Label tipo "floating" (sube cuando ya hay selección real)
+   - Flecha custom del select (consistente)
+
+/* (Refactor 2026-01-05) Parches de dropdown/floating-label y header movidos a archivos dedicados.
+   Ver: base.dropdown-pro.css y base.header.css */

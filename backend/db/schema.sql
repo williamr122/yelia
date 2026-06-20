@@ -1,0 +1,118 @@
+-- ============================================================
+-- backend/db/schema.sql
+--
+-- Backend Flask — YELIA
+-- Documentación de la capa de Base de Datos (BD)
+-- ============================================================
+--
+-- PROPÓSITO GENERAL:
+-- Este archivo documenta de forma conceptual la estructura,
+-- responsabilidades y alcance de la capa de base de datos (BD)
+-- del backend Flask del sistema YELIA.
+--
+-- No define un esquema físico mediante sentencias SQL ejecutables.
+-- La implementación real del acceso a datos se realiza mediante
+-- SQLite, utilizando el módulo sqlite3 de Python, encapsulado
+-- en una capa de persistencia propia.
+--
+-- USO ACTUAL:
+-- - Archivo documental (referencia técnica y académica).
+-- - No es utilizado directamente en tiempo de ejecución.
+--
+-- USO FUTURO:
+-- - Punto de partida para definir un esquema SQL explícito si el
+--   proyecto migra a un motor de base de datos externo
+--   (PostgreSQL, MySQL).
+-- - Posible adopción de un ORM (por ejemplo SQLAlchemy), sin
+--   afectar la lógica de negocio ni las capas superiores,
+--   gracias al desacoplamiento por capas del sistema.
+--
+-- ============================================================
+-- CAPA: Base de Datos (BD)
+-- CONTEXTO: Backend Flask — YELIA
+-- ------------------------------------------------------------
+--
+-- OBJETIVO:
+-- - Documentar la arquitectura de la capa de persistencia.
+-- - Explicar su rol dentro del backend sin acoplarla a SQL puro.
+-- - Servir como guía conceptual del diseño de datos.
+--
+-- ALCANCE:
+-- - Este archivo NO contiene:
+--     • CREATE TABLE
+--     • ALTER TABLE
+--     • INSERT / UPDATE
+--     • Código SQL ejecutable
+--
+-- - El acceso a la base de datos se gestiona mediante:
+--     • SQLite (motor actual)
+--     • Acceso directo con sqlite3
+--     • Módulos de persistencia en backend/db/
+--     • Servicios de dominio en backend/services/
+--
+-- ============================================================
+-- RESPONSABILIDADES DE LA CAPA DE BD
+-- ------------------------------------------------------------
+--
+-- 1) Conexión y gestión de base de datos
+--    - Inicialización del motor SQLite.
+--    - Configuración de parámetros de concurrencia
+--      (WAL, busy_timeout, foreign_keys).
+--    - Control de transacciones.
+--
+-- 2) Persistencia de datos
+--    - Almacenamiento de conversaciones, mensajes y estados.
+--    - Gestión de memoria conversacional.
+--    - Registro de métricas y eventos relevantes.
+--
+-- 3) Encapsulamiento del acceso a datos
+--    - Aislamiento de la lógica SQL del resto del sistema.
+--    - Punto único de acceso a la persistencia.
+--    - Facilita mantenimiento y evolución del sistema.
+--
+-- 4) Integridad y consistencia
+--    - Manejo de errores de persistencia.
+--    - Garantía de coherencia de los datos almacenados.
+--    - Prevención de condiciones de bloqueo en SQLite.
+--
+-- 5) Evolución del esquema
+--    - Preparación para futuras migraciones de motor de BD.
+--    - Posible incorporación de herramientas de versionado
+--      de esquemas (migraciones).
+--    - Adaptación del modelo de datos sin afectar capas
+--      superiores.
+--
+-- ============================================================
+-- RELACIÓN CON OTRAS CAPAS DEL SISTEMA
+-- ------------------------------------------------------------
+--
+-- Flujo simplificado:
+--
+--   Usuario
+--     ↓
+--   Frontend (HTML / CSS / JS)
+--     ↓
+--   Rutas API (Flask)
+--     ↓
+--   Servicios de dominio
+--     ↓
+--   Capa de persistencia (SQLite)
+--
+-- La capa de BD NO interactúa directamente con:
+--   - El frontend
+--   - La lógica NLP
+--   - Las rutas HTTP
+--
+-- ============================================================
+-- NOTA FINAL
+-- ------------------------------------------------------------
+--
+-- Este archivo se mantiene de forma intencional como
+-- documentación estructural del sistema.
+--
+-- Su existencia refleja una decisión de diseño consciente:
+-- priorizar claridad arquitectónica, desacoplamiento y
+-- escalabilidad, incluso antes de que un esquema SQL explícito
+-- o un ORM sean estrictamente necesarios.
+--
+-- ============================================================

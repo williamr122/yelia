@@ -1,0 +1,7 @@
+{
+  "/launcher/page": "app/launcher/page.js",
+  "/diagnostico/page": "app/diagnostico/page.js",
+  "/teacher/login/page": "app/teacher/login/page.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/chat/page": "app/chat/page.js"
+}

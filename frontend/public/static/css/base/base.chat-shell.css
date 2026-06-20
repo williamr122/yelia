@@ -1,0 +1,156 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/base/base.chat-shell.css
+   Descripción: Estilos del chatbot (contenedor, mensajes, botones, estados y responsive).
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/base/base.chat-shell.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Interacciones del chat: envío, recepción y render de mensajes.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Base.Chat Shell
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-chat-panel {
+  padding: 14px 16px 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+
+/* ============================================================
+   HEADER DEL CHAT
+   ============================================================
+   Contiene:
+   - Título del asistente
+   - Controles (usuario, tema, dark mode, etc.)
+*/
+
+/* Header del chat:
+   ------------------------------------------------------------
+   - Separa visualmente controles del área de mensajes
+   - Línea inferior sutil como delimitador */
+.yelia-chat-header {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+}
+
+
+/* ============================================================
+   BARRA DE “TEMA ACTUAL”
+   ============================================================
+   Indica el contexto académico o asignatura activa
+   para la conversación.
+*/
+
+/* Contenedor de la barra de tema */
+.yelia-topic-bar {
+  margin-top: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+
+  background: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+
+  font-size: 0.8rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Etiqueta fija (“Tema actual:”) */
+.yelia-topic-label {
+  color: var(--yelia-text-soft);
+}
+
+/* Valor dinámico del tema */
+.yelia-topic-value {
+  color: var(--yelia-text-main);
+  font-weight: 500;
+}
+
+/* Ajustes para modo oscuro */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-topic-bar {
+  background: #343541;
+  border-color: rgba(55, 65, 81, 0.9);
+}
+
+
+/* ============================================================
+   BARRA DE INPUT DEL CHAT
+   ============================================================
+   Área de interacción principal del usuario.
+   Contiene:
+   - Botones de modo (voz, adjunto, nuevo chat)
+   - Textarea
+   - Botón de enviar
+*/
+
+/* Contenedor general del input:
+   ------------------------------------------------------------
+   - Forma tipo “pill”
+   - Sombra para jerarquía visual
+   - Flex horizontal para alinear elementos */
+.yelia-input-bar {
+  margin-top: 4px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: var(--yelia-input-bg);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 4px 6px 4px 10px;
+
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ============================================================
+   BOTONES DE MODO (INPUT)
+   ============================================================
+   Grupo de botones de acción rápida:
+   - Micrófono
+   - Adjuntar archivo
+   - Nuevo chat
+*/
+
+/* Agrupación de botones de modo */
+.yelia-input-mode-buttons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+/* ============================================================
+   WRAPPER DEL TEXTAREA
+   ============================================================
+   Contenedor estructural del textarea.
+   Los estilos finos del textarea se definen en otro módulo.
+*/
+
+/* Wrapper del textarea */
+.yelia-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

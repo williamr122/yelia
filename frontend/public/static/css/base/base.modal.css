@@ -1,0 +1,261 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/base/base.modal.css
+   Descripción: Estilos de modales: layout, z-index y ajustes de componentes dentro del modal.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/base/base.modal.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Hoja de estilos para la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Base.Modal
+   Estilos visuales asociados a este módulo.
+*/
+
+.modal-content.yelia-modal {
+  background-color: var(--yelia-panel-surface);
+  color: var(--yelia-text-main);
+  border-radius: 18px;
+  border: 1px solid var(--yelia-border-soft);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+
+
+/* ============================================================
+   SECCIONES INTERNAS DEL MODAL
+   ============================================================
+   Header, body y footer del modal.
+*/
+
+/* Secciones internas:
+   ------------------------------------------------------------
+   - Fondo transparente (hereda del contenedor)
+   - Bordes con tokens para consistencia */
+.yelia-modal .modal-header,
+.yelia-modal .modal-body,
+.yelia-modal .modal-footer {
+  border-color: var(--yelia-border-soft);
+  background-color: transparent;
+}
+
+
+/* ============================================================
+   INPUTS Y SELECTS DENTRO DEL MODAL
+   ============================================================
+   Campos de formulario usados en el perfil académico.
+*/
+
+/* Inputs y selects:
+   ------------------------------------------------------------
+   - Fondo consistente con el input del chat
+   - Texto legible en claro y oscuro */
+.yelia-modal .form-select,
+.yelia-modal .form-control {
+  background-color: var(--yelia-input-bg);
+  color: var(--yelia-text-main);
+  border-color: var(--yelia-border-soft);
+}
+
+/* Opciones del select (modo claro):
+   ------------------------------------------------------------
+   Evita que el texto se vuelva invisible
+   en listas desplegables */
+.yelia-modal .form-select option {
+  color: #000;
+}
+
+
+/* ============================================================
+   SELECTS — MODO OSCURO (GLOBAL)
+   ============================================================
+   Ajustes de contraste y accesibilidad para <select>
+   cuando el sistema está en modo oscuro.
+*/
+
+/* Select base en modo oscuro */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .form-select {
+  background-color: var(--yelia-input-bg);
+  color: var(--yelia-text-main);
+  border: 1px solid var(--yelia-border-soft);
+
+  /* Flecha del select:
+     SVG embebido para mejor contraste */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e3f2ff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.95rem center;
+  background-size: 16px 12px;
+}
+
+/* Foco del select en modo oscuro:
+   ------------------------------------------------------------
+   Usa el color de acento del sistema */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .form-select:focus {
+  border-color: var(--yelia-accent);
+  box-shadow: 0 0 0 3px rgba(0, 255, 200, 0.25);
+}
+
+
+/* ============================================================
+   SELECTS DEL PERFIL ACADÉMICO
+   ============================================================
+   Campos específicos del modal de perfil.
+*/
+
+/* Labels del formulario */
+.yelia-modal .form-label {
+  font-weight: 600;
+}
+
+/* Selects tipo “píldora” del perfil */
+.yelia-modal #ciclo-academico-select,
+.yelia-modal #estado-materia-select {
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+}
+
+/* Placeholder (modo claro):
+   ------------------------------------------------------------
+   Opción “Selecciona una opción” */
+.yelia-modal #ciclo-academico-select option[value=""],
+.yelia-modal #estado-materia-select option[value=""] {
+  color: #9ca3af;
+}
+
+/* Apariencia en modo oscuro */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal #ciclo-academico-select,
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal #estado-materia-select {
+  background-color: var(--yelia-input-bg);
+  color: var(--yelia-text-main);
+  border: 1px solid var(--yelia-border-soft);
+}
+
+/* Opciones en modo oscuro */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal #ciclo-academico-select option,
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal #estado-materia-select option {
+  background-color: var(--yelia-panel-surface);
+  color: var(--yelia-text-main);
+}
+
+/* Placeholder en modo oscuro:
+   ------------------------------------------------------------
+   Un poco más apagado para diferenciarlo del valor real */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal #ciclo-academico-select option[value=""],
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal #estado-materia-select option[value=""] {
+  color: #6b7280;
+}
+
+/* ============================================================
+   MODAL — PATCHES MIGRADOS DESDE LEGACY
+   ------------------------------------------------------------
+   Limpieza:
+   - Estas reglas antes vivían en base.legacy.core.css
+   - Ahora están aquí para evitar duplicación y mantener el modal autocontenido
+   - No cambia el look, solo reubica reglas ya existentes
+   ============================================================ */
+
+.yelia-modal .modal-body{
+  max-height: 70vh;
+  overflow: auto;
+}
+
+/* 2) Ayuda al navegador a pintar correctamente controles nativos */
+/* [Doc] En modo claro, solicita UI nativa clara para selects dentro del modal. */
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .yelia-modal .form-select,
+/* --- Base / Reset --------------------------------------------------------- */
+body:not(.dark-mode) .yelia-modal select{
+  color-scheme: light;
+}
+
+/* [Doc] En modo oscuro, solicita UI nativa oscura para selects dentro del modal. */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal .form-select,
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal select{
+  color-scheme: dark;
+}
+
+/* 3) Colores base de opciones (cuando el navegador permite estilizado) */
+/* [Doc] Fallback de colores para <option> cuando el navegador lo permita. */
+.yelia-modal .form-select option{
+  background-color: #ffffff;
+  color: #111827;
+}
+
+/* [Doc] Variante dark-mode para <option>. */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal .form-select option{
+  background-color: var(--yelia-panel-surface);
+  color: var(--yelia-text-main);
+}
+
+/* 4) Intento de color al seleccionar opción (soportado en algunos navegadores) */
+/* [Doc] Resalta opción seleccionada: soporte parcial según navegador/SO. */
+.yelia-modal .form-select option:checked{
+  background-color: var(--yelia-accent);
+  color: #ffffff;
+}
+
+/* 5) Focus más visible (sin cambiar tu identidad) */
+/* [Doc] Focus accesible: borde + glow para indicar campo activo. */
+.yelia-modal .form-select:focus,
+.yelia-modal .form-control:focus{
+  border-color: var(--yelia-accent);
+  box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.22);
+}
+
+/* ============================================================
+   PATCH: PLACEHOLDER SELECT (experto UX)
+   ------------------------------------------------------------
+   Objetivo:
+   - Que "Selecciona una opción" se vea como placeholder
+   - Cambie a color normal SOLO cuando el usuario elige algo
+   - Funcione en modo claro y oscuro
+   ============================================================ */
+
+/* Estado placeholder (cuando value="") */
+/* [Doc] Marca la opción placeholder con color "muted". */
+.yelia-modal select option[value=""]{
+  color: var(--yelia-text-muted);
+}
+
+/* Mientras el select está en placeholder */
+/* [Doc] Cuando la opción value="" está seleccionada, el texto del select se atenúa.
+.yelia-modal select:has(option[value=""]:checked){
+  color: var(--yelia-text-muted);
+}
+
+/* Cuando ya se eligió una opción real */
+/* [Doc] Cuando ya NO está seleccionada la opción vacía, el texto vuelve a normal. */
+.yelia-modal select:not(:has(option[value=""]:checked)){
+  color: var(--yelia-text-main);
+}
+
+/* Dark mode */
+/* [Doc] Redundancia intencional para asegurar consistencia en dark-mode. */
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal select:has(option[value=""]:checked){
+  color: var(--yelia-text-muted);
+}
+
+/* --- Base / Reset --------------------------------------------------------- */
+body.dark-mode .yelia-modal select:not(:has(option[value=""]:checked)){
+  color: var(--yelia-text-main);
+}

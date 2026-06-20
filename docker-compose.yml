@@ -1,0 +1,77 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: yelia4ap_postgres15
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-yelia4ap}
+      POSTGRES_USER: ${POSTGRES_USER:-yelia}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Define POSTGRES_PASSWORD en .env}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U yelia -d yelia4ap"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: yelia4ap_backend_flask
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      ENV: development
+      FLASK_ENV: development
+      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY:?Define FLASK_SECRET_KEY en .env}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-yelia}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-yelia4ap}
+      FRONTEND_URL: http://localhost:3000
+      AUTO_OPEN_BROWSER: "0"
+      SETUP_TOKEN: ${SETUP_TOKEN:?Define SETUP_TOKEN en .env}
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Define ADMIN_PASSWORD en .env}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@yelia.local}
+
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      GROQ_MODEL: ${GROQ_MODEL}
+      GROQ_TIMEOUT_S: ${GROQ_TIMEOUT_S}
+
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      GEMINI_MODEL: ${GEMINI_MODEL}
+      GEMINI_TIMEOUT_S: ${GEMINI_TIMEOUT_S}
+
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY}
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL}
+      DEEPSEEK_TIMEOUT_S: ${DEEPSEEK_TIMEOUT_S}
+      DEEPSEEK_ATTEMPTS: ${DEEPSEEK_ATTEMPTS:-1}
+      ENABLE_DEEPSEEK: ${ENABLE_DEEPSEEK:-1}
+
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - uploads_data:/app/static/uploads
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: yelia4ap_frontend_nextjs
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_BACKEND_URL: http://backend:5000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  uploads_data:

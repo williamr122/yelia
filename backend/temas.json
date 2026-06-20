@@ -1,0 +1,313 @@
+{
+  "_comment": "Archivo: temas.json. Configuración/metadata de YELIA. Documentación a nivel de estructura; no alterar claves sin revisar dependencias.",
+  "//": "temas.json — Define las unidades, temas y niveles académicos utilizados por YELIA para recomendaciones inteligentes, quizzes y generación de contenido educativo. Este archivo funciona como una base de conocimiento estructurada y desacoplada del código.",
+  "Unidades": [
+    {
+      "nombre": "Unidad 1: Fundamentos de la Programación Orientada a Objetos",
+      "temas": [
+        {
+          "nombre": "Introducción a la POO",
+          "definición": "La Programación Orientada a Objetos (POO) organiza el software en torno a objetos que combinan atributos y métodos.",
+          "ventajas": [
+            "Reutilización de código",
+            "Mantenimiento más sencillo",
+            "Escalabilidad",
+            "Modela el mundo real"
+          ],
+          "ejemplo": "class Persona {\n  String nombre;\n  void saludar() { System.out.println(\"Hola, soy \" + nombre); }\n}\n\nPersona p = new Persona();\np.nombre = \"Ana\";\np.saludar();",
+          "nivel": "basica"
+        },
+        {
+          "nombre": "Clases y Objetos",
+          "definición": "Las clases son moldes para definir atributos y métodos; los objetos son sus instancias.",
+          "ejemplo": "class Coche {\n  String marca;\n  int velocidad;\n}\n\nCoche c = new Coche();\nc.marca = \"Toyota\";\nc.velocidad = 120;",
+          "nivel": "basica"
+        },
+        {
+          "nombre": "Encapsulamiento",
+          "definición": "Oculta los detalles internos de un objeto, permitiendo acceso controlado mediante getters y setters.",
+          "ejemplo": "class Persona {\n  private int edad;\n  public void setEdad(int e) { this.edad = e; }\n  public int getEdad() { return edad; }\n}",
+          "nivel": "basica"
+        }
+      ]
+    },
+    {
+      "nombre": "Unidad 2: Herencia, Polimorfismo y UML",
+      "temas": [
+        {
+          "nombre": "Herencia",
+          "definición": "Permite que una clase herede atributos y métodos de otra, reutilizando código.",
+          "ejemplo": "class Persona { String nombre; }\nclass Estudiante extends Persona { String carrera; }",
+          "nivel": "intermedia"
+        },
+        {
+          "nombre": "Polimorfismo",
+          "definición": "Capacidad de un método o clase de comportarse de diferentes formas (sobrecarga o sobreescritura).",
+          "ejemplo": "class Calculadora {\n  int sumar(int a, int b) { return a + b; }\n  double sumar(double a, double b) { return a + b; }\n}",
+          "nivel": "intermedia"
+        },
+        {
+          "nombre": "Clases Abstractas e Interfaces",
+          "definición": "Las clases abstractas definen métodos incompletos; las interfaces son contratos que las clases deben implementar.",
+          "ejemplo": "abstract class Figura { abstract double area(); }\nclass Circulo extends Figura { double radio; Circulo(double r) { radio = r; } double area() { return Math.PI * radio * radio; } }\ninterface Animal { void sonido(); }\nclass Perro implements Animal { public void sonido() { System.out.println(\"Guau\"); } }",
+          "nivel": "avanzada"
+        },
+        {
+          "nombre": "Lenguaje de Modelado Unificado (UML)",
+          "definición": "Lenguaje estándar para visualizar, especificar y documentar sistemas de software.",
+          "ejemplo": "- Diagrama de Clases: relaciones entre clases.\n- Casos de Uso: interacción entre actores y sistema.\n- Diagrama de Secuencia: intercambio de mensajes en el tiempo.",
+          "nivel": "avanzada"
+        }
+      ]
+    },
+    {
+      "nombre": "Unidad 3: UML y Patrón MVC",
+      "temas": [
+        {
+          "nombre": "Diagramas UML",
+          "definición": "Representan gráficamente la estructura y el comportamiento de un sistema.",
+          "ejemplo": "- Clases: atributos, métodos, relaciones.\n- Secuencia: flujo de mensajes.\n- Actividad: procesos y decisiones.",
+          "nivel": "avanzada"
+        },
+        {
+          "nombre": "Casos de Uso (UML)",
+          "definición": "Un **diagrama de casos de uso** muestra *qué* hace el sistema desde la perspectiva del usuario (actores) y sus funcionalidades (casos de uso). Sirve para definir el alcance antes de programar.",
+          "ventajas": [
+            "Define alcance del sistema",
+            "Identifica actores y funcionalidades",
+            "Ayuda a levantar requisitos",
+            "Es fácil de explicar en defensa/jurado"
+          ],
+          "ejemplo": "Actores: Estudiante, Docente\nCasos de uso: Iniciar sesión, Consultar notas, Subir tarea, Ver retroalimentación",
+          "nivel": "basica",
+          "pasos": [
+            "1) Lista actores (quién usa el sistema).",
+            "2) Lista objetivos (funcionalidades).",
+            "3) Dibuja el límite del sistema.",
+            "4) Conecta actores ↔ casos de uso.",
+            "5) Agrega include/extend si aplica."
+          ]
+        },
+        {
+          "nombre": "Diagrama de Clases (UML)",
+          "definición": "El **diagrama de clases** modela la estructura del sistema: clases, atributos, métodos y relaciones. Es la base para implementar en Java (POO).",
+          "ventajas": [
+            "Traduce requisitos a diseño",
+            "Define relaciones y responsabilidades",
+            "Facilita implementar en Java",
+            "Reduce errores de diseño"
+          ],
+          "ejemplo": "class Usuario { -id:int -nombre:String +login():boolean }\nclass Estudiante extends Usuario { +matricular():void }\nEstudiante 1..* --- 0..* Curso",
+          "nivel": "intermedia",
+          "pasos": [
+            "1) Identifica entidades (sustantivos del dominio).",
+            "2) Define atributos (datos) y métodos (acciones).",
+            "3) Aplica encapsulamiento (privado + getters/setters).",
+            "4) Define relaciones: asociación, herencia, composición.",
+            "5) Agrega multiplicidades (1, 0..*, etc.)."
+          ]
+        },
+        {
+          "nombre": "Relaciones UML (asociación, agregación, composición)",
+          "definición": "En UML, las relaciones describen cómo se conectan las clases: **asociación** (usa), **agregación** (tiene, pero puede vivir aparte) y **composición** (parte de, depende para existir).",
+          "ventajas": [
+            "Aclara responsabilidades",
+            "Evita diseños confusos",
+            "Mejora la calidad del modelo"
+          ],
+          "ejemplo": "Asociación: Estudiante — Curso\nAgregación: Universidad <>— Facultad\nComposición: Casa ◆— Habitación",
+          "nivel": "intermedia"
+        },
+        {
+          "nombre": "Multiplicidad y Navegación (UML)",
+          "definición": "La **multiplicidad** indica cuántas instancias participan en una relación (1, 0..1, 1..*, 0..*). La **navegación** muestra dirección de acceso entre clases.",
+          "ventajas": [
+            "Evita ambigüedad",
+            "Ayuda a diseñar colecciones (List) en Java",
+            "Aterriza reglas del negocio"
+          ],
+          "ejemplo": "Pedido 1 --- 1..* DetallePedido\nCliente 1 --- 0..* Pedido",
+          "nivel": "intermedia"
+        },
+        {
+          "nombre": "Diagrama de Secuencia (UML)",
+          "definición": "Un **diagrama de secuencia** muestra cómo interactúan objetos en el tiempo (mensajes) para lograr un caso de uso. Sirve para explicar flujo y lógica.",
+          "ventajas": [
+            "Explica el orden de llamadas",
+            "Detecta responsabilidades",
+            "Útil para defensa del proyecto"
+          ],
+          "ejemplo": "Estudiante -> Sistema: login()\nSistema -> AuthService: validar()\nAuthService -> BD: consultarUsuario()",
+          "nivel": "intermedia"
+        },
+        {
+          "nombre": "Diagrama de Actividades (UML)",
+          "definición": "El **diagrama de actividades** representa un flujo de proceso (pasos, decisiones, paralelismo). Es ideal para procesos como matrícula o pagos.",
+          "ventajas": [
+            "Aclara procesos",
+            "Muestra decisiones y reglas",
+            "Sirve para documentación"
+          ],
+          "ejemplo": "Inicio -> Ingresar datos -> [válidos?] sí -> Guardar -> Fin\n                              no -> Mostrar error -> Fin",
+          "nivel": "basica"
+        },
+        {
+          "nombre": "Proyecto UML completo (guía)",
+          "definición": "Un proyecto UML completo incluye requisitos + modelado + trazabilidad. Te permite defender ante jurado aunque no haya internet.",
+          "ventajas": [
+            "Estructura profesional",
+            "Fácil de justificar",
+            "Demuestra metodología"
+          ],
+          "ejemplo": "Entregables mínimos: (1) Casos de uso, (2) Diagrama de clases, (3) Secuencia login, (4) Actividades matrícula, (5) Descripción de clases clave.",
+          "nivel": "avanzada",
+          "pasos": [
+            "1) Problema y alcance (5–7 funcionalidades).",
+            "2) Casos de uso con actores + include/extend.",
+            "3) Modelo de dominio (clases principales).",
+            "4) Diagrama de clases detallado (atributos/métodos/multiplicidad).",
+            "5) 1–2 secuencias para los casos críticos.",
+            "6) Diagrama de actividades para un proceso.",
+            "7) Conclusiones + mejoras futuras."
+          ]
+        },
+        {
+          "nombre": "Manejo de Excepciones en Java",
+          "definición": "Las **excepciones** son errores que ocurren en tiempo de ejecución. Se manejan con `try/catch/finally` para que el programa no se caiga y pueda informar correctamente.",
+          "ventajas": [
+            "Evita que la app se cierre",
+            "Permite mensajes claros al usuario",
+            "Facilita depuración"
+          ],
+          "ejemplo": "try { int x = 10/0; } catch(ArithmeticException e){ System.out.println(\"Error: división por cero\"); }",
+          "nivel": "basica"
+        },
+        {
+          "nombre": "Colecciones (List, Set, Map) en Java",
+          "definición": "Las **colecciones** almacenan grupos de datos: `List` (orden, permite repetidos), `Set` (sin repetidos), `Map` (clave→valor).",
+          "ventajas": [
+            "Simplifica manejo de datos",
+            "Evita arreglos fijos",
+            "Base para proyectos reales"
+          ],
+          "ejemplo": "List<String> nombres = new ArrayList<>();\nMap<String,Integer> notas = new HashMap<>();",
+          "nivel": "intermedia"
+        },
+        {
+          "nombre": "Patrones de Diseño en POO",
+          "definición": "Soluciones probadas a problemas comunes en el diseño de software.",
+          "ejemplo": "Patrón Singleton:\nclass Singleton {\n  private static Singleton instancia;\n  private Singleton() {}\n  public static Singleton getInstancia() {\n    if (instancia == null) instancia = new Singleton();\n    return instancia;\n  }\n}",
+          "nivel": "avanzada"
+        },
+        {
+          "nombre": "Patrón MVC",
+          "definición": "Separa la aplicación en Modelo (datos), Vista (interfaz) y Controlador (lógica).",
+          "ejemplo": "// Modelo\nclass Usuario { String nombre; }\n// Vista\nclass VistaUsuario { void mostrar(String n) { System.out.println(\"Usuario: \" + n); } }\n// Controlador\nclass ControladorUsuario { Usuario modelo; VistaUsuario vista; ControladorUsuario(Usuario m, VistaUsuario v){ modelo=m; vista=v; } void actualizarVista(){ vista.mostrar(modelo.nombre); } }",
+          "nivel": "avanzada"
+        }
+      ]
+    },
+    {
+      "nombre": "Unidad 4: Acceso a Archivos y Base de Datos",
+      "temas": [
+        {
+          "nombre": "Acceso a Archivos",
+          "definición": "Permite leer y escribir datos persistentes desde archivos.",
+          "ejemplo": "BufferedReader br = new BufferedReader(new FileReader(\"archivo.txt\"));\nString linea;\nwhile ((linea = br.readLine()) != null) {\n  System.out.println(linea);\n}\nbr.close();",
+          "nivel": "intermedia"
+        },
+        {
+          "nombre": "Bases de Datos y ORM",
+          "definición": "Se accede a bases de datos en Java con JDBC o frameworks ORM como Hibernate.",
+          "ejemplo": "Connection con = DriverManager.getConnection(\"jdbc:mysql://localhost:3306/miBD\", \"root\", \"\");\nStatement stmt = con.createStatement();\nResultSet rs = stmt.executeQuery(\"SELECT * FROM usuarios\");\nwhile (rs.next()) System.out.println(rs.getString(\"nombre\"));\ncon.close();",
+          "nivel": "avanzada"
+        },
+        {
+          "nombre": "Integración POO + MVC + BD",
+          "definición": "Combina la orientación a objetos, MVC y persistencia de datos para sistemas completos.",
+          "nivel": "avanzada"
+        },
+        {
+          "nombre": "Pruebas y Buenas Prácticas",
+          "definición": "Incluye pruebas unitarias, integración continua y patrones para calidad.",
+          "ejemplo": "import org.junit.*;\nclass TestSuma {\n  @Test public void testSumar() { assertEquals(5, new Calculadora().sumar(2,3)); }\n}",
+          "nivel": "avanzada"
+        },
+        {
+          "nombre": "Programación Concurrente y Distribuida",
+          "definición": "Concurrente = múltiples hilos; distribuida = múltiples máquinas.",
+          "ejemplo": "class HiloEjemplo implements Runnable {\n  public void run() { System.out.println(\"Hilo ejecutándose\"); }\n}\nThread hilo = new Thread(new HiloEjemplo());\nhilo.start();",
+          "nivel": "avanzada"
+        }
+      ]
+    },
+    {
+      "nombre": "Unidad 5: Patrones de Diseño Avanzados",
+      "temas": [
+        {
+          "nombre": "Patrón Observer",
+          "definición": "Notifica a múltiples objetos cuando el estado de otro cambia.",
+          "ejemplo": "interface Observador { void actualizar(String msg); }\nclass Sujeto { List<Observador> obs = new ArrayList<>(); void agregar(Observador o){ obs.add(o);} void notificar(String m){ for(Observador o: obs) o.actualizar(m);} }",
+          "nivel": "avanzada"
+        },
+        {
+          "nombre": "Patrón Strategy",
+          "definición": "Permite cambiar dinámicamente el algoritmo usado en un contexto.",
+          "ejemplo": "interface Estrategia { void ejecutar(); }\nclass EstrategiaA implements Estrategia { public void ejecutar(){ System.out.println(\"A\"); } }\nclass Contexto { Estrategia e; Contexto(Estrategia e){ this.e = e; } void operar(){ e.ejecutar(); } }",
+          "nivel": "avanzada"
+        },
+        {
+          "nombre": "Patrón Factory",
+          "definición": "Centraliza la creación de objetos, evitando usar 'new' directamente.",
+          "ejemplo": "class Fabrica {\n  static Figura crear(String tipo){ if(tipo.equals(\"circulo\")) return new Circulo(); else return new Cuadrado(); }\n}",
+          "nivel": "avanzada"
+        }
+      ]
+    },
+    {
+      "nombre": "Unidad 6: Arquitecturas Modernas y Buenas Prácticas",
+      "temas": [
+        {
+          "nombre": "Principios SOLID",
+          "definición": "Conjunto de principios que promueven diseño limpio, mantenible y extensible.",
+          "nivel": "avanzada"
+        },
+        {
+          "nombre": "MVC vs MVP vs MVVM",
+          "definición": "Comparación de arquitecturas: MVC separa en 3 capas, MVP delega la lógica en el Presentador, MVVM introduce ViewModel para desacoplar la UI.",
+          "nivel": "avanzada"
+        },
+        {
+          "nombre": "Clean Architecture",
+          "definición": "Arquitectura en capas concéntricas que desacopla dominio, aplicación e infraestructura.",
+          "nivel": "avanzada"
+        }
+      ]
+    },
+    {
+      "nombre": "Unidad 7: Android y Desarrollo Móvil",
+      "temas": [
+        {
+          "nombre": "Ciclo de Vida de una Activity",
+          "definición": "Describe los estados por los que pasa una pantalla en Android (onCreate, onStart, onResume, etc.).",
+          "nivel": "intermedia"
+        },
+        {
+          "nombre": "Fragments y ViewModel",
+          "definición": "Los Fragments permiten interfaces modulares; los ViewModels manejan datos de forma persistente al ciclo de vida.",
+          "nivel": "avanzada"
+        },
+        {
+          "nombre": "Room ORM",
+          "definición": "Biblioteca de persistencia de Android que abstrae SQLite con anotaciones.",
+          "nivel": "avanzada"
+        },
+        {
+          "nombre": "Consumo de APIs REST con Retrofit",
+          "definición": "Retrofit facilita llamadas HTTP en Android usando interfaces y anotaciones.",
+          "nivel": "avanzada"
+        }
+      ]
+    }
+  ]
+}

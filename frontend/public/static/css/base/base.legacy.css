@@ -1,0 +1,30 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/base/base.legacy.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/base/base.legacy.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Hoja de estilos para la interfaz.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Base.Legacy
+   Estilos visuales asociados a este módulo.
+*/
+
+@import url("./base.legacy.core.css");
+
+/* Parches específicos (scrollbars, dropdowns, etc.) */
+@import url("./base.legacy.patches.scrollbars.css");
+
+
+/* ==================== Componentes ==================== */

@@ -1,0 +1,366 @@
+/* Página autónoma: contenido base incorporado para evitar dependencias cruzadas. */
+
+
+:root{
+  --login-surface: rgba(15, 27, 51, 0.86);
+  --login-border: rgba(155, 176, 209, 0.2);
+  --login-cyan: #67e8f9;
+  --login-blue: #60a5fa;
+  --login-radius: 22px;
+}
+
+body{
+  min-height: 100vh;
+  position: relative;
+  color: #e9f2ff !important;
+  background:
+    radial-gradient(900px 520px at 18% 12%, rgba(34,197,94,.08), transparent 55%),
+    radial-gradient(900px 520px at 82% 12%, rgba(96,165,250,.12), transparent 58%),
+    linear-gradient(180deg, #071423, #0b1f36) !important;
+}
+
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(103,232,249,.08), transparent 38%),
+    radial-gradient(circle at 70% 20%, rgba(129,140,248,.08), transparent 26%);
+}
+
+.container{
+  max-width: 560px !important;
+}
+
+.card.glass{
+  background: var(--login-surface) !important;
+  border: 1px solid var(--login-border) !important;
+  border-radius: var(--login-radius) !important;
+  box-shadow:
+    0 28px 70px rgba(3, 10, 24, .46),
+    0 0 0 1px rgba(255,255,255,.03) inset !important;
+  overflow: hidden;
+}
+
+.card.glass::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.04), transparent 22%),
+    radial-gradient(circle at top right, rgba(103,232,249,.12), transparent 32%);
+}
+
+.card-body{
+  position: relative;
+  z-index: 1;
+  padding: 2rem !important;
+}
+
+.brand{
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.form-control{
+  min-height: 50px;
+  background: rgba(255,255,255,.05) !important;
+  border: 1px solid var(--login-border) !important;
+  color: #e9f2ff !important;
+  border-radius: 16px !important;
+  transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+
+.form-control:focus{
+  border-color: rgba(103,232,249,.58) !important;
+  box-shadow:
+    0 0 0 .18rem rgba(103,232,249,.14),
+    0 0 30px rgba(96,165,250,.12) !important;
+  transform: translateY(-1px);
+}
+
+.btn-primary{
+  min-height: 50px;
+  border: 1px solid rgba(103,232,249,.34) !important;
+  background: linear-gradient(135deg, rgba(34,211,238,.88), rgba(37,99,235,.9)) !important;
+  box-shadow: 0 14px 32px rgba(37,99,235,.18);
+}
+
+.btn-primary:hover{
+  box-shadow:
+    0 18px 38px rgba(37,99,235,.24),
+    0 0 24px rgba(103,232,249,.10);
+}
+
+.badgeRole{
+  background: rgba(103,232,249,.12) !important;
+  border: 1px solid rgba(103,232,249,.24) !important;
+}
+
+.alert{
+  border-radius: 16px !important;
+}
+
+
+/* ===== Estilos propios de la página ===== */
+
+/* Page-specific styles extracted from template */
+
+
+:root{
+      --bg:#08121a;
+      --text:#e5e7eb;
+      --muted: rgba(229,231,235,.75);
+      --panel: rgba(255,255,255,.06);
+      --panel-b: rgba(255,255,255,.12);
+      --accent:#22c55e;
+      --radius: 18px;
+      --danger-bg: rgba(220,38,38,.20);
+      --danger-br: rgba(248,113,113,.42);
+      --danger-tx: #ffe2e2;
+    }
+    body{
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 18% 12%, rgba(34,197,94,.16), transparent 55%),
+        radial-gradient(740px 520px at 85% 30%, rgba(16,185,129,.12), transparent 60%),
+        radial-gradient(900px 600px at 40% 112%, rgba(20,184,166,.10), transparent 55%),
+        var(--bg);
+    }
+    .glass{ background: var(--panel); border:1px solid var(--panel-b); backdrop-filter: blur(12px); }
+    .muted{ color: var(--muted) !important; }
+    .brand{ letter-spacing:.6px; }
+    .badgeRole{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 12px; border-radius:999px;
+      background: rgba(34,197,94,.14);
+      border: 1px solid rgba(34,197,94,.25);
+      color: rgba(229,231,235,.92);
+      font-size:.85rem;
+    }
+    .card{ border-radius: var(--radius); box-shadow: 0 20px 60px rgba(0,0,0,.45); }
+    .form-control{
+      background: rgba(255,255,255,.06) !important;
+      color: var(--text) !important;
+      border-color: rgba(255,255,255,.14) !important;
+    }
+    .form-control::placeholder{ color: rgba(229,231,235,.55); }
+    .form-control:focus{
+      box-shadow: 0 0 0 .2rem rgba(34,197,94,.20);
+      border-color: rgba(34,197,94,.70) !important;
+    }
+    .btn-primary{ background: var(--accent); border-color: rgba(34,197,94,.9); }
+    .btn-primary:hover{ filter: brightness(1.04); }
+    .card, .card * { color: var(--text); }
+    .card .form-label{ opacity:.9; }
+
+    .alert-danger,
+    #errBox{
+      background: var(--danger-bg) !important;
+      border: 1px solid var(--danger-br) !important;
+      color: var(--danger-tx) !important;
+    }
+    .alert-danger *,
+    #errBox *{
+      color: var(--danger-tx) !important;
+    }
+
+/* =========================================================
+   Diseño propio login docente
+========================================================= */
+body.teacher-login{
+  color:var(--yd-text);
+  background:
+    radial-gradient(900px 520px at 75% 0%,rgba(52,211,153,.18),transparent 58%),
+    linear-gradient(135deg,#04120f,#09231f 52%,#071426)!important;
+}
+body.teacher-login .card,
+body.teacher-login .panel,
+body.teacher-login .modal-content{
+  background:linear-gradient(180deg, rgba(18,36,63,.96), rgba(10,22,42,.96))!important;
+  border:1px solid var(--yd-line)!important;
+  box-shadow:var(--yd-shadow)!important;
+  color:var(--yd-text)!important;
+}
+body.teacher-login input,
+body.teacher-login .form-control{
+  background:#08162a!important;
+  border:1px solid rgba(125,166,214,.30)!important;
+  color:var(--yd-text)!important;
+  border-radius:16px!important;
+}
+body.teacher-login .btn-primary,
+body.teacher-login .btn-accent{
+  background:linear-gradient(135deg,#10bdf2 0%,#2563eb 48%,#7c3aed 100%)!important;
+  border:0!important;
+  color:white!important;
+}
+
+/* Pulido visual 2026 - Login docente */
+body.teacher-login {
+  background:
+    radial-gradient(780px 480px at 50% 8%, rgba(34, 211, 238, 0.14), transparent 58%),
+    radial-gradient(720px 500px at 88% 82%, rgba(47, 209, 127, 0.12), transparent 62%),
+    linear-gradient(135deg, #04111d 0%, #071426 52%, #071f2d 100%) !important;
+}
+
+body.teacher-login .card {
+  border-radius: 22px !important;
+  padding: 26px !important;
+}
+
+body.teacher-login .form-control {
+  min-height: 44px;
+}
+
+body.teacher-login .btn-primary {
+  min-height: 46px;
+  border-radius: 14px !important;
+  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.22), 0 0 22px rgba(34, 211, 238, 0.1) !important;
+}
+
+body.teacher-login .alert,
+body.teacher-login #errBox {
+  border-radius: 15px !important;
+}
+body.teacher-login .teacher-request-box{
+  border:1px solid rgba(125,166,214,.24);
+  border-radius:18px;
+  padding:12px;
+  background:rgba(3,15,30,.38);
+}
+
+body.teacher-login .request-form textarea{
+  resize:vertical;
+}
+
+/* Ajuste final 100% zoom: login docente completo, con scroll y sin cortes. */
+html:has(body.teacher-login),
+body.teacher-login {
+  min-height: 100%;
+  height: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+body.teacher-login {
+  padding: 18px 14px 36px !important;
+}
+
+body.teacher-login .yelia-container-narrow {
+  width: min(100%, 520px) !important;
+  max-width: 520px !important;
+  min-height: auto !important;
+  margin-inline: auto !important;
+  padding: 0 !important;
+}
+
+body.teacher-login .text-center.mb-4 {
+  margin-bottom: 16px !important;
+}
+
+body.teacher-login .brand {
+  font-size: 1.65rem !important;
+  line-height: 1.05 !important;
+}
+
+body.teacher-login .card {
+  padding: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+body.teacher-login .card-body {
+  padding: 24px 28px !important;
+}
+
+body.teacher-login .form-control,
+body.teacher-login .btn-primary {
+  min-height: 44px !important;
+}
+
+body.teacher-login .border-secondary.my-4 {
+  margin-top: 18px !important;
+  margin-bottom: 18px !important;
+}
+
+body.teacher-login .teacher-request-box {
+  padding: 10px !important;
+}
+
+@media (max-height: 760px) {
+  body.teacher-login {
+    padding-top: 10px !important;
+  }
+
+  body.teacher-login .card-body {
+    padding: 20px 24px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  body.teacher-login .card-body {
+    padding: 20px !important;
+  }
+}
+
+/* Final unified auth polish */
+html:has(body.teacher-login) {
+  background: #04111d;
+}
+
+body.teacher-login {
+  display: grid !important;
+  place-items: start center !important;
+  padding: 28px 16px 44px !important;
+}
+
+body.teacher-login::before {
+  opacity: .95;
+}
+
+body.teacher-login .yelia-container-narrow,
+body.teacher-login .container {
+  width: min(100%, 540px) !important;
+  max-width: 540px !important;
+}
+
+body.teacher-login .card.glass,
+body.teacher-login .card {
+  border-radius: 24px !important;
+  border: 1px solid rgba(70, 130, 196, .42) !important;
+  background:
+    linear-gradient(180deg, rgba(17, 36, 64, .96), rgba(7, 21, 40, .96)) !important;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, .38),
+    inset 0 1px 0 rgba(255, 255, 255, .045) !important;
+  overflow: hidden !important;
+}
+
+body.teacher-login .card-body {
+  padding: 28px !important;
+}
+
+body.teacher-login .brand {
+  color: #f8fbff !important;
+  text-shadow: 0 0 24px rgba(34, 211, 238, .12);
+}
+
+body.teacher-login .badgeRole {
+  border-color: rgba(103, 232, 249, .34) !important;
+  background: rgba(15, 31, 56, .72) !important;
+  color: rgba(238, 247, 255, .92) !important;
+}
+
+body.teacher-login .form-control {
+  min-height: 46px !important;
+  border-radius: 15px !important;
+  background: rgba(3, 15, 30, .66) !important;
+  border-color: rgba(125, 166, 214, .34) !important;
+}
+
+body.teacher-login .btn-primary {
+  border-radius: 15px !important;
+}

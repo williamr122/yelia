@@ -1,0 +1,65 @@
+@import url("/static/css/base/base.panel-scrollbars.css");
+
+/* Cache-busting hard override for non-chat panels. */
+html,
+body,
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(148, 163, 184, .42) rgba(4, 17, 29, .96) !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+  background: rgba(4, 17, 29, .96) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, .42) !important;
+  border: 2px solid rgba(4, 17, 29, .96) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, .56) !important;
+}
+
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-corner,
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button,
+*::-webkit-scrollbar-button {
+  background: rgba(4, 17, 29, .96) !important;
+}
+
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button,
+*::-webkit-scrollbar-button {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+html:has(body.metrics-page),
+html:has(body.db-viewer-page),
+html:has(body.status-page),
+body.metrics-page,
+body.db-viewer-page,
+body.status-page {
+  background-color: #04111d !important;
+}

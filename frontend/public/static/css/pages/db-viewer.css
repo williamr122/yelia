@@ -1,0 +1,1115 @@
+/* DB viewer limpio para Next: dos paneles, tabla con slider interno y detalle navegable. */
+:root {
+  --db-bg: #071426;
+  --db-panel: rgba(14, 29, 52, 0.94);
+  --db-panel-2: rgba(9, 22, 42, 0.96);
+  --db-line: rgba(125, 166, 214, 0.28);
+  --db-line-strong: rgba(45, 212, 191, 0.48);
+  --db-text: #eef7ff;
+  --db-soft: rgba(226, 239, 255, 0.78);
+  --db-muted: rgba(190, 210, 238, 0.68);
+  --db-accent: #22d3ee;
+  --db-accent-2: #14b8a6;
+  --db-radius: 16px;
+}
+
+html:has(body.db-viewer-page),
+body.db-viewer-page {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body.db-viewer-page {
+  padding: 10px !important;
+  color: var(--db-text) !important;
+  background:
+    radial-gradient(920px 520px at 6% -10%, rgba(34, 211, 238, 0.16), transparent 58%),
+    radial-gradient(760px 460px at 96% 0%, rgba(20, 184, 166, 0.12), transparent 60%),
+    linear-gradient(135deg, #04111d 0%, #071426 52%, #0a1a33 100%) !important;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body.db-viewer-page .db-viewer-shell {
+  width: 100%;
+  height: calc(100vh - 20px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 12px;
+  margin: 0;
+}
+
+body.db-viewer-page .glass,
+body.db-viewer-page .db-viewer-topbar,
+body.db-viewer-page .db-table-panel,
+body.db-viewer-page .db-query-panel,
+body.db-viewer-page .db-records-panel,
+body.db-viewer-page .db-detail-view {
+  color: var(--db-text) !important;
+  border: 1px solid var(--db-line) !important;
+  border-radius: var(--db-radius) !important;
+  background: linear-gradient(180deg, var(--db-panel), var(--db-panel-2)) !important;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+body.db-viewer-page .db-viewer-topbar {
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px !important;
+  margin: 0 !important;
+}
+
+body.db-viewer-page .db-viewer-topbar .fs-4 {
+  color: #fff;
+  font-size: clamp(1.45rem, 2.2vw, 2rem) !important;
+  line-height: 1.08;
+}
+
+body.db-viewer-page .muted,
+body.db-viewer-page .text-muted,
+body.db-viewer-page small {
+  color: var(--db-soft) !important;
+}
+
+body.db-viewer-page .db-viewer-layout {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 14px;
+  overflow: hidden;
+}
+
+body.db-viewer-page .db-table-panel {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: 10px;
+  padding: 12px !important;
+  overflow: hidden;
+}
+
+body.db-viewer-page .db-panel-title,
+body.db-viewer-page .db-records-head,
+body.db-viewer-page .db-detail-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+body.db-viewer-page .db-panel-title {
+  align-items: center;
+  min-height: 34px;
+}
+
+body.db-viewer-page .db-table-filter,
+body.db-viewer-page .db-search-input {
+  min-width: 0;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid rgba(139, 177, 225, 0.24);
+  border-radius: 14px;
+  background: rgba(3, 15, 30, 0.72);
+  color: var(--db-soft);
+}
+
+body.db-viewer-page .db-table-filter {
+  margin: 0 !important;
+}
+
+body.db-viewer-page .db-table-filter input,
+body.db-viewer-page .db-search-input input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #fff;
+}
+
+body.db-viewer-page .db-table-filter input::placeholder,
+body.db-viewer-page .db-search-input input::placeholder {
+  color: rgba(198, 215, 239, 0.58);
+}
+
+body.db-viewer-page .db-table-list {
+  min-height: 0;
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+}
+
+body.db-viewer-page .db-table-button {
+  width: 100%;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid rgba(139, 177, 225, 0.2);
+  border-radius: 12px;
+  background: rgba(10, 24, 46, 0.72);
+  color: var(--db-text);
+  text-align: left;
+}
+
+body.db-viewer-page .db-table-button span {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.db-viewer-page .db-table-button em {
+  display: none;
+}
+
+body.db-viewer-page .db-table-button:hover,
+body.db-viewer-page .db-table-button.active {
+  border-color: var(--db-line-strong);
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.36), rgba(37, 99, 235, 0.16));
+}
+
+body.db-viewer-page .db-main-scroll,
+body.db-viewer-page .db-main-panel {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body.db-viewer-page .db-main-panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 12px;
+}
+
+body.db-viewer-page .db-query-panel {
+  padding: 16px !important;
+  margin: 0 !important;
+}
+
+body.db-viewer-page .db-chip {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(45, 212, 191, 0.34);
+  border-radius: 999px;
+  background: rgba(20, 184, 166, 0.14);
+  color: #dffcff;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+body.db-viewer-page .db-query-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(180px, 240px) minmax(130px, 160px);
+  gap: 12px;
+  align-items: end;
+  margin: 12px 0 8px;
+}
+
+body.db-viewer-page .db-query-grid label {
+  min-width: 0;
+  display: grid;
+  gap: 7px;
+}
+
+body.db-viewer-page .db-query-grid select {
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid rgba(139, 177, 225, 0.24);
+  border-radius: 14px;
+  background: rgba(3, 15, 30, 0.72);
+  color: #fff;
+}
+
+body.db-viewer-page .btn {
+  border-radius: 12px !important;
+}
+
+body.db-viewer-page .btn-primary {
+  border: 0 !important;
+  background: linear-gradient(135deg, #24c6ef 0%, #4f7cff 58%, #6258f5 100%) !important;
+  color: #fff !important;
+}
+
+body.db-viewer-page .btn-outline-light {
+  border-color: rgba(139, 177, 225, 0.28) !important;
+  background: rgba(3, 15, 30, 0.48) !important;
+  color: #fff !important;
+}
+
+body.db-viewer-page .db-records-panel,
+body.db-viewer-page .db-detail-view {
+  min-height: 0;
+  padding: 16px !important;
+  overflow: hidden;
+}
+
+body.db-viewer-page .db-records-panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 12px;
+}
+
+body.db-viewer-page .db-table-wrap {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  border: 1px solid rgba(139, 177, 225, 0.18);
+  border-radius: 14px;
+  background: rgba(3, 15, 30, 0.38);
+}
+
+body.db-viewer-page .db-data-table {
+  width: 100% !important;
+  min-width: 100% !important;
+  margin: 0 !important;
+  border-collapse: collapse;
+  color: var(--db-text) !important;
+}
+
+body.db-viewer-page .db-data-table th,
+body.db-viewer-page .db-data-table td {
+  min-width: 100px;
+  padding: 12px 14px !important;
+  border-color: rgba(139, 177, 225, 0.14) !important;
+  color: var(--db-text) !important;
+  white-space: nowrap;
+}
+
+body.db-viewer-page .db-data-table th:first-child,
+body.db-viewer-page .db-data-table td:first-child {
+  min-width: 72px;
+}
+
+body.db-viewer-page .db-data-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #183259 !important;
+  color: #fff !important;
+}
+
+body.db-viewer-page .db-data-table tbody tr {
+  cursor: pointer;
+}
+
+body.db-viewer-page .db-data-table tbody tr:hover td {
+  background: rgba(20, 184, 166, 0.12) !important;
+}
+
+body.db-viewer-page .db-table-hint {
+  margin: 0 !important;
+  color: var(--db-soft);
+}
+
+body.db-viewer-page .db-detail-view {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 12px;
+}
+
+body.db-viewer-page .db-detail-head {
+  align-items: flex-start;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(139, 177, 225, 0.18);
+}
+
+body.db-viewer-page .db-detail-head h2 {
+  margin: 10px 0 5px;
+  color: #fff;
+  font-size: clamp(1.8rem, 2.6vw, 2.35rem);
+  line-height: 1;
+}
+
+body.db-viewer-page .db-detail-grid {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 12px;
+  align-content: start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+}
+
+body.db-viewer-page .db-detail-field {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(139, 177, 225, 0.22);
+  border-radius: 14px;
+  background: rgba(3, 15, 30, 0.42);
+}
+
+body.db-viewer-page .db-detail-field strong {
+  display: block;
+  padding: 10px 12px;
+  color: var(--db-accent);
+  border-bottom: 1px solid rgba(139, 177, 225, 0.16);
+}
+
+body.db-viewer-page .db-detail-field pre {
+  min-height: 54px;
+  max-height: 240px;
+  margin: 0;
+  padding: 12px;
+  overflow: auto;
+  color: #fff;
+  background: transparent;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: Consolas, "Courier New", monospace;
+}
+
+body.db-viewer-page * {
+}
+
+@media (max-width: 980px) {
+  html:has(body.db-viewer-page),
+  body.db-viewer-page {
+    height: auto;
+    overflow: auto;
+  }
+
+  body.db-viewer-page .db-viewer-shell {
+    height: auto;
+    min-height: calc(100vh - 20px);
+  }
+
+  body.db-viewer-page .db-viewer-topbar,
+  body.db-viewer-page .db-records-head,
+  body.db-viewer-page .db-detail-head {
+    flex-direction: column;
+  }
+
+  body.db-viewer-page .db-table-panel {
+    max-height: 360px;
+  }
+}
+
+/* Ajuste final Next: visor tipo herramienta, sin desbordes y con detalle legible. */
+body.db-viewer-page .db-viewer-layout {
+  grid-template-columns: minmax(290px, 320px) minmax(0, 1fr);
+}
+
+body.db-viewer-page .db-main-panel {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 12px;
+  overflow: hidden;
+}
+
+body.db-viewer-page .db-table-panel {
+  border-color: rgba(34, 211, 238, 0.34) !important;
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.24),
+    inset 4px 0 0 rgba(34, 211, 238, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+body.db-viewer-page .db-table-button {
+  justify-content: space-between;
+}
+
+body.db-viewer-page .db-table-button em {
+  display: inline-flex;
+  flex: 0 0 auto;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(3, 15, 30, 0.72);
+  color: #eaf4ff;
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+body.db-viewer-page .db-records-panel,
+body.db-viewer-page .db-detail-view {
+  min-width: 0;
+  min-height: 0;
+}
+
+body.db-viewer-page .db-table-wrap {
+  max-width: 100%;
+  height: 100%;
+  min-height: 180px;
+}
+
+body.db-viewer-page .db-data-table tbody tr:focus td,
+body.db-viewer-page .db-data-table tbody tr:hover td {
+  background: rgba(20, 184, 166, 0.14) !important;
+  box-shadow: inset 3px 0 0 rgba(45, 212, 191, 0.9);
+}
+
+body.db-viewer-page .db-detail-list {
+  min-height: 0;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+}
+
+body.db-viewer-page .db-detail-row {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(160px, 230px) minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid rgba(139, 177, 225, 0.22);
+  border-radius: 14px;
+  background: rgba(3, 15, 30, 0.42);
+}
+
+body.db-viewer-page .db-detail-row strong {
+  min-width: 0;
+  padding: 12px 14px;
+  color: #67e8f9;
+  border-right: 1px solid rgba(139, 177, 225, 0.16);
+  overflow-wrap: anywhere;
+}
+
+body.db-viewer-page .db-detail-row pre {
+  min-width: 0;
+  min-height: 44px;
+  max-height: 180px;
+  margin: 0;
+  padding: 12px 14px;
+  overflow: auto;
+  color: #eef7ff !important;
+  background: transparent !important;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 980px) {
+  body.db-viewer-page .db-detail-row {
+    grid-template-columns: 1fr;
+  }
+
+  body.db-viewer-page .db-detail-row strong {
+    border-right: 0;
+    border-bottom: 1px solid rgba(139, 177, 225, 0.16);
+  }
+}
+
+/* Version final alineada al visor Flask del prototipo React. */
+html:has(body.db-viewer-page),
+body.db-viewer-page {
+  height: auto;
+  min-height: 100%;
+  overflow: auto;
+}
+
+body.db-viewer-page {
+  padding: 24px 28px !important;
+  background:
+    radial-gradient(900px 520px at 12% -8%, rgba(56, 189, 248, 0.15), transparent 58%),
+    radial-gradient(820px 520px at 95% 0%, rgba(99, 102, 241, 0.16), transparent 60%),
+    linear-gradient(135deg, #06101e 0%, #071426 45%, #0a1830 100%) !important;
+}
+
+body.db-viewer-page .db-viewer-shell {
+  width: min(100%, 1300px);
+  height: auto;
+  min-height: calc(100vh - 48px);
+  margin: 0 auto;
+  display: block;
+}
+
+body.db-viewer-page .db-viewer-topbar {
+  min-height: 94px;
+  margin-bottom: 16px !important;
+  padding: 18px 18px !important;
+}
+
+body.db-viewer-page .db-viewer-layout {
+  min-height: calc(100vh - 190px);
+  display: grid;
+  grid-template-columns: minmax(300px, 330px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  overflow: visible;
+}
+
+body.db-viewer-page .db-table-panel {
+  min-height: calc(100vh - 210px);
+  max-height: calc(100vh - 120px);
+  position: sticky;
+  top: 18px;
+}
+
+body.db-viewer-page .db-table-list {
+  max-height: calc(100vh - 360px);
+}
+
+body.db-viewer-page .db-main-panel {
+  height: auto;
+  min-height: 0;
+  display: block;
+  overflow: visible;
+}
+
+body.db-viewer-page .db-query-panel {
+  margin-bottom: 16px !important;
+}
+
+body.db-viewer-page .db-records-panel,
+body.db-viewer-page .db-detail-view {
+  min-height: 360px;
+  overflow: visible;
+}
+
+body.db-viewer-page .db-records-panel {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+body.db-viewer-page .db-table-wrap {
+  height: auto;
+  min-height: 120px;
+  max-height: min(64vh, 620px);
+  margin-top: 14px;
+  overflow: auto;
+}
+
+body.db-viewer-page .table-responsive {
+  overflow: visible !important;
+}
+
+body.db-viewer-page .db-data-table td {
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.db-viewer-page .db-data-table,
+body.db-viewer-page .db-data-table > :not(caption) > * > * {
+  --bs-table-bg: transparent;
+  --bs-table-color: #eef7ff;
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.018);
+  --bs-table-striped-color: #eef7ff;
+  --bs-table-hover-bg: rgba(20, 184, 166, 0.14);
+  --bs-table-hover-color: #ffffff;
+  --bs-table-active-bg: rgba(20, 184, 166, 0.18);
+  --bs-table-active-color: #ffffff;
+}
+
+body.db-viewer-page .db-data-table tbody tr,
+body.db-viewer-page .db-data-table tbody tr td {
+  background-color: rgba(9, 24, 45, 0.82) !important;
+  color: #eef7ff !important;
+}
+
+body.db-viewer-page .db-data-table tbody tr:nth-child(even) td {
+  background-color: rgba(12, 29, 54, 0.82) !important;
+}
+
+body.db-viewer-page .db-data-table tbody tr:hover td,
+body.db-viewer-page .db-data-table tbody tr:focus td,
+body.db-viewer-page .db-data-table tbody tr:focus-within td {
+  background-color: rgba(20, 184, 166, 0.16) !important;
+  color: #ffffff !important;
+}
+
+body.db-viewer-page .db-data-table tbody tr:hover td *,
+body.db-viewer-page .db-data-table tbody tr:focus td * {
+  color: #ffffff !important;
+}
+
+body.db-viewer-page .db-table-hint {
+  margin-top: 12px !important;
+}
+
+body.db-viewer-page .db-detail-view {
+  display: block;
+}
+
+body.db-viewer-page .db-detail-head {
+  margin-bottom: 16px;
+}
+
+body.db-viewer-page .db-detail-grid {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+  overflow: visible;
+  padding-right: 0;
+}
+
+body.db-viewer-page .db-detail-field {
+  min-width: 0;
+  border: 1px solid rgba(139, 177, 225, 0.22);
+  border-radius: 16px;
+  background: rgba(3, 15, 30, 0.42);
+  overflow: hidden;
+}
+
+body.db-viewer-page .db-detail-field strong {
+  display: block;
+  padding: 12px 14px;
+  color: #67e8f9;
+  border-bottom: 1px solid rgba(139, 177, 225, 0.16);
+  overflow-wrap: anywhere;
+}
+
+body.db-viewer-page .db-detail-field pre {
+  min-height: 52px;
+  max-height: 240px;
+  margin: 0;
+  padding: 14px;
+  overflow: auto;
+  color: #eef7ff !important;
+  background: rgba(3, 15, 30, 0.45) !important;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 980px) {
+  body.db-viewer-page {
+    padding: 14px !important;
+  }
+
+  body.db-viewer-page .db-viewer-shell {
+    min-height: calc(100vh - 28px);
+  }
+
+  body.db-viewer-page .db-viewer-layout,
+  body.db-viewer-page .db-query-grid,
+  body.db-viewer-page .db-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.db-viewer-page .db-table-panel {
+    position: static;
+    min-height: 0;
+    max-height: 360px;
+  }
+
+  body.db-viewer-page .db-table-list {
+    max-height: 230px;
+  }
+}
+
+/* Pulido final: panel lateral pegado, colapsable y hover sobrio. */
+body.db-viewer-page .db-viewer-layout {
+  position: relative;
+  grid-template-columns: 330px minmax(0, 1fr);
+  gap: 18px;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed {
+  grid-template-columns: 18px minmax(0, 1fr);
+}
+
+body.db-viewer-page .db-table-panel {
+  position: sticky;
+  top: 14px;
+  margin-left: -4px;
+  transition: width .2s ease, min-width .2s ease, padding .2s ease, opacity .2s ease;
+}
+
+body.db-viewer-page .db-table-collapse {
+  position: absolute;
+  top: 14px;
+  right: -15px;
+  z-index: 4;
+  width: 30px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(34, 211, 238, .42);
+  border-radius: 999px;
+  background: #071426;
+  color: #dff7ff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .28);
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-panel {
+  width: 18px;
+  min-width: 18px;
+  padding: 0 !important;
+  border-color: rgba(34, 211, 238, .22) !important;
+  overflow: visible;
+  background: rgba(7, 20, 38, .92) !important;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-panel > :not(.db-table-collapse) {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-collapse {
+  right: -18px;
+}
+
+body.db-viewer-page .db-table-button {
+  transition: background .16s ease, border-color .16s ease, transform .16s ease;
+}
+
+body.db-viewer-page .db-table-button:hover {
+  border-color: rgba(34, 211, 238, .42) !important;
+  background: rgba(14, 35, 63, .96) !important;
+  transform: translateX(2px);
+}
+
+body.db-viewer-page .db-table-button.active {
+  border-color: rgba(34, 211, 238, .58) !important;
+  background: rgba(13, 82, 101, .62) !important;
+  box-shadow: inset 3px 0 0 rgba(45, 212, 191, .86);
+}
+
+body.db-viewer-page .db-data-table tbody tr:hover td,
+body.db-viewer-page .db-data-table tbody tr:focus td,
+body.db-viewer-page .db-data-table tbody tr:focus-within td {
+  background-color: rgba(17, 64, 86, .7) !important;
+  color: #eef7ff !important;
+  box-shadow: none !important;
+}
+
+body.db-viewer-page .db-data-table tbody tr:hover td:first-child,
+body.db-viewer-page .db-data-table tbody tr:focus td:first-child {
+  box-shadow: inset 3px 0 0 rgba(45, 212, 191, .88) !important;
+}
+
+/* Ajuste final del visor DB: riel izquierdo pegado y estados menos agresivos. */
+body.db-viewer-page {
+  padding: 12px 14px 12px 0 !important;
+}
+
+body.db-viewer-page .db-viewer-shell {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+body.db-viewer-page .db-viewer-topbar {
+  margin-left: 32px !important;
+}
+
+body.db-viewer-page .db-viewer-layout {
+  grid-template-columns: 328px minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  transition: grid-template-columns .22s ease, gap .22s ease;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed {
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 14px;
+}
+
+body.db-viewer-page .db-table-panel {
+  top: 12px;
+  left: 0;
+  min-height: calc(100vh - 154px);
+  max-height: calc(100vh - 26px);
+  margin-left: 0;
+  border-left: 0 !important;
+  border-radius: 0 18px 18px 0 !important;
+  overflow: visible;
+  box-shadow: 16px 0 28px rgba(0, 0, 0, .18);
+}
+
+body.db-viewer-page .db-table-collapse {
+  top: 16px;
+  right: -16px;
+  width: 32px;
+  height: 44px;
+  cursor: pointer;
+  background: linear-gradient(180deg, rgba(11, 38, 65, .98), rgba(5, 18, 34, .98));
+}
+
+body.db-viewer-page .db-table-collapse:hover {
+  border-color: rgba(103, 232, 249, .75);
+  color: #67e8f9;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-panel {
+  width: 48px;
+  min-width: 48px;
+  padding: 8px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-panel::after {
+  content: "Tablas";
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #67e8f9;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .9;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-collapse {
+  right: 7px;
+  top: 14px;
+  width: 34px;
+  height: 34px;
+}
+
+body.db-viewer-page .db-table-list {
+  padding-right: 4px;
+}
+
+body.db-viewer-page .db-table-button {
+  min-height: 40px;
+  border-color: rgba(139, 177, 225, .19) !important;
+  background: rgba(7, 20, 38, .72) !important;
+  box-shadow: none !important;
+}
+
+body.db-viewer-page .db-table-button:hover {
+  border-color: rgba(34, 211, 238, .36) !important;
+  background: rgba(11, 35, 59, .92) !important;
+  color: #f3fbff !important;
+  transform: translateX(2px);
+}
+
+body.db-viewer-page .db-table-button.active,
+body.db-viewer-page .db-table-button.active:hover {
+  border-color: rgba(34, 211, 238, .62) !important;
+  background: linear-gradient(90deg, rgba(13, 89, 103, .82), rgba(10, 43, 71, .9)) !important;
+  box-shadow: inset 3px 0 0 #2dd4bf !important;
+  transform: none;
+}
+
+body.db-viewer-page .db-table-button em {
+  background: rgba(4, 15, 31, .72) !important;
+  color: #e5f7ff !important;
+}
+
+body.db-viewer-page .db-data-table tbody tr,
+body.db-viewer-page .db-data-table tbody tr td {
+  transition: background-color .14s ease, color .14s ease;
+}
+
+body.db-viewer-page .db-data-table tbody tr:hover td,
+body.db-viewer-page .db-data-table tbody tr:focus td,
+body.db-viewer-page .db-data-table tbody tr:focus-within td {
+  background-color: rgba(14, 45, 71, .86) !important;
+  color: #f6fbff !important;
+  border-color: rgba(139, 177, 225, .14) !important;
+}
+
+body.db-viewer-page .db-data-table tbody tr:hover td:first-child,
+body.db-viewer-page .db-data-table tbody tr:focus td:first-child,
+  body.db-viewer-page .db-data-table tbody tr:focus-within td:first-child {
+  box-shadow: inset 3px 0 0 rgba(34, 211, 238, .72) !important;
+}
+
+/* DB layout definitivo: tablas a la izquierda, contenido separado a la derecha. */
+body.db-viewer-page {
+  padding: 12px !important;
+}
+
+body.db-viewer-page .db-viewer-shell {
+  width: 100%;
+  max-width: none;
+  min-height: calc(100vh - 24px);
+}
+
+body.db-viewer-page .db-viewer-layout {
+  min-height: calc(100vh - 24px);
+  grid-template-columns: 330px minmax(0, 1fr);
+  gap: 18px;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed {
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 16px;
+}
+
+body.db-viewer-page .db-main-panel {
+  min-width: 0;
+}
+
+body.db-viewer-page .db-viewer-topbar {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  min-height: 94px;
+}
+
+body.db-viewer-page .db-table-panel {
+  min-height: calc(100vh - 24px);
+  max-height: calc(100vh - 24px);
+  top: 12px;
+  border-left: 1px solid rgba(34, 211, 238, .28) !important;
+  border-radius: 18px !important;
+}
+
+body.db-viewer-page .db-table-collapse {
+  right: -17px;
+  top: 18px;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-panel {
+  width: 54px;
+  min-width: 54px;
+  border-radius: 18px !important;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-collapse {
+  right: 9px;
+}
+
+body.db-viewer-page .db-records-panel {
+  min-height: 280px;
+}
+
+/* Pulido del riel de tablas: boton integrado y listado con scroll completo. */
+body.db-viewer-page .db-table-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 24px);
+  max-height: calc(100vh - 24px);
+  padding: 14px !important;
+  overflow: hidden;
+}
+
+body.db-viewer-page .db-panel-title {
+  flex: 0 0 auto;
+  padding-right: 46px;
+}
+
+body.db-viewer-page .db-table-filter {
+  flex: 0 0 auto;
+}
+
+body.db-viewer-page .db-table-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none !important;
+  margin-top: 10px;
+  padding-right: 6px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body.db-viewer-page .db-table-panel > small {
+  flex: 0 0 auto;
+  margin-top: 10px !important;
+  padding-top: 10px;
+  border-top: 1px solid rgba(139, 177, 225, .14);
+}
+
+body.db-viewer-page .db-table-collapse {
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-panel {
+  padding: 8px !important;
+  overflow: hidden;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-panel::after {
+  position: absolute;
+  inset: 62px 0 auto 0;
+  display: block;
+  text-align: center;
+  pointer-events: none;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-collapse {
+  top: 12px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+}
+
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-panel > :not(.db-table-collapse) {
+  display: none;
+}
+
+body.db-viewer-page .db-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto !important;
+  overflow-y: auto;
+  display: block;
+}
+
+body.db-viewer-page .db-data-table {
+  width: 100% !important;
+  min-width: 100% !important;
+}
+
+/* Riel contraido con letras apiladas y centradas. */
+body.db-viewer-page .db-viewer-layout.is-table-collapsed .db-table-panel::after {
+  content: "T\A A\A B\A L\A A\A S";
+  inset: 76px 0 auto 0;
+  writing-mode: horizontal-tb;
+  transform: none;
+  white-space: pre-line;
+  text-align: center;
+  line-height: 1.38;
+  letter-spacing: 0;
+}
+
+@media (max-width: 980px) {
+  body.db-viewer-page {
+    padding: 12px !important;
+  }
+
+  body.db-viewer-page .db-viewer-topbar {
+    margin-left: 0 !important;
+  }
+
+  body.db-viewer-page .db-viewer-layout,
+  body.db-viewer-page .db-viewer-layout.is-table-collapsed {
+    grid-template-columns: 1fr;
+  }
+
+  body.db-viewer-page .db-table-panel {
+    position: relative;
+    min-height: 0;
+    border-left: 1px solid rgba(34, 211, 238, .3) !important;
+    border-radius: 18px !important;
+  }
+
+  body.db-viewer-page .db-table-collapse {
+    display: none;
+  }
+}

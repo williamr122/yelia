@@ -1,0 +1,221 @@
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/chat/chat.input.css
+   Descripción: Estilos del chatbot (contenedor, mensajes, botones, estados y responsive).
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/*
+ * Archivo: static/css/chat/chat.input.css
+ * Proyecto: YELIA4AP
+ * Última revisión: 2026-02-10
+ *
+ * Interacciones del chat: envío, recepción y render de mensajes.
+ *
+ * Guía rápida:
+ * - Mantener consistencia de variables (si existen) y evitar !important salvo excepción.
+ * - Agrupar por componente y ordenar: layout -> tipografía -> colores -> estados.
+ */
+
+/* Chat.Input
+   Estilos visuales asociados a este módulo.
+*/
+
+.yelia-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;        /* textarea apoyado en la parte inferior */
+  background: var(--yelia-panel-surface);
+  border-radius: 18px;
+  padding: 8px 14px;
+  border: 1px solid var(--yelia-border-soft);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+
+/* ============================================================
+   ESTADO DE FOCO
+   ============================================================
+   Se activa cuando el textarea interno recibe foco.
+*/
+
+/* Estado focus-within:
+   ------------------------------------------------------------
+   - Resalta el campo activo
+   - Usa el color primario del sistema */
+.yelia-input-wrapper:focus-within {
+  border-color: var(--yelia-primary);
+  box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.25);
+  background: var(--yelia-input-bg);
+}
+
+
+/* ============================================================
+   TEXTAREA DEL MENSAJE
+   ============================================================
+   Campo real donde el usuario escribe.
+*/
+
+/* Textarea:
+   ------------------------------------------------------------
+   - Transparente para que el wrapper sea el “input”
+   - Sin borde ni outline nativo
+   - Crece hasta un máximo y luego muestra scroll interno */
+#user-input {
+  width: 100%;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--yelia-text-main);
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 4px 0;
+
+  resize: none;                 /* evita redimensionado manual */
+  max-height: 260px;            /* límite de crecimiento vertical */
+  overflow-y: auto;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+
+/* ============================================================
+   PLACEHOLDER
+   ============================================================
+   Texto guía (“Escribe tu consulta…”).
+*/
+
+/* Placeholder base */
+#user-input::placeholder {
+  color: var(--yelia-text-soft);
+  opacity: 0.7;
+  font-size: 0.82rem;
+}
+
+/* Placeholder en modo claro:
+   ------------------------------------------------------------
+   Forzado para mantener consistencia visual */
+.yelia-input-wrapper input::placeholder,
+.yelia-input-wrapper textarea::placeholder {
+  color: #6f7b89 !important;
+  opacity: 1;
+}
+
+/* Placeholder en modo oscuro:
+   ------------------------------------------------------------
+   Más claro para mejorar contraste */
+/* --- Modo oscuro (Dark mode) --------------------------------------------------------- */
+.dark-mode .yelia-input-wrapper input::placeholder,
+.dark-mode .yelia-input-wrapper textarea::placeholder {
+  color: #c6cdd8 !important;
+}
+
+
+/* ============================================================
+   TEXTO EN MODO OSCURO
+   ============================================================
+   Ajuste explícito del color del texto.
+*/
+
+.dark-mode #user-input {
+  color: #e5e7eb;
+}
+
+
+/* ============================================================
+   BOTÓN DE ENVÍO (ESTILO MODERNO)
+   ============================================================
+   Botón circular con icono centrado.
+*/
+
+/* Botón enviar */
+.yelia-send-button-modern {
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.25rem;
+
+  transition: transform 0.15s ease, background 0.2s;
+}
+
+
+/* Hover del botón enviar:
+   ------------------------------------------------------------
+   - Zoom ligero
+   - Cambio de color para feedback */
+.yelia-send-button-modern:hover {
+  transform: scale(1.08);
+  background: #a0b012;
+}
+
+
+/* ============================================================
+   ESTADO DESHABILITADO (ENVIANDO)
+   ============================================================
+   Indica visualmente que el mensaje está en proceso de envío.
+*/
+
+/* Estado disabled */
+.yelia-send-button-modern.yelia-send-disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ============================================================
+   SCROLLBAR DEL TEXTAREA (cuando el texto es largo)
+   ------------------------------------------------------------
+   Objetivo:
+   - Que el scroll interno del input (#user-input) se vea “pro”
+   - Mantener coherencia con los scrollbars ya estilizados del proyecto
+   Compatibilidad:
+   - Chrome/Edge (::-webkit-scrollbar*)
+   - Firefox (scrollbar-width / scrollbar-color)
+   ============================================================ */
+
+/* Firefox */
+#user-input{
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.75) transparent;
+}
+
+/* Chrome / Edge */
+#user-input::-webkit-scrollbar{
+  width: 8px;
+}
+
+#user-input::-webkit-scrollbar-thumb{
+  background: rgba(148, 163, 184, 0.75);
+  border-radius: 999px;
+  border: 2px solid transparent;   /* “pill” suave sin cortar el thumb */
+  background-clip: padding-box;
+}
+
+#user-input::-webkit-scrollbar-thumb:hover{
+  background: rgba(100, 116, 139, 0.85);
+  background-clip: padding-box;
+}
+
+#user-input::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+/* Dark mode (si tu app aplica tema oscuro por clase/atributo)*/
+[data-theme="dark"] #user-input{
+  scrollbar-color: rgba(148, 163, 184, 0.55) transparent;
+}
+[data-theme="dark"] #user-input::-webkit-scrollbar-thumb{
+  background: rgba(148, 163, 184, 0.55);
+  background-clip: padding-box;
+}
+[data-theme="dark"] #user-input::-webkit-scrollbar-thumb:hover{
+  background: rgba(203, 213, 225, 0.60);
+  background-clip: padding-box;
+}

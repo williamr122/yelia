@@ -1,0 +1,94 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API YELIA",
+    "version": "1.0.0",
+    "description": "API del asistente educativo YELIA (prototipo funcional de tesis)."
+  },
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "Estado del servicio",
+        "responses": {
+          "200": {
+            "description": "Servicio activo"
+          }
+        }
+      }
+    },
+    "/api/chat": {
+      "post": {
+        "summary": "Chat con YELIA",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "description": "Mensaje del usuario"
+                  },
+                  "conversation_id": {
+                    "type": [
+                      "integer",
+                      "string"
+                    ],
+                    "nullable": true,
+                    "description": "ID de conversación (opcional)"
+                  },
+                  "titulo": {
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Título opcional para la conversación"
+                  }
+                },
+                "required": [
+                  "message"
+                ]
+              },
+              "examples": {
+                "ejemplo_simple": {
+                  "value": {
+                    "message": "¿Qué es programación orientada a objetos?"
+                  }
+                },
+                "con_conversacion": {
+                  "value": {
+                    "conversation_id": 1,
+                    "message": "Explícame polimorfismo con un ejemplo."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Respuesta del asistente"
+          },
+          "400": {
+            "description": "Error de validación"
+          },
+          "429": {
+            "description": "Rate limit (demasiadas solicitudes)"
+          },
+          "500": {
+            "description": "Error interno"
+          }
+        }
+      }
+    },
+    "/api/temas": {
+      "get": {
+        "summary": "Lista de temas disponibles",
+        "responses": {
+          "200": {
+            "description": "Listado de temas"
+          }
+        }
+      }
+    }
+  }
+}

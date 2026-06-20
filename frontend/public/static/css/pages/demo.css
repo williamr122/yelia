@@ -1,0 +1,1062 @@
+/* Página autónoma: contenido base incorporado para evitar dependencias cruzadas. */
+
+/* =====================================================
+   Proyecto: YELIA4AP
+   Archivo: static/css/pages/demo.css
+   Descripción: Hoja de estilos para el módulo/vista correspondiente.
+   Revisión: 2026-02-10
+   ===================================================== */
+
+/* =========================================================
+   ui.css — YELIA4AP (UI Kit)
+   =========================================================
+   Propósito:
+   - Estilos globales compartidos por Launcher, Demo y pantallas UI.
+   - Paleta, layout, botones, tarjetas y microinteracciones.
+   - Este archivo NO contiene lógica: solo presentación.
+
+   Nota:
+   - Mantenerlo "limpio": secciones claras + comentarios por bloque.
+   - Parches específicos (ej. modal perfil) van al final.
+========================================================= */
+
+/* =========================================================
+   1) TOKENS (variables CSS / paleta)
+   ========================================================= */
+
+:root{
+  --bg0:#05121f;
+  --bg1:#071c2c;
+  --bg2:#0b2940;
+  --card:rgba(255,255,255,.06);
+  --card2:rgba(255,255,255,.08);
+  --stroke:rgba(255,255,255,.10);
+  --text:#e9f1ff;
+  --muted:rgba(233,241,255,.72);
+  --muted2:rgba(233,241,255,.55);
+  --accent:#59d2ff;
+  --accent2:#7c5cff;
+  --good:#38d996;
+  --shadow:0 14px 45px rgba(0,0,0,.45);
+  --r:22px;
+  --r2:22px;
+  --pad:18px;
+  --max:1100px;
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+/* =========================================================
+   2) RESET BÁSICO
+   ========================================================= */
+
+*{box-sizing:border-box}
+
+/* Layout base:
+   - Habilita scroll vertical cuando el contenido lo requiere
+   - Evita scroll horizontal accidental */
+html,body{
+  height:100%;
+  overflow-y:auto;
+}
+body{
+  margin:0;
+  color:var(--text);
+  font-family:var(--font);
+  background:
+    radial-gradient(900px 500px at 20% 20%, rgba(89,210,255,.20), transparent 55%),
+    radial-gradient(900px 520px at 80% 10%, rgba(124,92,255,.18), transparent 58%),
+    radial-gradient(900px 520px at 50% 100%, rgba(56,217,150,.12), transparent 60%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+  overflow-x:hidden;
+}
+
+/* Links / texto auxiliar */
+a{color:inherit; text-decoration:none}
+small{color:var(--muted2)}
+
+/* Contenedor principal */
+.wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 40px}
+
+/* =========================================================
+   3) SCROLLBAR (polish discreto)
+   =========================================================
+   - Solo afecta navegadores WebKit (Chrome/Edge/Safari).
+   - Mantiene look "pro" sin distraer.
+========================================================= */
+/* Scrollbar personalizado: sutil, elegante, consistente con la paleta */
+/* Hover: un poco más visible para mejorar UX sin romper la estética */
+
+/* =========================================================
+   4) TOPBAR (header sticky)
+   ========================================================= */
+/* Barra superior: sticky, con fondo translúcido y efecto blur para destacar sin perder la conexión visual con el contenido */
+.topbar{
+  position:sticky; top:10px; z-index:10;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 14px;
+  border:1px solid var(--stroke);
+  border-radius:999px;
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+  backdrop-filter: blur(10px);
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+/* Marca / logo: simple pero con personalidad, usando la paleta de acentos para destacar */
+.brand{
+  display:flex; align-items:center; gap:10px;
+  font-weight:700;
+  letter-spacing:.2px;
+}
+/* El "punto" del logo: un círculo pequeño con el color de acento, rodeado de un halo sutil para darle presencia sin ser intrusivo */
+.brand .dot{
+  width:10px; height:10px; border-radius:999px;
+  background:var(--accent);
+  box-shadow:0 0 0 6px rgba(89,210,255,.15);
+}
+/* Acciones / navegación: botones o links alineados a la derecha, con espacio entre ellos para evitar aglomeración visual */
+.actions{display:flex; gap:10px; align-items:center}
+
+/* =========================================================
+   5) BOTONES
+   ========================================================= */
+/* Botones: diseño moderno y versátil, con variantes para diferentes propósitos (primario, ghost, tamaños).
+   - Base: fondo translúcido, borde sutil, texto claro y legible.
+   - Hover/active: microinteracciones suaves para mejorar la experiencia sin ser intrusivass. */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  font-weight:650;
+  transition:transform .15s ease, background .15s ease, border-color .15s ease;
+  user-select:none;
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Hover: sutil elevación y cambio de fondo para dar feedback sin romper la estética */
+.btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.18)}
+.btn:active{transform:translateY(0px) scale(.98)}
+.btn.primary{
+  border-color:rgba(89,210,255,.35);
+  background:linear-gradient(180deg, rgba(89,210,255,.22), rgba(89,210,255,.10));
+}
+.btn.ghost{background:rgba(255,255,255,.03)}
+.btn.xl{padding:12px 16px; font-size:1.02rem}
+
+/* =========================================================
+   6) TARJETAS / PANELES
+   ========================================================= */
+/* Tarjetas y paneles: contenedores versátiles para agrupar contenido relacionado, con un diseño que destaca sobre el fondo sin ser intrusivo.
+   - Fondo translúcido con efecto blur para mantener la conexión visual con el fondo.
+   - Borde sutil y sombra para dar profundidad y separar del fondo. */
+.card, .panel{
+  border:1px solid var(--stroke);
+  border-radius:var(--r2);
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+  box-shadow:var(--shadow);
+  backdrop-filter: blur(10px);
+}
+/* Títulos dentro de tarjetas/paneles: un poco más grandes y con un contraste ligeramente mayor para destacar sin romper la armonía visual */
+.h1{
+  font-size:clamp(2.2rem, 4vw, 3.2rem);
+  line-height:1.05;
+  margin:0;
+  letter-spacing:-.02em;
+}
+/* Subtítulos: un poco más pequeños que el título principal, con un color más suave para complementar sin competir por atención */
+.subtitle{color:var(--muted); font-size:1.05rem; margin:.55rem 0 0}
+
+.chips{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 0}
+.chip{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);
+  color:var(--muted);
+}
+
+/* =========================================================
+   7) HERO + KPI
+   ========================================================= */
+/* Hero + KPI: sección destacada para mostrar información clave o acciones principales, con un diseño que atrae la atención sin ser abrumador.
+   - Layout en grid para organizar el contenido de manera clara y equilibrada.
+   - Uso de tarjetas/paneles para resaltar cada KPI o sección de información. */
+.hero{
+  margin-top:22px;
+  padding:24px;
+}
+/* Grid para organizar el contenido del hero: dos columnas con proporciones 1.2:0.8, con espacio entre ellas para evitar aglomeración visual */
+.heroGrid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:18px;
+  align-items:stretch;
+}
+/* Panel derecho del hero: diseñado para destacar información clave o acciones principales, con un fondo ligeramente más oscuro para diferenciarlo del resto del hero sin romper la armonía visual */
+.heroRight{
+  padding:18px;
+  border-radius:var(--r2);
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.18);
+}
+/* KPI: diseño de tarjetas para mostrar métricas o información clave de manera clara y atractiva, con un layout en grid para organizar múltiples KPIs sin saturar visualmente */
+.kpi{
+  display:grid;
+  gap:10px;
+}
+/* Cada fila de KPI: diseñada para resaltar la información clave (valor) con un tamaño de fuente más grande y un peso mayor, mientras que el título o descripción se muestra con un tamaño más pequeño y un color más suave para complementar sin competir por atención */
+.kpiRow{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+}
+/* Valor del KPI: grande, con un peso mayor para destacar como la información más importante de la fila */
+.kpiRow b{font-weight:700}
+.badge{
+  font-size:.78rem; color:var(--muted);
+  border:1px solid rgba(255,255,255,.12);
+  padding:6px 10px; border-radius:999px;
+}
+
+@keyframes yeliaPulseStatus {
+  0%,100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(103,232,249,.0); }
+  50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(103,232,249,.0), 0 0 18px rgba(103,232,249,.18); }
+}
+.dotLight.ok{
+  background:#22c55e;
+  box-shadow:0 0 0 1px rgba(34,197,94,.25) inset, 0 0 18px rgba(34,197,94,.25);
+  animation: yeliaPulseStatus 1.9s ease-in-out infinite;
+}
+.dotLight.bad{
+  background:#ef4444;
+  box-shadow:0 0 0 1px rgba(239,68,68,.25) inset, 0 0 18px rgba(239,68,68,.22);
+  animation: yeliaPulseStatus 1.9s ease-in-out infinite;
+}
+.dotLight.warn{
+  background:#f59e0b;
+  box-shadow:0 0 0 1px rgba(245,158,11,.25) inset, 0 0 18px rgba(245,158,11,.22);
+  animation: yeliaPulseStatus 1.9s ease-in-out infinite;
+}
+
+.btn{
+  box-shadow: 0 10px 24px rgba(2,8,23,.16);
+}
+.btn:hover{
+  box-shadow:
+    0 16px 32px rgba(2,8,23,.26),
+    0 0 22px rgba(103,232,249,.10);
+}
+.btn.primary,
+.btn.ghost:hover{
+  background:
+    linear-gradient(135deg, rgba(34,211,238,.18), rgba(59,130,246,.18)),
+    rgba(255,255,255,.05);
+  border-color: rgba(103,232,249,.32);
+}
+
+.card, .panel, .heroRight, .kpiRow{
+  background: rgba(15, 27, 51, 0.85);
+  border: 1px solid rgba(155, 176, 209, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+
+/* CTA dentro del hero: diseñado para destacar acciones importantes, con un layout flexible que se adapta a diferentes tamaños de pantalla sin perder la claridad visual */
+.cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+
+/* =========================================================
+   8) SECCIONES / GRIDS
+   ========================================================= */
+/* Secciones y grids: estructuras para organizar el contenido de manera clara y equilibrada, con un diseño que mantiene la coherencia visual sin ser monótono.
+   - Secciones con padding y margen para separar visualmente diferentes bloques de contenido.
+   - Grids para organizar múltiples elementos relacionados (ej. tarjetas, KPIs) de manera ordenada y atractiva. */
+.section{
+  margin-top:18px;
+  padding:20px;
+}
+/* Título de sección: diseñado para destacar el inicio de una nueva sección de contenido, con un layout flexible que permite incluir un título principal y un subtítulo o descripción complementaria, manteniendo la coherencia visual con el resto del diseño */
+.sectionTitle{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:10px; margin-bottom:14px;
+}
+/* Título principal de la sección: un poco más grande y con un peso mayor para destacar como el encabezado de la sección, mientras que el subtítulo o descripción se muestra con un tamaño más pequeño y un color más suave para complementar sin competir por atención */
+.sectionTitle h2{margin:0; font-size:1.15rem}
+.sectionTitle span{color:var(--muted2); font-size:.9rem}
+/* Grid para organizar elementos relacionados dentro de una sección: diseñado para mostrar múltiples elementos (ej. tarjetas, KPIs) de manera ordenada y atractiva, con espacio entre ellos para evitar aglomeración visual */
+.grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+/* Responsive: en pantallas más pequeñas, el layout de grid se adapta a una sola columna para mantener la legibilidad y evitar que los elementos se vean demasiado comprimidos, asegurando una experiencia de usuario óptima en dispositivos móviles. */
+@media (max-width:920px){
+  .heroGrid{grid-template-columns:1fr}
+  .grid2{grid-template-columns:1fr}
+  .topbar{top:0; border-radius:0; margin:0 -18px; width:calc(100% + 36px)}
+}
+
+/* Stepper: diseñado para mostrar un proceso o flujo de pasos de manera clara y atractiva, con un layout en grid para organizar los pasos de manera ordenada y espacio entre ellos para evitar aglomeración visual. Cada paso se presenta como una tarjeta con un título y una descripción, utilizando la paleta de colores para mantener la coherencia visual sin ser monótono. */
+.stepper{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:12px;
+}
+/* Cada paso del stepper: diseñado para destacar cada etapa del proceso, con un fondo translúcido y un borde sutil para diferenciarlo del fondo sin romper la armonía visual. El título del paso se muestra con un tamaño de fuente más grande y un peso mayor para destacar como la información más importante, mientras que la descripción se muestra con un tamaño más pequeño y un color más suave para complementar sin competir por atención. */
+.step{
+  padding:14px;
+  border-radius:var(--r);
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+}
+.step h3{margin:0; font-size:1rem}
+.step p{margin:.45rem 0 0; color:var(--muted); font-size:.95rem}
+
+/* Links grid: diseñado para mostrar múltiples enlaces relacionados de manera ordenada y atractiva, con un layout en grid para organizar los enlaces de manera clara y espacio entre ellos para evitar aglomeración visual. Cada enlace se presenta como una tarjeta con un título y una descripción, utilizando la paleta de colores para mantener la coherencia visual sin ser monótono. */
+.linksGrid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:12px;
+}
+@media (max-width:920px){
+  .stepper{grid-template-columns:1fr}
+  .linksGrid{grid-template-columns:1fr}
+}
+/* Cada enlace en la grid de links: diseñado para destacar cada recurso o sección relacionada, con un fondo translúcido y un borde sutil para diferenciarlo del fondo sin romper la armonía visual. El título del enlace se muestra con un tamaño de fuente más grande y un peso mayor para destacar como la información más importante, mientras que la descripción se muestra con un tamaño más pequeño y un color más suave para complementar sin competir por atención. */
+.linkCard{
+  padding:14px;
+  border-radius:var(--r);
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+  transition:transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.linkCard:hover{transform:translateY(-2px); background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.18)}
+.linkCard .meta{display:flex; align-items:center; justify-content:space-between; margin-top:6px; color:var(--muted2); font-size:.85rem}
+
+/* =========================================================
+   9) DETAILS (panel técnico colapsable)
+   ========================================================= */
+/* Panel técnico colapsable: diseñado para mostrar información técnica o detalles adicionales de manera organizada y accesible, utilizando el elemento <details> para permitir a los usuarios expandir o colapsar la sección según sus necesidades. El diseño mantiene la coherencia visual con el resto del UI, utilizando un fondo translúcido y un borde sutil para diferenciarlo del fondo sin romper la armonía visual. El título del panel se muestra con un tamaño de fuente más grande y un peso mayor para destacar como la información más importante, mientras que el contenido se muestra con un tamaño más pequeño y un color más suave para complementar sin competir por atención. */
+details.tech{
+  margin-top:12px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:var(--r);
+  background:rgba(0,0,0,.16);
+  padding:10px 12px;
+}
+details.tech > summary{
+  cursor:pointer;
+  list-style:none;
+  font-weight:650;
+  color:var(--muted);
+}
+details.tech > summary::-webkit-details-marker{display:none}
+
+/* =========================================================
+   10) UI Polish (tesis) — contraste + CTA
+   ========================================================= */
+/* Variables para diferentes niveles de contraste y acentos, diseñadas para mejorar la legibilidad y destacar elementos clave sin romper la armonía visual del diseño. Estas variables permiten un control granular sobre el contraste del texto y los elementos interactivos, asegurando que el UI sea accesible y atractivo al mismo tiempo. */
+:root{
+  --ui-text-strong: rgba(255,255,255,.92);
+  --ui-text: rgba(255,255,255,.82);
+  --ui-text-dim: rgba(255,255,255,.68);
+  --ui-accent-cta: rgba(140, 210, 255, .22);
+  --ui-accent-cta-border: rgba(140, 210, 255, .45);
+}
+
+/* Títulos y texto destacado: un contraste ligeramente mayor para mejorar la legibilidad y destacar los encabezados sin ser demasiado brillante, manteniendo la coherencia visual con el resto del diseño. */
+.ui h1, .ui .h1, .ui-title{
+  color: var(--ui-text-strong) !important;
+  letter-spacing: -0.02em;
+}
+
+/* Texto normal: contraste equilibrado para mejorar la legibilidad sin ser demasiado brillante */
+.ui .muted, .ui small, .ui .hint, .ui-subtitle{
+  color: var(--ui-text-dim) !important;
+}
+
+/* Botones primarios: un diseño más destacado para los CTA, utilizando un fondo con un gradiente sutil basado en la variable de acento, y un borde más visible para mejorar la presencia visual sin ser intrusivo. Además, se añade una sombra para dar profundidad y hacer que el botón destaque aún más sobre el fondo. */
+.ui .btn-primary,
+.ui a.btn-primary,
+.ui button.btn-primary{
+  background: linear-gradient(180deg, rgba(140,210,255,.22), rgba(90,170,255,.10)) !important;
+  border: 1px solid var(--ui-accent-cta-border) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+/* Microinteracciones: transiciones suaves para hover en tarjetas y botones, diseñadas para mejorar la experiencia del usuario sin ser intrusivas. Estas interacciones proporcionan feedback visual al usuario, haciendo que el UI se sienta más dinámico y responsivo, mientras que el uso de media query para respetar las preferencias de reducción de movimiento asegura que la experiencia sea cómoda para todos los usuarios. */
+@media (prefers-reduced-motion: no-preference){
+  .ui .card, .ui .btn, .ui a.card{
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .ui .card:hover, .ui a.card:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 18px 46px rgba(0,0,0,.35);
+  }
+  .ui .btn:hover{
+    transform: translateY(-1px);
+  }
+}
+
+/* =========================================================
+   11) PARCHES ESPECÍFICOS — MODAL PERFIL (enero 2026)
+   =========================================================
+   - Estos estilos aplican SOLO al modal #perfil-modal
+   - Mantenerlo al final para priorizar sobre Bootstrap/defaults
+========================================================= */
+/* Modal de perfil: diseñado para mostrar información de perfil de manera clara y atractiva, con un diseño que destaca sobre el fondo sin ser intrusivo. El fondo oscuro y los acentos en azul crean una estética elegante y profesional, mientras que el uso de bordes redondeados y sombras suaves añade profundidad y modernidad al diseño. */
+/* Contenido del modal: fondo oscuro con acentos en azul para una estética elegante y profesional, bordes redondeados y sombras suaves para añadir profundidad y modernidad al diseño */
+/* Encabezado del modal: fondo ligeramente más claro para diferenciarlo del cuerpo del modal, con un borde inferior para separar visualmente las secciones. El padding generoso asegura que el contenido tenga espacio para respirar y mejora la legibilidad del título. */
+/* Título del modal: color azul claro para destacar sobre el fondo oscuro, con un tamaño de fuente más grande y un peso mayor para resaltar como la información más importante del encabezado. El margin se elimina para asegurar que el título esté alineado correctamente dentro del header. */
+/* Botón de cierre (X): se invierte el color para que sea blanco y visible sobre el fondo oscuro, con una opacidad ligeramente reducida para integrarse mejor en el diseño. Al hacer hover, la opacidad aumenta para mejorar la visibilidad y proporcionar feedback visual al usuario. */
+/* Hover en botón de cierre: aumenta la opacidad para mejorar la visibilidad y proporcionar feedback visual al usuario */
+/* Cuerpo del modal: padding generoso para asegurar que el contenido tenga espacio para respirar, mejorando la legibilidad y la estética general del modal. El color del texto se ajusta para ser legible sobre el fondo oscuro, con un line-height adecuado para mejorar la lectura de párrafos más largos. */
+/* Párrafos dentro del cuerpo del modal: color ajustado para ser legible sobre el fondo oscuro, con un line-height adecuado para mejorar la lectura de párrafos más largos. El margin-bottom se establece para separar visualmente los párrafos y mejorar la estética general del contenido. Además, se asegura que el texto se ajuste correctamente sin desbordar el contenedor, utilizando white-space y word-break para manejar casos de texto largo o sin espacios. */
+/* Etiquetas de formulario dentro del modal: color ajustado para ser legible sobre el fondo oscuro, con un peso mayor para destacar como etiquetas de formulario. El margin-bottom se establece para separar visualmente las etiquetas de los campos de entrada, mejorando la estética y la legibilidad del formulario. El tamaño de fuente se ajusta para ser ligeramente más pequeño que el texto normal, manteniendo la jerarquía visual sin competir por atención. */
+/* Campos de formulario (inputs, selects): fondo oscuro con bordes claros para destacar sobre el fondo del modal, con un color de texto blanco para asegurar la legibilidad. Los bordes redondeados y el padding generoso mejoran la estética y la usabilidad de los campos de formulario, mientras que el tamaño de fuente se ajusta para ser consistente con el resto del texto en el modal. Además, se asegura que los campos tengan una altura consistente para mejorar la apariencia general del formulario. */
+/* Focus en campos de formulario: se utiliza un color de borde azul claro para destacar el campo activo, junto con una sombra suave para mejorar la visibilidad del foco sin ser intrusivo. La eliminación del outline predeterminado asegura que el diseño personalizado de foco sea el único indicador visual, manteniendo la coherencia estética del modal. */
+/* Placeholder en campos de formulario: color ajustado para ser legible sobre el fondo oscuro, con una opacidad completa para asegurar que el texto del placeholder sea claramente visible. Esto mejora la usabilidad del formulario al proporcionar indicaciones claras sobre el tipo de información que se espera en cada campo. */
+
+/* Dropdowns dentro del modal: diseñado para integrarse con el estilo general del modal, utilizando un fondo oscuro y bordes claros para destacar sobre el fondo del modal. El texto se ajusta para ser legible sobre el fondo oscuro, con un tamaño de fuente consistente con el resto del texto en el modal. Además, se asegura que los dropdowns tengan un diseño coherente con los campos de formulario, utilizando bordes redondeados y padding generoso para mejorar la estética y la usabilidad de los dropdowns dentro del modal. */
+/*  Dropdown menu: fondo oscuro con bordes claros para destacar sobre el fondo del modal, con un diseño coherente con los campos de formulario y los botones dentro del modal. El texto se ajusta para ser legible sobre el fondo oscuro, con un tamaño de fuente consistente con el resto del texto en el modal. Además, se asegura que el dropdown tenga un diseño limpio y moderno, utilizando bordes redondeados y un margen adecuado para separar visualmente el menú del botón que lo activa. */
+/* Items del dropdown: color ajustado para ser legible sobre el fondo oscuro, con un padding generoso para mejorar la usabilidad y la estética del menú. El diseño de los items se mantiene coherente con el resto del modal, utilizando bordes redondeados y un tamaño de fuente consistente para asegurar una experiencia de usuario fluida y atractiva dentro del modal. */
+/* Hover/Focus en items del dropdown: se utiliza un fondo azul oscuro para destacar el item activo, junto con un cambio de color de texto a blanco para mejorar la visibilidad del hover/focus sin ser intrusivo. Esto proporciona feedback visual claro al usuario al interactuar con el menú desplegable, mejorando la experiencia de usuario dentro del modal. */
+
+/* Footer del modal: diseñado para separar visualmente el footer del cuerpo del modal, utilizando un borde superior para crear una división clara entre las secciones. El padding generoso asegura que los botones dentro del footer tengan espacio para respirar, mejorando la estética y la usabilidad del footer. Además, se utiliza un gap entre los botones para evitar que se vean amontonados, asegurando una experiencia de usuario más cómoda al interactuar con las acciones dentro del modal. */
+/* Botones dentro del footer: el botón primario se destaca con un fondo azul claro y un diseño más prominente para resaltar como la acción principal del modal, mientras que el botón ghost se mantiene más sutil para acciones secundarias. Ambos botones utilizan bordes redondeados y padding generoso para mejorar la estética y la usabilidad dentro del modal, asegurando que las acciones sean claras y atractivas para el usuario. */
+/* Hover en botón primario: se utiliza una transformación de elevación para dar feedback visual al usuario, junto con una sombra más intensa para mejorar la presencia visual del botón sin ser intrusivo. Esto hace que el botón se sienta más dinámico y responsivo, mejorando la experiencia de usuario dentro del modal. */
+/* Botón ghost dentro del footer: diseñado para acciones secundarias, con un fondo transparente y un borde sutil para mantenerlo más discreto que el botón primario. El color del texto se ajusta para ser legible sobre el fondo oscuro del modal, utilizando un tono de gris claro para asegurar la visibilidad sin competir por atención con el botón primario. Además, se utiliza una transición suave para hover, cambiando el fondo a un azul muy tenue y el color del texto a blanco para proporcionar feedback visual al usuario al interactuar con el botón ghost dentro del modal. */
+/* Hover en botón ghost: se utiliza un fondo azul muy tenue para proporcionar feedback visual al usuario, junto con un cambio de color de texto a blanco para mejorar la visibilidad del hover sin ser intrusivo. Esto hace que el botón ghost se sienta más interactivo y responsivo, mejorando la experiencia de usuario dentro del modal sin competir por atención con el botón primario. */
+
+/* Backdrop del modal: diseñado para crear un efecto de enfoque en el modal al oscurecer el fondo y aplicar un efecto de blur, mejorando la legibilidad y la estética del modal. El fondo se ajusta para ser lo suficientemente oscuro como para destacar el modal sin ser completamente opaco, permitiendo que el usuario mantenga una conexión visual con el contexto detrás del modal. El efecto de blur añade profundidad al diseño, haciendo que el modal se sienta más integrado en el entorno visual sin ser intrusivo. */
+
+/* Texto pequeño dentro del modal: color ajustado para ser legible sobre el fondo oscuro, con un tamaño de fuente más pequeño pero aún legible para complementar el texto principal sin competir por atención. El line-height se ajusta para mejorar la legibilidad de párrafos más largos, y el margin-top se establece para separar visualmente el texto pequeño del contenido principal, mejorando la estética general del modal. Además, se asegura que el texto pequeño se muestre como un bloque para evitar problemas de formato y mejorar la presentación dentro del modal. */
+
+/* Links dentro del texto pequeño: color ajustado para destacar sobre el fondo oscuro, utilizando un tono de azul claro para mantener la coherencia con los acentos del modal. El texto se subraya para indicar claramente que son enlaces, mejorando la usabilidad y la experiencia del usuario al interactuar con estos elementos dentro del modal. Además, se asegura que los enlaces sean legibles y accesibles, utilizando un tamaño de fuente consistente con el resto del texto pequeño en el modal. */
+/* Hover en links dentro del texto pequeño: se utiliza un color de azul más brillante para proporcionar feedback visual al usuario al interactuar con los enlaces, mejorando la experiencia de usuario dentro del modal sin ser intrusivo. Esto hace que los enlaces se sientan más interactivos y responsivos, animando a los usuarios a hacer clic en ellos para obtener más información o realizar acciones relacionadas. */
+/* Texto pequeño con énfasis (strong): color ajustado para destacar sobre el fondo oscuro, utilizando un tono de azul claro para mantener la coherencia con los acentos del modal. El uso de strong indica que este texto es importante o requiere atención adicional, por lo que se le da un color más destacado para asegurar que los usuarios lo noten dentro del contexto del modal. */
+
+
+/* ===== Estilos propios de la página ===== */
+
+/* Page-specific styles extracted from template */
+
+
+/* Luces de estado */
+  .dotLight{width:12px;height:12px;border-radius:999px;display:inline-block;margin:0 10px;opacity:.95;background:rgba(255,255,255,.25);box-shadow:0 0 0 1px rgba(255,255,255,.12) inset}
+  .dotLight.ok{background:#22c55e; box-shadow:0 0 0 1px rgba(34,197,94,.25) inset, 0 0 18px rgba(34,197,94,.25)}
+  .dotLight.bad{background:#ef4444; box-shadow:0 0 0 1px rgba(239,68,68,.25) inset, 0 0 18px rgba(239,68,68,.22)}
+  /* Alineación del KPI row para que no se vea raro */
+  #statusPanelDemo .kpiRow{gap:10px}
+  #statusPanelDemo .kpiRow > span:first-child{min-width:140px}
+
+/* =========================================================
+   Diseño propio launcher/demo
+   Movido desde yelia-dark-unified.css para evitar estilos globales.
+========================================================= */
+body.ui.desktop-pro{
+  color:var(--yd-text);
+  background:
+    radial-gradient(900px 520px at 12% -8%, rgba(56,189,248,.15), transparent 58%),
+    radial-gradient(820px 520px at 95% 0%, rgba(99,102,241,.16), transparent 60%),
+    linear-gradient(135deg,#06101e 0%,#071426 45%,#0a1830 100%);
+  min-height:100vh;
+}
+body.ui.desktop-pro .topbar{
+  background:linear-gradient(135deg,#10213b 0%,#172b4d 58%,#123252 100%)!important;
+  border:1px solid rgba(91,181,255,.32)!important;
+  color:var(--yd-text)!important;
+  box-shadow:0 18px 45px rgba(0,0,0,.35)!important;
+}
+body.ui.desktop-pro .topbar .brand,
+body.ui.desktop-pro .brand .t1,
+body.ui.desktop-pro .brand .t2{color:var(--yd-text)!important;}
+body.ui.desktop-pro .brand .dot,
+body.ui.desktop-pro .dot{
+  background:var(--yd-blue)!important;
+  box-shadow:0 0 0 6px rgba(56,189,248,.13),0 0 24px rgba(56,189,248,.38)!important;
+}
+body.ui.desktop-pro .wrap{max-width:1120px!important;}
+body.ui.desktop-pro .hero,
+body.ui.desktop-pro .panel,
+body.ui.desktop-pro .card{
+  background:linear-gradient(135deg, rgba(18,36,63,.96), rgba(9,20,39,.98))!important;
+  color:var(--yd-text)!important;
+  border-color:rgba(91,181,255,.28)!important;
+  box-shadow:var(--yd-shadow)!important;
+}
+body.ui.desktop-pro .hero::before,
+body.ui.desktop-pro .hero::after,
+body.ui.desktop-pro .card::before,
+body.ui.desktop-pro .card::after{
+  opacity:0!important;
+  display:none!important;
+  content:none!important;
+}
+body.ui.desktop-pro .h1,
+body.ui.desktop-pro h1{
+  color:#ffffff!important;
+  text-shadow:none!important;
+  opacity:1!important;
+}
+body.ui.desktop-pro .subtitle,
+body.ui.desktop-pro small,
+body.ui.desktop-pro p{
+  color:var(--yd-soft)!important;
+  opacity:1!important;
+}
+body.ui.desktop-pro .heroRight,
+body.ui.desktop-pro #statusPanelDemo,
+body.ui.desktop-pro #statusPanel{
+  background:#08182d!important;
+  border:1px solid rgba(71,152,226,.38)!important;
+  box-shadow:0 20px 45px rgba(0,0,0,.38)!important;
+}
+body.ui.desktop-pro .kpiRow{
+  background:#0c203a!important;
+  border:1px solid rgba(91,181,255,.26)!important;
+  color:var(--yd-text)!important;
+}
+body.ui.desktop-pro .kpiRow b{color:#fff!important;}
+body.ui.desktop-pro .badge{
+  background:#132945!important;
+  color:#eaf4ff!important;
+  border-color:rgba(91,181,255,.28)!important;
+}
+body.ui.desktop-pro .btn,
+body.ui.desktop-pro .quick-btn,
+body.ui.desktop-pro a.btn{
+  color:var(--yd-text)!important;
+  border-color:rgba(119,166,218,.34)!important;
+}
+body.ui.desktop-pro .btn.primary,
+body.ui.desktop-pro .btn-primary{
+  background:linear-gradient(135deg,#10bdf2 0%,#2563eb 48%,#7c3aed 100%)!important;
+  border:0!important;
+  color:white!important;
+}
+body.ui.desktop-pro .btn.ghost,
+body.ui.desktop-pro .quick-btn{
+  background:rgba(15,31,56,.82)!important;
+  color:#eef6ff!important;
+}
+body.ui.desktop-pro .btn:hover,
+body.ui.desktop-pro .quick-btn:hover,
+body.ui.desktop-pro a.btn:hover{
+  transform:translateY(-1px);
+  border-color:rgba(56,189,248,.55)!important;
+  box-shadow:0 16px 34px rgba(0,0,0,.35),0 0 24px rgba(56,189,248,.14)!important;
+}
+@media(max-width:900px){
+  body.ui.desktop-pro .heroGrid{grid-template-columns:1fr!important;}
+}
+
+/* Pulido visual 2026 - Demo */
+body.ui.desktop-pro .wrap {
+  max-width: 1160px !important;
+}
+
+body.ui.desktop-pro .hero,
+body.ui.desktop-pro .panel {
+  border-radius: 22px !important;
+}
+
+body.ui.desktop-pro .heroGrid {
+  gap: 34px !important;
+}
+
+body.ui.desktop-pro .chips {
+  gap: 10px !important;
+}
+
+body.ui.desktop-pro .chip,
+body.ui.desktop-pro .linkCard {
+  background: rgba(6, 18, 35, 0.62) !important;
+  border-color: rgba(125, 166, 214, 0.28) !important;
+}
+
+body.ui.desktop-pro .heroRight {
+  border-radius: 20px !important;
+}
+
+body.ui.desktop-pro .kpiRow,
+body.ui.desktop-pro .step {
+  border-radius: 14px !important;
+}
+
+body.ui.desktop-pro .linksGrid {
+  gap: 14px !important;
+}
+
+body.ui.desktop-pro .linkCard {
+  display: grid !important;
+  gap: 12px !important;
+  min-height: 86px;
+  padding: 15px !important;
+  transition: transform 0.18s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+body.ui.desktop-pro .linkCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.46) !important;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28), 0 0 20px rgba(56, 189, 248, 0.1) !important;
+}
+
+body.ui.desktop-pro .linkCard > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+body.ui.desktop-pro .linkIcon {
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.22), rgba(79, 124, 255, 0.24));
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #ecfeff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+body.ui.desktop-pro .linkCard .meta {
+  padding-left: 44px;
+}
+
+/* Presentacion mas limpia del panel de estado */
+body.ui.desktop-pro .heroRight,
+body.ui.desktop-pro #statusPanelDemo {
+  background:
+    linear-gradient(180deg, rgba(9, 26, 48, 0.98), rgba(5, 18, 35, 0.98)) !important;
+  border-color: rgba(56, 189, 248, 0.32) !important;
+  padding: 18px !important;
+}
+
+body.ui.desktop-pro #statusPanelDemo {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+body.ui.desktop-pro .kpi {
+  display: grid;
+  gap: 10px;
+}
+
+body.ui.desktop-pro .kpiRow {
+  min-height: 48px;
+  padding: 0 14px !important;
+  background: linear-gradient(180deg, rgba(14, 36, 64, 0.94), rgba(8, 25, 48, 0.94)) !important;
+  border-color: rgba(85, 157, 225, 0.32) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.035) !important;
+}
+
+body.ui.desktop-pro .yelia-entry-wrap{
+  max-width:1120px!important;
+  padding-top:34px;
+}
+
+body.ui.desktop-pro .yelia-entry-hero{
+  min-height:0;
+}
+
+body.ui.desktop-pro .yelia-entry-card,
+body.ui.desktop-pro .yelia-management-card{
+  display:grid;
+  gap:12px;
+  padding:22px!important;
+}
+
+body.ui.desktop-pro .yelia-entry-card h2,
+body.ui.desktop-pro .yelia-management-card h2,
+body.ui.desktop-pro .panel h2{
+  margin:0;
+  color:#fff;
+  font-size:1.25rem;
+}
+
+body.ui.desktop-pro .yelia-entry-card label{
+  color:#bfdbfe;
+  font-weight:800;
+  font-size:.82rem;
+}
+
+body.ui.desktop-pro .yelia-entry-card input{
+  width:100%;
+  min-height:46px;
+  border:1px solid rgba(125,166,214,.30);
+  border-radius:15px;
+  padding:0 14px;
+  color:#eaf4ff;
+  background:rgba(3,15,30,.72);
+  outline:0;
+}
+
+body.ui.desktop-pro .yelia-entry-card input:focus{
+  border-color:rgba(56,189,248,.62);
+  box-shadow:0 0 0 3px rgba(56,189,248,.12);
+}
+
+body.ui.desktop-pro .entry-error{
+  border:1px solid rgba(248,113,113,.34);
+  border-radius:14px;
+  padding:10px 12px;
+  background:rgba(248,113,113,.12);
+  color:#fecaca;
+  font-weight:750;
+}
+
+body.ui.desktop-pro .yelia-full{
+  width:100%;
+  justify-content:center;
+}
+
+body.ui.desktop-pro .management-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+body.ui.desktop-pro .management-actions .btn{
+  justify-content:center;
+}
+
+body.ui.desktop-pro .yelia-access-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin-top:14px;
+}
+
+body.ui.desktop-pro .yelia-access-card{
+  min-height:104px;
+  display:grid;
+  gap:6px;
+  align-content:center;
+  padding:15px;
+  border:1px solid rgba(125,166,214,.28);
+  border-radius:16px;
+  color:#eaf4ff;
+  text-decoration:none;
+  background:linear-gradient(180deg, rgba(14,36,64,.92), rgba(7,22,43,.94));
+  transition:transform .18s ease,border-color .2s ease,box-shadow .2s ease;
+}
+
+body.ui.desktop-pro .yelia-access-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(56,189,248,.48);
+  box-shadow:0 18px 38px rgba(0,0,0,.26),0 0 24px rgba(56,189,248,.10);
+}
+
+body.ui.desktop-pro .yelia-access-card span{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  border:1px solid rgba(56,189,248,.34);
+  background:rgba(56,189,248,.13);
+  color:#dffbff;
+  font-weight:900;
+  font-size:.76rem;
+}
+
+body.ui.desktop-pro .yelia-access-card strong{
+  font-size:1rem;
+}
+
+body.ui.desktop-pro .yelia-access-card small{
+  color:rgba(233,242,255,.62);
+}
+
+body.ui.desktop-pro .yelia-access-card.is-primary{
+  border-color:rgba(20,184,166,.46);
+  background:linear-gradient(135deg, rgba(20,184,166,.20), rgba(37,99,235,.16));
+}
+
+@media(max-width:720px){
+  body.ui.desktop-pro .management-actions{
+    grid-template-columns:1fr;
+  }
+  body.ui.desktop-pro .yelia-access-grid{
+    grid-template-columns:1fr;
+  }
+}
+/* Management portal 2026 */
+body.ui.desktop-pro .yelia-management-home {
+  max-width: 1320px !important;
+  padding: 22px 22px 38px;
+}
+
+.mgmt-topbar {
+  position: sticky;
+  top: 12px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border: 1px solid rgba(125, 166, 214, .22);
+  border-radius: 24px;
+  background: rgba(7, 18, 35, .80);
+  box-shadow: 0 18px 42px rgba(2, 6, 23, .26);
+  backdrop-filter: blur(14px);
+}
+
+.mgmt-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mgmt-brand span,
+.mgmt-access-card > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  color: #dffcff;
+  background: linear-gradient(135deg, rgba(14, 165, 233, .30), rgba(124, 58, 237, .30));
+  border: 1px solid rgba(103, 232, 249, .28);
+}
+
+.mgmt-brand strong {
+  color: #fff;
+  font-size: 1.08rem;
+}
+
+.mgmt-brand small {
+  color: #a9c3df !important;
+}
+
+.mgmt-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mgmt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  border: 1px solid rgba(125, 166, 214, .22);
+  border-radius: 999px;
+  color: #dbeafe;
+  background: rgba(15, 31, 56, .60);
+  font-weight: 800;
+}
+
+.mgmt-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(310px, 380px);
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.mgmt-hero,
+.mgmt-side-card,
+.mgmt-section {
+  border: 1px solid rgba(91, 181, 255, .25);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 85% 18%, rgba(124, 58, 237, .16), transparent 34%),
+    linear-gradient(135deg, rgba(18, 36, 63, .96), rgba(9, 20, 39, .99));
+  box-shadow: 0 24px 62px rgba(0, 0, 0, .36);
+}
+
+.mgmt-hero {
+  padding: 30px;
+  min-height: 330px;
+}
+
+.mgmt-hero h1 {
+  max-width: 760px;
+  margin: 14px 0 0;
+  color: #fff;
+  font-size: clamp(2.5rem, 4.2vw, 4.8rem);
+  line-height: .95;
+  letter-spacing: -.045em;
+}
+
+.mgmt-hero p {
+  max-width: 690px;
+  margin: 18px 0 0;
+  color: #c7d7ea !important;
+  font-size: 1.06rem;
+  line-height: 1.62;
+}
+
+.mgmt-side-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+}
+
+.mgmt-side-card h2,
+.mgmt-section h2 {
+  margin: 0;
+  color: #fff;
+}
+
+.mgmt-side-card p {
+  color: #c7d7ea !important;
+  line-height: 1.58;
+}
+
+.mgmt-status-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.mgmt-status-list span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  border: 1px solid rgba(125, 166, 214, .18);
+  border-radius: 15px;
+  color: #dbeafe;
+  background: rgba(3, 12, 27, .42);
+  font-weight: 760;
+}
+
+.mgmt-status-list i {
+  color: #34d399;
+}
+
+.mgmt-section {
+  margin-top: 18px;
+  padding: 22px;
+}
+
+.mgmt-access-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.mgmt-access-card {
+  display: grid;
+  gap: 10px;
+  min-height: 180px;
+  padding: 18px;
+  border: 1px solid rgba(125, 166, 214, .20);
+  border-radius: 22px;
+  background: rgba(3, 12, 27, .40);
+  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+}
+
+.mgmt-access-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, .50);
+  background: rgba(9, 26, 48, .72);
+}
+
+.mgmt-access-card strong {
+  color: #fff;
+  font-size: 1.04rem;
+}
+
+.mgmt-access-card small {
+  color: #a9c3df !important;
+}
+
+.mgmt-access-card em {
+  align-self: end;
+  color: #dffcff;
+  font-style: normal;
+  font-weight: 850;
+}
+
+.mgmt-access-card.tone-green > span {
+  background: linear-gradient(135deg, rgba(16, 185, 129, .28), rgba(20, 184, 166, .24));
+}
+
+.mgmt-access-card.tone-purple > span {
+  background: linear-gradient(135deg, rgba(124, 58, 237, .32), rgba(168, 85, 247, .22));
+}
+
+.mgmt-access-card.tone-orange > span {
+  background: linear-gradient(135deg, rgba(245, 158, 11, .30), rgba(249, 115, 22, .20));
+}
+
+.mgmt-focus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.mgmt-focus-card {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  min-height: 132px;
+  padding: 18px;
+  border: 1px solid rgba(125, 166, 214, .20);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(45, 212, 191, .08), transparent 36%),
+    rgba(3, 12, 27, .42);
+}
+
+.mgmt-focus-card > span {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  color: #67e8f9;
+  border: 1px solid rgba(103, 232, 249, .28);
+  background: rgba(14, 165, 233, .14);
+}
+
+.mgmt-focus-card h3 {
+  margin: 0 0 6px;
+  color: #fff;
+  font-size: 1.02rem;
+}
+
+.mgmt-focus-card p {
+  margin: 0;
+  color: #b8cbe2 !important;
+  line-height: 1.5;
+  font-size: .93rem;
+}
+
+@media (max-width: 1040px) {
+  .mgmt-layout,
+  .mgmt-access-grid,
+  .mgmt-focus-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .mgmt-topbar,
+  .mgmt-top-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .mgmt-layout,
+  .mgmt-access-grid,
+  .mgmt-focus-grid {
+    grid-template-columns: 1fr;
+  }
+}
