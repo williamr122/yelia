@@ -32,4 +32,4 @@ Documento descriptivo del módulo.
 #   de errores y optimización del intérprete.
 # ============================================================
 
-python-3.11.9
+python-3.12

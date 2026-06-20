@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """
 Proyecto: YELIA4AP
 Archivo: backend/core/errors.py
