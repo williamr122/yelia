@@ -441,14 +441,13 @@ def create_app() -> Flask:
             return _api_error("Error inesperado del servidor.", 500, "UNEXPECTED_ERROR")
         return e
 
-    return app
-
+# Instancia global de Flask para despliegue (Vercel, Gunicorn, WSGI)
+app = create_app()
 
 # ============================================================
 # EJECUCIÓN EN MODO DESARROLLO
 # ============================================================
 if __name__ == "__main__":
-    app = create_app()
 
     # ------------------------------------------------------------
     # AUTO-OPEN BROWSER (solo cuando ejecutas: python app.py)
