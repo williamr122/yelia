@@ -240,24 +240,30 @@ def create_app() -> Flask:
     # --------------------------------------------------------
     # 2.1) Logging a consola + archivo
     # --------------------------------------------------------
-    log_dir = base_dir / "logs"
-    log_dir.mkdir(exist_ok=True)
-
-    log_file = os.getenv("LOG_FILE", str(log_dir / "app.log"))
+    is_vercel = "VERCEL" in os.environ
     log_level = os.getenv("LOG_LEVEL", "INFO").upper().strip()
+    log_file = "console"
 
     root = logging.getLogger()
     if not root.handlers:
         root.setLevel(log_level)
         fmt = logging.Formatter("%(asctime)s | %(levelname)s | %(name)s | %(message)s")
-        fh = RotatingFileHandler(log_file, maxBytes=1_000_000, backupCount=3, encoding="utf-8")
-        fh.setLevel(log_level)
-        fh.setFormatter(fmt)
         ch = logging.StreamHandler()
         ch.setLevel(log_level)
         ch.setFormatter(fmt)
-        root.addHandler(fh)
         root.addHandler(ch)
+
+        if not is_vercel:
+            try:
+                log_dir = base_dir / "logs"
+                log_dir.mkdir(exist_ok=True)
+                log_file = os.getenv("LOG_FILE", str(log_dir / "app.log"))
+                fh = RotatingFileHandler(log_file, maxBytes=1_000_000, backupCount=3, encoding="utf-8")
+                fh.setLevel(log_level)
+                fh.setFormatter(fmt)
+                root.addHandler(fh)
+            except Exception as e:
+                print(f"No se pudo inicializar FileHandler de logs: {e}")
 
     logger.info("Logging listo", log_file=log_file, log_level=log_level)
 
@@ -322,7 +328,20 @@ def create_app() -> Flask:
         if not db_path:
             db_path = db_url.replace("sqlite:///", "") if db_url.startswith("sqlite:///") else "yelia.db"
         if not os.path.isabs(db_path):
-            db_path = str((base_dir / db_path).resolve())
+            if is_vercel:
+                # En Vercel, la base de datos local SQLite debe escribirse en /tmp (único directorio con escritura permitida)
+                db_path = "/tmp/yelia.db"
+                # Copiar la base de datos semilla si existe y no se ha copiado en /tmp
+                src_db = base_dir / "yelia.db"
+                if src_db.exists() and not os.path.exists(db_path):
+                    try:
+                        import shutil
+                        shutil.copy2(str(src_db), db_path)
+                        logger.info("Base de datos semilla copiada a /tmp")
+                    except Exception as e:
+                        logger.error(f"Error al copiar base de datos semilla a /tmp: {e}")
+            else:
+                db_path = str((base_dir / db_path).resolve())
         app.config["DATABASE_PATH"] = db_path
 
     logger.info("Inicializando YELIA", database=db_path, env=env)

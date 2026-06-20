@@ -590,11 +590,14 @@ def api_adaptive_plan():
 # ============================================================================
 def _private_upload_dir() -> Path:
     """Directorio privado (preferido) para adjuntos."""
-    return Path(os.getenv("PRIVATE_UPLOAD_DIR", "private_uploads"))
+    default_dir = "/tmp/private_uploads" if "VERCEL" in os.environ else "private_uploads"
+    return Path(os.getenv("PRIVATE_UPLOAD_DIR", default_dir))
 
 
 def _legacy_static_upload_dir() -> Path:
     """Directorio legado (por compatibilidad) si antes guardabas en /static/uploads."""
+    if "VERCEL" in os.environ:
+        return Path("/tmp/static_uploads")
     base_dir = Path(__file__).resolve().parents[2]
     return base_dir / "static" / "uploads"
 
